@@ -88,7 +88,7 @@
 
         $record = $this->db->query_first($query);
 
-        return $record["id"] . "#" .$record["user_id"] . "#" . $record["aid_name"] . "#" . $record["aid_comment"] . "#" . $record["start_date"] . "#" . $record["end_date"] . "#" . $record["fav_count"] . "#" . $record["city"] . "#" . $record["district"] . "#" . $record["neigborhood"] . "#" . $record["address"] . "#" . $record["tags"] . "#" . $record["aid_img"];
+        return $record;
      }
 
      function getCampaignByUserID($id)
