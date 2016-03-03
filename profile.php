@@ -458,7 +458,10 @@
         
                      
             </div>
-                 
+               
+               <?php include("favorites.php"); ?>
+
+
         </div>
               
     </div>
