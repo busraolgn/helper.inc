@@ -1,0 +1,92 @@
+.join-link a{
+margin: 0.8em 0em 0em 1.5em; 
+}
+/*--start-login_register--*/
+.login_register{
+	all: initial;
+	display: inline;
+    float: right;
+    font-size: 1.2em;
+    color: #ffffff;
+}
+.login_register button{
+  background-color: #333;
+  color: #ff1a75;
+}
+/*--end-login_register--*/
+
+.aid_images{
+  float: left;
+  display: inline-block;
+}
+/*
+.glyphicon-calendar:active{
+  content: url("../images/businessman266p.png");
+}
+*/
+.aid_details{
+  margin: 3%;
+  border: solid;
+  border-width: 0.3em;
+  border-color: #d9d9d9;
+  padding: 0.2em;
+  width: 60%;  
+  float: left;
+}
+
+.tags{
+  float: left;
+  margin: 0.5em;
+  border: solid;
+  border-width: 0.3em;
+  border-color: #d9d9d9;
+  padding: 0.5em;
+  display: inline;
+  width: 15%;
+}
+
+.bottom{ 
+  float: left;
+  margin: 0.5em;
+}
+
+a.normal_link{
+	all: initial;
+	display: inline;
+}
+
+.notVisible{
+	display: none;
+}
+
+.baslik{
+  margin: 3%;
+}
+
+.address{
+  float: left;
+  margin: 0.5em;
+  border: solid;
+  border-width: 0.3em;
+  border-color: #d9d9d9;
+  padding: 0.5em;
+}
+
+.rates{
+  float: left;
+  margin: 0.5em;
+  border: solid;
+  border-width: 0.3em;
+  border-color: #d9d9d9;
+  padding: 1em;
+}
+
+
+
+.join .baslik h2 { color: #FFO08C; font-size: 2em; line-height: 0.8em; font-weight: normal; margin-bottom: 0px; text-align: left; text-shadow: 0 1px 1px #fff; }
+
+
+.join p { color: #7a7c7f; font-size: 1.2em; line-height: 0.8em; text-align: center; text-shadow: 0 1px 1px #fff; }
+
+
+.join p.byline { font-style: italic; color: #B6B6B6; font-size: 1.1em; text-align: center; text-shadow: 0 1px 1px #fff; }
