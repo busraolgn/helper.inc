@@ -12,9 +12,10 @@
 		  <div class="charitys">
 			  <div class="col-md-4 chrt_grid" style="visibility: visible; -webkit-animation-delay: 0.4s;">
 				   <div class="chrty">
-						<figure class="icon">
+					<a href="index.php?page=favorites">	<figure class="icon">
 							 <span class="glyphicon-icon glyphicon-heart" aria-hidden="true"></span>
-						</figure>
+							</figure>
+					</a>
 						<h3>Favori Listem</h3>
 						<p>Hatırlamak istediğin ve işaretlediğin kampanyalara buradan ulaş.</p>
 				  </div>
