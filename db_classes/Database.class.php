@@ -29,10 +29,10 @@
 define('DB_SERVER', "localhost");
 
 //database login name
-define('DB_USER', "aslihan");
+define('DB_USER', "root");
 
 //database login password
-define('DB_PASS', "pass123");
+define('DB_PASS', "");
 
 //database name
 define('DB_DATABASE', "aslihan_aid_app_db");
