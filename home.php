@@ -21,19 +21,20 @@
 				  </div>
 			  </div>
 			  <div class="col-md-4 chrt_grid" style="visibility: visible; -webkit-animation-delay: 0.4s;">
-				   <div class="chrty">
-						<figure class="icon">
+				   <div class="chrty"> 
+						<figure class="icon"> <a href="index.php?page=about">
 							<span class="glyphicon-icon glyphicon-asterisk" aria-hidden="true"></span>
-						</figure>						
+						</figure> </a>						
 						<h3>Hakkımızda </h3>
 						<p>HELPER hakkında merak edilenler ve arkasındaki ekip burada!</p>
+						</a>
 				  </div>
 			  </div>
 			  <div class="col-md-4 chrt_grid" style="visibility: visible; -webkit-animation-delay: 0.4s;">
-				   <div class="chrty">
-						 <figure class="icon">
+				   <div class="chrty"> 
+						 <figure class="icon"> <a href="index.php?page=campaign">
 							<span class="glyphicon-icon glyphicon-flag" aria-hidden="true"></span>
-						</figure>						
+						</figure> </a>						
 						<h3>Bir kampanya başlat!</h3>
 						<p>Gereken bilgi formunu doldurarak insanlara ulaş ve paylaşıma çağır!</p>
 				  </div>
