@@ -8,7 +8,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php
 	include("init.php");
 	@ require_once("header.php");
-	include("/content_filter/filter.php");
 	include($page . ".php");
 	include("footer.php");
 ?>

@@ -43,7 +43,7 @@
 		 </div>		 
 	 </div>
 </div>
-
+<?php 	include("/content_filter/filter.php"); ?>
 <!--start embedding campaigns in the page-->
 <?php $count = 0; ?>
 	 <div class="container">
