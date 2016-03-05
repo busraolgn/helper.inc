@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="content_filter/css/style.css"> <!-- Resource style -->
 	<script src="content_filter/js/modernizr.js"></script> <!-- Modernizr -->
   	
-	<title>Content Filters | CodyHouse</title>
 </head>
 <body>
 	<!--	<header class="cd-header">
