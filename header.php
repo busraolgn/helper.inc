@@ -7,7 +7,6 @@
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="css/styleCampaigns.css">
 <!-- Custom Theme files -->
 <!-- <link href="css/busra.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
@@ -22,8 +21,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <!---->
-<div>
-	<div class=login_register>
+<div> 
+	<div>
 		<?php if(!empty($_SESSION["user"])){ ?>Hoşgeldin <?php echo $_SESSION["user"]["name"]; ?> / <a href="index.php?page=logout"> &nbsp logout </a> <?php } else { ?>
 		<a href="index.php?page=login"> <button> Giriş Yap / Kayıt Ol </button> </a> <?php } ?> </input>
 	</div>

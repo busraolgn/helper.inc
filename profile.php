@@ -11,7 +11,7 @@
 
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="profile.css" rel="stylesheet" type="text/css" media="all" />
-  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+  
 
         <link rel="stylesheet" href="css/styleProfile.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
