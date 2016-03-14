@@ -181,6 +181,7 @@ form.registration-form fieldset {
 }
 
 
+
 /***** Media queries *****/
 
 @media (min-width: 992px) and (max-width: 1199px) {}
@@ -289,7 +290,9 @@ form.registration-form fieldset {
 }
 .acidjs-css3-treeview input[type="text"]
 {
-    	width: 100%;
+   width: 50%;
+   height:20px;
+   float:right;
   border-top: 1px solid #ccc;
   border-left: 1px solid #ccc;
   border-right: 1px solid #eee;

@@ -16,6 +16,13 @@ if(isset($_GET['page']))
 if(!empty($_SESSION["user"])){
         
 }
+
+
+if(isset($_GET['search']))
+{
+	$search_query=$_GET['search'];
+	include("search.php");
+}
        
 
 /*if(empty($_SESSION['user']))*/

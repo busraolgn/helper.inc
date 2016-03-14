@@ -101,19 +101,89 @@
                     <input type="checkbox" id="node-0-0" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-0-0">Bakliyat</label>
                     <ul>
                         <li>
-                            <input type="checkbox" id="node-0-0-0" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-0-0-0">Pirinç</label>
+                            <input type="checkbox" id="node-0-0-0" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-0-0-0">Pirinç</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+   <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-0-0-0" /><label><input type="checkbox" /><span></span></label><label for="node-0-0-1">Bulgur</label>
+                            <input type="checkbox" id="node-0-0-0-0" /><label><input type="checkbox" /><span></span></label><label for="node-0-0-1">Bulgur</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+      <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-0-0-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-0-0-1">Nohut</label>
+                            <input type="checkbox" id="node-0-0-0-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-0-2">Nohut</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-0-0-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-0-0-1">Fasulye</label>
+                            <input type="checkbox" id="node-0-0-0-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-0-3">Fasulye</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+       <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-0-0-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-0-0-1">Buğday</label>
+                            <input type="checkbox" id="node-0-0-0-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-0-4">Buğday</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                        <!-- <ul> -->
                     </ul>
@@ -125,19 +195,85 @@
                     <input type="checkbox" id="node-0-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-1">Konserve ve Yemek Malzemeleri</label>
                     <ul>
                         <li>
-                            <input type="checkbox" id="node-0-1-0" /><label><input type="checkbox" /><span></span></label><label for="node-0-1-0">Salça</label>
+                            <input type="checkbox" id="node-0-1-0" /><label><input type="checkbox" /><span></span></label><label for="node-0-1-1">Salça</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-1-1">Sıvıyağ</label>
+                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-1-2">Sıvıyağ</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 lt">5 lt</option>
+      <option value="10 lt">10 lt</option>
+      <option value="15 lt">15 lt</option>
+      <option value="20 lt">20 lt</option>
+      <option value="25 lt">25 lt</option>
+      <option value="30 lt">30 lt</option>
+      <option value="40 lt">40 lt</option>
+      <option value="50 lt">50 lt</option>
+      <option value="60 lt">60 lt</option>
+      <option value="70 lt">70 lt</option>
+      <option value="80 lt">80 lt</option>
+      <option value="90 lt">90 lt</option>
+      <option value="100 lt">100 lt</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-1-1">Un</label>
+                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-1-3">Un</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-1-1">Yumurta</label>
+                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-1-4">Yumurta</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="20 ad">20 ad</option>
+      <option value="40 ad">40 ad</option>
+      <option value="60 ad">60 ad</option>
+      <option value="80 ad">80 ad</option>
+      <option value="100 ad">100 ad</option>
+      <option value="120 ad">120 ad</option>
+      <option value="140 ad">140 ad</option>
+      <option value="150 ad">150 ad</option>
+      <option value="160 ad">160 ad</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-1-1">Makarna</label>
+                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-1-5">Makarna</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+        <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                     </ul>
                 </li>
@@ -145,13 +281,55 @@
                     <input type="checkbox" id="node-0-2" /><label><input type="checkbox" /><span></span></label><label for="node-0-2">Et Ürünleri</label>
                     <ul>
                         <li>
-                            <input type="checkbox" id="node-0-1-0" /><label><input type="checkbox" /><span></span></label><label for="node-0-2-0">Et</label>
+                            <input type="checkbox" id="node-0-1-0" /><label><input type="checkbox" /><span></span></label><label for="node-0-2-0">Et</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+  <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-2-1">Tavuk</label>
+                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-2-1">Tavuk</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+  <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-2-2">Balık</label>
+                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-2-2">Balık</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+  <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                     </ul>
                 </li>
@@ -159,21 +337,99 @@
                     <input type="checkbox" id="node-0-3" /><label><input type="checkbox" /><span></span></label><label for="node-0-3">İçecekler</label>
                     <ul>
                         <li>
-                            <input type="checkbox" id="node-0-1-0" /><label><input type="checkbox" /><span></span></label><label for="node-0-3-0">Su</label>
+                            <input type="checkbox" id="node-0-1-0" /><label><input type="checkbox" /><span></span></label><label for="node-0-3-0">Su</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 lt">5 lt</option>
+      <option value="10 lt">10 lt</option>
+      <option value="15 lt">15 lt</option>
+      <option value="20 lt">20 lt</option>
+      <option value="25 lt">25 lt</option>
+      <option value="30 lt">30 lt</option>
+      <option value="40 lt">40 lt</option>
+      <option value="50 lt">50 lt</option>
+      <option value="60 lt">60 lt</option>
+      <option value="70 lt">70 lt</option>
+      <option value="80 lt">80 lt</option>
+      <option value="90 lt">90 lt</option>
+      <option value="100 lt">100 lt</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-3-1">Süt</label>
+                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-3-1">Süt</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 lt">5 lt</option>
+      <option value="10 lt">10 lt</option>
+      <option value="15 lt">15 lt</option>
+      <option value="20 lt">20 lt</option>
+      <option value="25 lt">25 lt</option>
+      <option value="30 lt">30 lt</option>
+      <option value="40 lt">40 lt</option>
+      <option value="50 lt">50 lt</option>
+      <option value="60 lt">60 lt</option>
+      <option value="70 lt">70 lt</option>
+      <option value="80 lt">80 lt</option>
+      <option value="90 lt">90 lt</option>
+      <option value="100 lt">100 lt</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-3-2">Çay</label>
+                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-3-2">Çay</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+  <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                         <li>
-                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-3-3">Yoğurt</label>
+                            <input type="checkbox" id="node-0-1-1" /><label><input type="checkbox" /><span></span></label><label for="node-0-3-3">Yoğurt</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+  <option value="5 kg">5 kg</option>
+      <option value="10 kg">10 kg</option>
+      <option value="15 kg">15 kg</option>
+      <option value="20 kg">20 kg</option>
+      <option value="25 kg">25 kg</option>
+      <option value="30 kg">30 kg</option>
+      <option value="40 kg">40 kg</option>
+      <option value="50 kg">50 kg</option>
+      <option value="60 kg">60 kg</option>
+      <option value="70 kg">70 kg</option>
+      <option value="80 kg">80 kg</option>
+      <option value="90 kg">90 kg</option>
+      <option value="100 kg">100 kg</option>
+      </select>
                         </li>
                     </ul>
                 </li>
             </ul>
         </li>
+<li>
+            <input type="checkbox" id="node-0" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-0">Giyecekler</label>
+            <ul>
+                <li>
+                    <input type="checkbox" id="node-0-0" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-0-0">Tişört</label>
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="node-0-0-0" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-0-0-0">Small</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 ad">5 ad</option>
+      <option value="10 ad">10 ad</option>
+      <option value="15 ad">15 ad</option>
+      <option value="20 ad">20 ad</option>
+      <option value="25 ad">25 ad</option>
+      <option value="30 ad">30 ad</option>
+      <option value="35 ad">35 ad</option>
+      <option value="40 ad">40 ad</option>
+      <option value="45 ad">45 ad</option>
+      </select>
+                        </li>
+                    </ul>
+                </li> <!--tişört -->
+</li> <!--giyecekler-->
     </ul>
 </div>
 				                        <button type="button" class="btn btn-previous">Previous</button>
