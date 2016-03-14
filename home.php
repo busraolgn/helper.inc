@@ -131,7 +131,7 @@ for($j=0;$j<count($items);$j++){
 		</div>
 	 </div>
 <!-- end of embedding campaigns-->
-
+</main> <!-- cd-main-content --> <!-- in filter.php page -->
 
 <!---->
 <div class="bottom-grids">

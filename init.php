@@ -20,4 +20,20 @@ if(!empty($_SESSION["user"])){
 
 /*if(empty($_SESSION['user']))*/
 	
+if(isset($_GET['Van']))
+{
+	echo "evetttt";
+}
+/* initialize arrays */
+
+/*cities*/
+	$city = new Campaign();
+	$city->openDB();
+	$cities = $city->getCampaignCitiesDistinct();
+
+	$city->closeDB();
+/*end cities*/
+
+/* end of initializing arrays */
+
 ?>

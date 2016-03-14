@@ -103,6 +103,16 @@
         return $results;
      }
 
+     function getCampaignCitiesDistinct()
+     {
+        $query = "SELECT DISTINCT city FROM campaign";
+        $rows = $this->db->query($query);
+        while ($record = $this->db->fetch_array($rows)) {
+            $cities[] = $record;
+        }
+        return $cities; 
+     }
+
     function closeDB()
      {
         $this->db->close();

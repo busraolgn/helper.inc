@@ -1,5 +1,4 @@
-<!doctype html>
-<html lang="en" class="no-js">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +10,7 @@
 	<script src="content_filter/js/modernizr.js"></script> <!-- Modernizr -->
   	
 </head>
-<body>
+
 	<!--	<header class="cd-header">
 		<h1>Content Filters</h1>
 	</header>  -->
@@ -21,11 +20,9 @@
 			<div class="cd-tab-filter">
 				<ul class="cd-filters">
 					<li class="placeholder"> 
-						<a data-type="all" href="#0">All</a> <!-- selected option on mobile -->
+						<a data-type="tree" href="#0">treee</a> <!-- selected option on mobile -->
 					</li> 
-					<li class="filter"><a class="selected" href="#0" data-type="all">All</a></li>
-					<li class="filter" data-filter=".color-1"><a href="#0" data-type="color-1">Color 1</a></li>
-					<li class="filter" data-filter=".color-2"><a href="#0" data-type="color-2">Color 2</a></li>
+					<li class="filter"><a class="selected" href="#0" data-type="all">treeeee</a></li>
 				</ul> <!-- cd-filters -->
 			</div> <!-- cd-tab-filter -->
 		</div> <!-- cd-tab-filter-wrapper -->
@@ -62,6 +59,24 @@
 				</div> <!-- cd-filter-block -->
 
 				<div class="cd-filter-block">
+					<h4>Şehir Seç</h4>
+					
+					<div class="cd-filter-content">
+						<div class="cd-select cd-filters">
+							<select class="filter" name="selectCity" id="selectCity">
+								<option value="">---</option>
+								<?php 	
+									for($i=0;$i<count($cities);$i++){
+										$city1 = $cities[$i];  
+								?>
+								<option value='<?php echo $city1["city"]; ?>' > <?php echo $city1["city"]; ?> </option>
+								<?php } ?>
+							</select>
+						</div> <!-- cd-select -->
+					</div> <!-- cd-filter-content -->
+				</div> <!-- cd-filter-block -->
+
+				<div class="cd-filter-block">
 					<h4>Check boxes</h4>
 
 					<ul class="cd-filter-content cd-filters list">
@@ -80,22 +95,6 @@
 							<label class="checkbox-label" for="checkbox3">Option 3</label>
 						</li>
 					</ul> <!-- cd-filter-content -->
-				</div> <!-- cd-filter-block -->
-
-				<div class="cd-filter-block">
-					<h4>Select</h4>
-					
-					<div class="cd-filter-content">
-						<div class="cd-select cd-filters">
-							<select class="filter" name="selectThis" id="selectThis">
-								<option value="">Choose an option</option>
-								<option value=".option1">Option 1</option>
-								<option value=".option2">Option 2</option>
-								<option value=".option3">Option 3</option>
-								<option value=".option4">Option 4</option>
-							</select>
-						</div> <!-- cd-select -->
-					</div> <!-- cd-filter-content -->
 				</div> <!-- cd-filter-block -->
 
 				<div class="cd-filter-block">
@@ -120,13 +119,11 @@
 				</div> <!-- cd-filter-block -->
 			</form>
 
-			<a href="#0" class="cd-close">Close</a>
+			<a href="#0" class="cd-close">Kapat</a>
 		</div> <!-- cd-filter -->
 
-		<a href="#0" class="cd-filter-trigger">Filters</a>
-	</main> <!-- cd-main-content -->
+		<a href="#0" class="cd-filter-trigger">Filtreler</a>
+	
 <script src="content_filter/js/jquery-2.1.1.js"></script>
 <script src="content_filter/js/jquery.mixitup.min.js"></script>
 <script src="content_filter/js/main.js"></script> <!-- Resource jQuery -->
-</body>
-</html>
