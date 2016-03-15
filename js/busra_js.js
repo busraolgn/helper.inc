@@ -1,3 +1,3 @@
 
 
-$("div.cd-select cd-filters select").val("Van");
+$("div.cd-filters select").val("Van");

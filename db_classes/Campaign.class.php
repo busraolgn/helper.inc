@@ -94,9 +94,8 @@
      function getCampaignByUserID($id)
      {
         $query = "SELECT * FROM campaign where user_id = '".addslashes(intval($id))."'";
-
         $rows = $this->db->query($query);
-
+        $results="";
         while ($record = $this->db->fetch_array($rows)) {
             $results[] = $record;
         }
@@ -111,6 +110,15 @@
             $cities[] = $record;
         }
         return $cities; 
+     }
+     function getCampaignByCity($city){
+        $query = "SELECT * FROM campaign where city = '".addslashes(intval($city))."'";
+        $rows = $this->db->query($query);
+        $results="";
+        while ($record = $this->db->fetch_array($rows)) {
+            $results[] = $record;
+        }
+        return $results;
      }
 
     function closeDB()

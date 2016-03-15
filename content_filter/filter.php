@@ -1,20 +1,21 @@
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-
-	<link rel="stylesheet" href="content_filter/css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="content_filter/css/style.css"> <!-- Resource style -->
-	<script src="content_filter/js/modernizr.js"></script> <!-- Modernizr -->
-  	
-</head>
-
-	<!--	<header class="cd-header">
-		<h1>Content Filters</h1>
-	</header>  -->
-
+	<script type="text/javascript">
+		function select_city(){
+			var x = document.getElementById("selectCity");
+			var i = x.selectedIndex;
+			if(i != 0)
+			{
+				var url1="index.php?page=<?php echo $page; ?>&city=";
+				var url2= x.options[i].text;
+				var url = url1.concat(url2);
+				window.location= url;
+			}
+			else
+			{
+				var url="index.php?page=<?php echo $page; ?>";
+				window.location= url;
+			}
+		}
+	</script>
 	<main class="cd-main-content">
 		<div class="cd-tab-filter-wrapper">
 			<div class="cd-tab-filter">
@@ -27,32 +28,10 @@
 			</div> <!-- cd-tab-filter -->
 		</div> <!-- cd-tab-filter-wrapper -->
 
-	<!--	<section class="cd-gallery">
-			<ul>
-				<li class="mix color-1 check1 radio2 option3"><img src="img/img-1.jpg" alt="Image 1"></li>
-				<li class="mix color-2 check2 radio2 option2"><img src="img/img-2.jpg" alt="Image 2"></li>
-				<li class="mix color-1 check3 radio3 option1"><img src="img/img-3.jpg" alt="Image 3"></li>
-				<li class="mix color-1 check3 radio2 option4"><img src="img/img-4.jpg" alt="Image 4"></li>
-				<li class="mix color-1 check1 radio3 option2"><img src="img/img-5.jpg" alt="Image 5"></li>
-				<li class="mix color-2 check2 radio3 option3"><img src="img/img-6.jpg" alt="Image 6"></li>
-				<li class="mix color-2 check2 radio2 option1"><img src="img/img-7.jpg" alt="Image 7"></li>
-				<li class="mix color-1 check1 radio3 option4"><img src="img/img-8.jpg" alt="Image 8"></li>
-				<li class="mix color-2 check1 radio2 option3"><img src="img/img-9.jpg" alt="Image 9"></li>
-				<li class="mix color-1 check3 radio2 option4"><img src="img/img-10.jpg" alt="Image 10"></li>
-				<li class="mix color-1 check3 radio3 option2"><img src="img/img-11.jpg" alt="Image 11"></li>
-				<li class="mix color-2 check1 radio3 option1"><img src="img/img-12.jpg" alt="Image 12"></li>
-				<li class="gap"></li>
-				<li class="gap"></li>
-				<li class="gap"></li>
-			</ul>
-			<div class="cd-fail-message">No results found</div>
-		</section> --> <!-- cd-gallery -->
-
 		<div class="cd-filter">
-			<form>
+			<form method="post" action="index.php?page=home">
 				<div class="cd-filter-block">
 					<h4>Search</h4>
-					
 					<div class="cd-filter-content">
 						<input type="search" placeholder="Try color-1...">
 					</div> <!-- cd-filter-content -->
@@ -63,13 +42,13 @@
 					
 					<div class="cd-filter-content">
 						<div class="cd-select cd-filters">
-							<select class="filter" name="selectCity" id="selectCity">
-								<option value="">---</option>
+							<select class="filter" onchange="select_city()" name="selectCity" id="selectCity">
+								<a href="index.php?page='$page'"> <option value="">---</option> </a>
 								<?php 	
 									for($i=0;$i<count($cities);$i++){
 										$city1 = $cities[$i];  
 								?>
-								<option value='<?php echo $city1["city"]; ?>' > <?php echo $city1["city"]; ?> </option>
+								<a href="index.php?page='$page'"><option value='<?php echo $city1["city"]; ?>' > <?php echo $city1["city"]; ?> </option></a>
 								<?php } ?>
 							</select>
 						</div> <!-- cd-select -->
