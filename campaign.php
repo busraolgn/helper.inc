@@ -706,7 +706,10 @@
             <input type="checkbox" id="node-2"/><label><input type="checkbox" /><span></span></label><label for="node-2">Temel Eşyalar</label>
             <ul>
                 <li>
-                    <input type="checkbox" id="node-2-0" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-0">Battaniye</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+                    <input type="checkbox" id="node-2-0" /><label><input type="checkbox" /><span></span></label><label for="node-2-0">Elektrikli Cihazlar</label> 
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="node-2-0-0" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-0-0">Su Isıtıcı</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
      <option value="5 ad">5 ad</option>
       <option value="10 ad">10 ad</option>
       <option value="15 ad">15 ad</option>
@@ -719,7 +722,7 @@
       </select>
         </li>
         <li>
-                    <input type="checkbox" id="node-2-1" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-1">Buzdolabı</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+                            <input type="checkbox" id="node-2-0-1" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-0-1">Isıtıcı</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
      <option value="5 ad">5 ad</option>
       <option value="10 ad">10 ad</option>
       <option value="15 ad">15 ad</option>
@@ -732,7 +735,7 @@
       </select>
         </li>
         <li>
-                    <input type="checkbox" id="node-2-2" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-2">Ocak</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+                            <input type="checkbox" id="node-2-0-2" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-0-2">Bilgisayar</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
      <option value="5 ad">5 ad</option>
       <option value="10 ad">10 ad</option>
       <option value="15 ad">15 ad</option>
@@ -744,6 +747,147 @@
       <option value="45 ad">45 ad</option>
       </select>
         </li>
+        <li>
+                            <input type="checkbox" id="node-2-0-3" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-0-3">Projeksiyon</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 ad">5 ad</option>
+      <option value="10 ad">10 ad</option>
+      <option value="15 ad">15 ad</option>
+      <option value="20 ad">20 ad</option>
+      <option value="25 ad">25 ad</option>
+      <option value="30 ad">30 ad</option>
+      <option value="35 ad">35 ad</option>
+      <option value="40 ad">40 ad</option>
+      <option value="45 ad">45 ad</option>
+      </select>
+        </li>
+      </ul>
+      </li> <!--Elektikli cihaz -->
+
+
+      <li>
+                    <input type="checkbox" id="node-2-1"  /><label><input type="checkbox" /><span></span></label><label for="node-2-1">Beyaz Eşya</label> 
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="node-2-1-0" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-1-0">Çamaşır Makinesi</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 ad">5 ad</option>
+      <option value="10 ad">10 ad</option>
+      <option value="15 ad">15 ad</option>
+      <option value="20 ad">20 ad</option>
+      <option value="25 ad">25 ad</option>
+      <option value="30 ad">30 ad</option>
+      <option value="35 ad">35 ad</option>
+      <option value="40 ad">40 ad</option>
+      <option value="45 ad">45 ad</option>
+      </select>
+        </li>
+        <li>
+                            <input type="checkbox" id="node-2-1-1" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-1-1">Bulaşık Makinesi</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 ad">5 ad</option>
+      <option value="10 ad">10 ad</option>
+      <option value="15 ad">15 ad</option>
+      <option value="20 ad">20 ad</option>
+      <option value="25 ad">25 ad</option>
+      <option value="30 ad">30 ad</option>
+      <option value="35 ad">35 ad</option>
+      <option value="40 ad">40 ad</option>
+      <option value="45 ad">45 ad</option>
+      </select>
+        </li>
+        <li>
+                            <input type="checkbox" id="node-2-1-2" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-1-2">Ocak</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 ad">5 ad</option>
+      <option value="10 ad">10 ad</option>
+      <option value="15 ad">15 ad</option>
+      <option value="20 ad">20 ad</option>
+      <option value="25 ad">25 ad</option>
+      <option value="30 ad">30 ad</option>
+      <option value="35 ad">35 ad</option>
+      <option value="40 ad">40 ad</option>
+      <option value="45 ad">45 ad</option>
+      </select>
+        </li>
+        <li>
+                            <input type="checkbox" id="node-2-1-3" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-1-3">Fırın</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 ad">5 ad</option>
+      <option value="10 ad">10 ad</option>
+      <option value="15 ad">15 ad</option>
+      <option value="20 ad">20 ad</option>
+      <option value="25 ad">25 ad</option>
+      <option value="30 ad">30 ad</option>
+      <option value="35 ad">35 ad</option>
+      <option value="40 ad">40 ad</option>
+      <option value="45 ad">45 ad</option>
+      </select>
+        </li>
+      </ul>
+      </li> 
+
+      <li>
+                    <input type="checkbox" id="node-2-2"  /><label><input type="checkbox" /><span></span></label><label for="node-2-2">Diğer</label> 
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="node-2-2-0"  /><label><input type="checkbox" /><span></span></label><label for="node-2-2-0">Battaniye</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 ad">5 ad</option>
+      <option value="10 ad">10 ad</option>
+      <option value="15 ad">15 ad</option>
+      <option value="20 ad">20 ad</option>
+      <option value="25 ad">25 ad</option>
+      <option value="30 ad">30 ad</option>
+      <option value="35 ad">35 ad</option>
+      <option value="40 ad">40 ad</option>
+      <option value="45 ad">45 ad</option>
+      </select>
+        </li>
+        <li>
+                            <input type="checkbox" id="node-2-2-1" /><label><input type="checkbox" /><span></span></label><label for="node-2-2-1">Bebek Bezi</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 ad">5 ad</option>
+      <option value="10 ad">10 ad</option>
+      <option value="15 ad">15 ad</option>
+      <option value="20 ad">20 ad</option>
+      <option value="25 ad">25 ad</option>
+      <option value="30 ad">30 ad</option>
+      <option value="35 ad">35 ad</option>
+      <option value="40 ad">40 ad</option>
+      <option value="45 ad">45 ad</option>
+      </select><select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="0">0-3 kg (0)</option>
+      <option value="1">2-5 kg(1)</option>
+      <option value="2">3-6 kg (2)</option>
+      <option value="3">4-9 kg (3)</option>
+      <option value="4">7-18 kg(4)</option>
+      <option value="5">9-20 kg(4+)</option>
+      <option value="6">11-25 kg (5)</option>
+      </select>
+        </li>
+        <li>
+                            <input type="checkbox" id="node-2-2-2" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-2-2">Bilgisayar</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 ad">5 ad</option>
+      <option value="10 ad">10 ad</option>
+      <option value="15 ad">15 ad</option>
+      <option value="20 ad">20 ad</option>
+      <option value="25 ad">25 ad</option>
+      <option value="30 ad">30 ad</option>
+      <option value="35 ad">35 ad</option>
+      <option value="40 ad">40 ad</option>
+      <option value="45 ad">45 ad</option>
+      </select>
+        </li>
+        <li>
+                            <input type="checkbox" id="node-2-0-3" checked="checked" /><label><input type="checkbox" /><span></span></label><label for="node-2-0-3">Projeksiyon</label> <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+     <option value="5 ad">5 ad</option>
+      <option value="10 ad">10 ad</option>
+      <option value="15 ad">15 ad</option>
+      <option value="20 ad">20 ad</option>
+      <option value="25 ad">25 ad</option>
+      <option value="30 ad">30 ad</option>
+      <option value="35 ad">35 ad</option>
+      <option value="40 ad">40 ad</option>
+      <option value="45 ad">45 ad</option>
+      </select>
+        </li>
+      </ul>
+      </li> 
+       
 </ul>
 </li>
 
