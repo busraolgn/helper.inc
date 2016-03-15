@@ -21,9 +21,9 @@
 			<div class="cd-tab-filter">
 				<ul class="cd-filters">
 					<li class="placeholder"> 
-						<a data-type="tree" href="#0">treee</a> <!-- selected option on mobile -->
+						<a data-type="tree" href="#0"><?php echo $_SESSION["tree"]; ?></a> <!-- selected option on mobile -->
 					</li> 
-					<li class="filter"><a class="selected" href="#0" data-type="all">treeeee</a></li>
+					<li class="filter"><a class="selected" href="#0" data-type="all"><?php echo $_SESSION["tree"]; ?></a></li>
 				</ul> <!-- cd-filters -->
 			</div> <!-- cd-tab-filter -->
 		</div> <!-- cd-tab-filter-wrapper -->
@@ -33,7 +33,7 @@
 				<div class="cd-filter-block">
 					<h4>Search</h4>
 					<div class="cd-filter-content">
-						<input type="search" placeholder="Try color-1...">
+						<input type="search" placeholder="aranacak kelime...">
 					</div> <!-- cd-filter-content -->
 				</div> <!-- cd-filter-block -->
 
@@ -48,7 +48,8 @@
 									for($i=0;$i<count($cities);$i++){
 										$city1 = $cities[$i];  
 								?>
-								<a href="index.php?page='$page'"><option value='<?php echo $city1["city"]; ?>' > <?php echo $city1["city"]; ?> </option></a>
+								<a href="index.php?page='$page'"><option value='<?php echo $city1["city"]; ?>' 
+									<?php if(isset($_GET['city']) && $_GET['city']==$city1["city"]) echo "selected"; ?> > <?php echo $city1["city"]; ?> </option></a>
 								<?php } ?>
 							</select>
 						</div> <!-- cd-select -->

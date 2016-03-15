@@ -4,7 +4,9 @@ include("db_classes/User_table.class.php");
 include("db_classes/Items.class.php");
 include("db_classes/Campaign.class.php");
 
-$campaign_arr=[];
+$campaign_arr;
+$_SESSION["tree"] = "kampanyalar";
+
 /* initialize arrays */
 
 /*cities*/
@@ -21,17 +23,18 @@ $campaign_arr=[];
 	$campaign->closeDB();
 /*end campaigns*/
 
-$campaign_arr = $all_campaigns;
+$campaign_arr = &$all_campaigns;
 /*camps filtered by city*/
 if(isset($_GET['city']))
 {
-	$_SESSION["tree"]+=$_GET['city'];
+	$_SESSION["tree"].=" > " . $_GET['city'];
 	$_SESSION["city"] = $_GET['city'];
 	$campaign = new Campaign();
 	$campaign->openDB();
 	$filtered_camps = $campaign->getCampaignByCity($_GET['city']);
 	$campaign->closeDB();
-	$campaign_arr = $filtered_camps;
+	$campaign_arr = &$filtered_camps;
+
 }
 /*end filtered camps*/
 
@@ -41,10 +44,10 @@ if(empty($page)){
 	$page = "home";
 }
 if(empty($_SESSION["tree"])){
-	$_SESSION["tree"] = "";
+	$_SESSION["tree"] = "kampanyalar";
 }
 if(empty($_SESSION["filter"])){
-	$_SESSION["tree"] = "";
+	$_SESSION["filter"] = "";
 }
 
 if(isset($_GET['page']))
