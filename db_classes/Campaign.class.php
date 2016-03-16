@@ -90,18 +90,16 @@
 
         return $record;
      }
-
      function getCampaignByUserID($id)
      {
         $query = "SELECT * FROM campaign where user_id = '".addslashes(intval($id))."'";
         $rows = $this->db->query($query);
-        $results="";
+        $results=[];
         while ($record = $this->db->fetch_array($rows)) {
             $results[] = $record;
         }
         return $results;
      }
-
      function getCampaignCitiesDistinct()
      {
         $query = "SELECT DISTINCT city FROM campaign";
@@ -112,9 +110,9 @@
         return $cities; 
      }
      function getCampaignByCity($city){
-        $query = "SELECT * FROM campaign where city = '".addslashes(intval($city))."'";
+        $query = "SELECT * FROM campaign where city = '".addslashes($city)."'";
         $rows = $this->db->query($query);
-        $results="";
+        $results=[];
         while ($record = $this->db->fetch_array($rows)) {
             $results[] = $record;
         }

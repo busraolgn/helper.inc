@@ -53,8 +53,8 @@
 $campaigns = $campaign_arr;
 for($i=0;$i<count($campaigns);$i++){
 $aid1 = $campaigns[$i]; 
-?>
-				<div class="timeline-item">
+?>				<a name="camps"></a>
+				<div class="timeline-item" >   
 					<div class="timeline-icon">
 						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 						width="21px" height="20px" viewBox="0 0 21 20" enable-background="new 0 0 21 20" xml:space="preserve"> <g>
@@ -97,7 +97,7 @@ for($j=0;$j<count($items);$j++){
 							 </div>
 							 <p> eksik: <?php echo $it["needed"]; echo "\n"; ?> &nbsp karşılanan: <?php echo $it["provided"]; ?> </p>
 					 	</div>
-				  		<?php } ?>
+				  		<?php } $item->closeDB();  ?>
 						<div class="tags">
 						 	 <h5>İlgili Tag'ler</h5>
 						 	 <p>
@@ -123,7 +123,7 @@ for($j=0;$j<count($items);$j++){
 						</div>
 					</div>
 				</div>
-				<?php $count++; } $item->closeDB(); ?>
+				<?php $count++; } ?>
 			</div> 
 			<div class="clearfix"></div>
 		</div>
