@@ -169,7 +169,7 @@ form .form-bottom textarea {
 }
 
 form .form-bottom button.btn {
-	min-width: 105px;
+	min-width: 120px;
 }
 
 form .form-bottom .input-error {
@@ -210,6 +210,10 @@ form.registration-form fieldset {
 	h1, h2 { font-size: 32px; }
 
 }
+.items {
+	font-size: 14px;
+
+}
 
 .acidjs-css3-treeview,
 .acidjs-css3-treeview *
@@ -230,7 +234,7 @@ form.registration-form fieldset {
     vertical-align: top;
     text-align: center;
     color: #e74c3c;
-    font-size: 8px;
+    font-size: 12px;
     line-height: 13px;
 }
  
