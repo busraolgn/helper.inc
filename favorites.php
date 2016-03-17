@@ -13,9 +13,6 @@ else
 {
 $count = 0; 
 
-$favorite_camps = $_SESSION["user"]["favorites"];
-$favorite_camps_arr = explode("," , $favorite_camps);
-
 ?>
 	 <div class="container">
 		<div class="col-md-9 join-info">
@@ -25,9 +22,9 @@ $favorite_camps_arr = explode("," , $favorite_camps);
 $campaign = new Campaign();
 $campaign->openDB();
 
-for($i=0;$i<count($favorite_camps_arr);$i++){
-$aid_id = $favorite_camps_arr[$i];
-$aid1 = $campaign->getCampaignByID($favorite_camps_arr[$i]);
+for($i=0;$i<count($_SESSION["user"]["favorites"]);$i++){
+$aid_id = $_SESSION["user"]["favorites"][$i];
+$aid1 = $campaign->getCampaignByID($aid_id[0]);
 ?>
 				<div class="timeline-item">
 					<div class="timeline-icon">

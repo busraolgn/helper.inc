@@ -9,8 +9,8 @@ $_SESSION["tree"] = "kampanyalar";
 $_SESSION["current_url"] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $_SESSION["filter"] = array();
 $_SESSION["filter_city"] = "";
-/* initialize arrays */
 
+/* initialize arrays */
 /*cities*/
 	$city = new Campaign();
 	$city->openDB();

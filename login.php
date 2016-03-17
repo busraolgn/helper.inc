@@ -30,6 +30,17 @@
         "aid_started_by_user" => $userDetay["aid_started_by_user"], 
         "aid_attended_by_user" => $userDetay["aid_attended_by_user"]
         );
+      $_SESSION["user"]["aid_started_by_user"] = explode(",", $userDetay["aid_started_by_user"]);
+      unset($_SESSION["user"]["aid_started_by_user"][count($_SESSION["user"]["aid_started_by_user"])-1]);
+     // var_dump($_SESSION["user"]["aid_started_by_user"]);
+      
+      $_SESSION["user"]["aid_attended_by_user"] = explode(",", $userDetay["aid_attended_by_user"]);
+      unset($_SESSION["user"]["aid_attended_by_user"][count($_SESSION["user"]["aid_attended_by_user"])-1]);
+     // var_dump($_SESSION["user"]["aid_attended_by_user"]);
+
+      $_SESSION["user"]["favorites"] = explode(",", $userDetay["favorites"]);
+      unset($_SESSION["user"]["favorites"][count($_SESSION["user"]["favorites"])-1]);
+      //var_dump($_SESSION["user"]["favorites"]);
 
       header("Location: index.php?page=home");
     }
