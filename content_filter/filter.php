@@ -1,42 +1,59 @@
 	<script type="text/javascript">
-		function select_city(){
-			alert("city");
+		function select_city(){  
 			var x = document.getElementById("selectCity");
 			var i = x.selectedIndex;
+			var is_empty_category = "<?php if(empty($_SESSION['filter'])) echo 'true'; ?>";
 			if(i != 0)
 			{
-				var url1="?page=<?php echo $page; ?>&city=";
+				var url1="<?php echo '?page='.$page.'&city='; ?>";
 				var url2=x.options[i].text;
-				var url3="<?php if (!empty($_SESSION['filter_category'])) { echo '&filter='.$_SESSION['filter_category']; } ?>";
 				var url = url1.concat(url2);
-				url = url.concat(url3);
+				if(!is_empty_category){ 
+					var url3="<?php echo '&filter='.implode('+' , $_SESSION['filter']); ?>";
+					url = url.concat(url3); 
+				} 
 				window.location= url;
-			}
+			} 
 			else
-			{
-				var url="index.php?page=<?php echo $page; ?>";
-				var url3="<?php echo $_SESSION['filter_category']; ?>";
-				url = url.concat(url3);
+			{ 
+				if (is_empty_category) {
+					var url="<?php echo 'index.php?page='.$page; ?>";
+				}
+				else {
+					var url="<?php echo 'index.php?page='.$page.'&filter='; ?>";
+					var url3="<?php echo implode('+' , $_SESSION['filter']); ?>";
+					url = url.concat(url3);
+				}
 				window.location= url;
-			}
+			} 
 		}
 		function main_category_filter(){ 
-			var is_empty="false";
-			is_empty= '<?php if(empty($_SESSION["filter_city"])) echo true; ?>';
-			if(is_empty) {
-				var url = "<?php echo '?page='.$page.'?filter='; ?>"; }
-			else {
-				var url = "<?php echo '?page='.$page.'&city='.$_SESSION['filter_city']; ?>&filter="; }
-				/*
-				var empty = '<?php if(empty($_SESSION["filter_category"])) echo true; ?>';
-				if(empty){
-					var url = "<?php echo $_SESSION['current_url']; ?>&filter="; }
+			var filter = "";
+			if(document.getElementById("Gıda").checked) { filter = filter.concat("Gıda+"); }
+			if(document.getElementById("Giyecekler").checked) { filter = filter.concat("Giyecekler+"); }
+			if(document.getElementById("TemelEşyalar").checked) { filter = filter.concat("TemelEşyalar+".replace(/\s+/g, '')); }
+			
+			var is_empty_category="false";
+			var is_empty_city="false";
+			is_empty_city= "<?php if(empty($_SESSION['filter_city'])) echo 'true'; ?>";
+			/*eğer ana kategorilerden seçili olan varsa*/
+			if(filter){ /*bir şehir kriteri varsa cur_url n yanına filter ekle yoksa direk filter ekle*/
+				if(is_empty_city) {
+					var url = "<?php echo '?page='.$page.'&filter='; ?>".concat(filter);
+					/*url = url.concat(filter);*/
+				}
 				else {
-					var url = "<?php echo $_SESSION['current_url']; ?>"; } 
-				*/
-			if(document.getElementById("Gıda").checked == true) { url = url.concat("Gıda+"); }
-			if(document.getElementById("Giyecekler").checked) { url = url.concat("Giyecekler+"); }
-			if(document.getElementById("TemelEşyalar").checked) { url = url.concat("Temel Eşyalar+".replace(/\s+/g, '')); }
+					var url = "<?php echo '?page='.$page.'&city='.$_SESSION['filter_city'].'&filter='; ?>"; 
+					url = url.concat(filter);
+				} 
+			}
+			else{ /*eğer ana kategorilerden hiçbiri seçili değilse..*/
+				if(is_empty_city) {
+					var url = "<?php echo '?page='.$page; ?>";
+				}
+				else {
+					var url = "<?php echo '?page='.$page.'&city='.$_SESSION['filter_city']; ?>"; 
+				}			}
 			window.location= url;
 		}
 	</script>
@@ -89,7 +106,7 @@
 						<li id='<?php echo "category_".$category; ?>'>
 							<input onclick="main_category_filter()" 
 							class="filter" type="checkbox" data-filter=<?php echo "." . $category; ?> id='<?php echo $category; ?>' 
-							<?php if( !empty($_SESSION["filter"]) && in_array($category, $_SESSION["filter"])) echo "checked"; ?> />
+							<?php if(!empty($_SESSION["filter"]) && in_array(trim($category," "), $_SESSION["filter"])) echo "checked"; ?> />
 			    			<label class="checkbox-label" for=<?php echo $category; ?> > <?php echo $category; ?> </label>
 						</li>
 						<?php } ?>

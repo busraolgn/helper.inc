@@ -7,7 +7,8 @@ include("db_classes/Campaign.class.php");
 $campaign_arr;
 $_SESSION["tree"] = "kampanyalar";
 $_SESSION["current_url"] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
+$_SESSION["filter"] = array();
+$_SESSION["filter_city"] = "";
 /* initialize arrays */
 
 /*cities*/
@@ -66,9 +67,6 @@ if(empty($page)){
 }
 if(empty($_SESSION["filter_city"])){
 	$_SESSION["filter_city"] = "";
-}
-if(empty($_SESSION["filter_category"])){
-	$_SESSION["filter_category"] = "";
 }
 if(empty($_SESSION["tree"])){
 	$_SESSION["tree"] = "kampanyalar";
