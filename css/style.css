@@ -67,7 +67,7 @@ padding:0;
 	width:50%;
 }
 .logo a h1{
-	color:#FF008C;
+	color:#ee4d4d;
 	 font-family: 'Dosis-Bold';
 font-size:3em;	
 	display:inline-block;
@@ -106,7 +106,7 @@ font-size:3em;
 	color:#fff;
 }
 .call p{
-	color:#FF008C;
+	color:#ee4d4d;
 	font-size:0.9em;
 	font-family: 'OpenSans-Light';
 }
@@ -210,7 +210,7 @@ font-size:3em;
 	text-decoration:none;
 }
 .top-menu ul li.active a,.top-menu ul li a:hover{
-	color:#FF008C;
+	color:#ee4d4d;
 }
 span.menu{
 	display: none;
@@ -308,7 +308,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 	text-align:center;
 }
 .welcome-top h3,.mission h3{
-    color: #FF008C;
+    color: #ee4d4d;
     font-size: 2.5em;
     margin: 0;
     font-family: 'Dosis-Regular';
@@ -466,7 +466,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 .join a:hover{
 	background: #fff;
-	color:#FF008C;
+	color:#ee4d4d;
 }
 /*--bottom-grids--*/
 .bottom-grids{
@@ -476,7 +476,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 	padding-left:0;
 }
 .bottom-left-grid h3,.bottom-right-grid h3{
-	color: #FF008C;
+	color: #ee4d4d;
     font-size: 2.3em;
     font-family: 'Dosis-Regular';
 }
@@ -500,7 +500,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 	display:block;
 	margin-top:1em;
 	text-decoration:none;
-	color: #FF008C;
+	color: #ee4d4d;
 }
 .project a:hover{
 	color:#333;
@@ -509,7 +509,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 	margin-top:2em;
 }
 .links h3{
-	color: #FF008C;
+	color: #ee4d4d;
     font-size: 2.3em;
     font-family: 'Dosis-Regular';
 }
@@ -543,7 +543,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 	padding-bottom:15px;
 }
 .links ul li a:hover{
-	color: #FF008C;
+	color: #ee4d4d;
 }
 .event-pic-info h4 a{
     color: #333;
@@ -552,7 +552,7 @@ ul.callbacks_tabs.callbacks1_tabs {
     text-decoration: none;
 }
 .event-pic-info h4 a:hover,.blog1 h4 a:hover{
-	color: #FF008C;
+	color: #ee4d4d;
 }
 
 .event-pic-info span{
@@ -579,7 +579,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 	padding-right:0;
 }
 .social-grid h4{
-	color: #FF008C;
+	color: #ee4d4d;
     font-size: 2em;
     font-family: 'Dosis-Regular';
 }
@@ -636,7 +636,7 @@ background-position:-167px -36px;
 	margin:3em 0 3em;
 }
 .news-ltr h4 {
-    color: #FF008C;
+    color: #ee4d4d;
     font-size: 2em;
     font-family: 'Dosis-Regular';
     margin: 0em 0em 0.5em 0em;
@@ -698,7 +698,7 @@ background-position:-167px -36px;
 	padding:3em 0;
 }
 .about h2,h2.top,.gallery h2,h3.hdng{
-	color: #FF008C;
+	color: #ee4d4d;
     font-size: 3em;
     font-family: 'Dosis-Medium';
     text-align: center;
@@ -712,7 +712,7 @@ background-position:-167px -36px;
     font-family: 'Dosis-Regular';
 }
 .about-info h5 {
-    color: #FF008C;
+    color: #ee4d4d;
     margin: 0.5em 0;
     font-size: 1.1em;
     line-height: 1.5em;
@@ -729,7 +729,7 @@ background-position:-167px -36px;
 	margin-top:4em;
 }
 .testimonals h3{
-	color: #FF008C;
+	color: #ee4d4d;
     font-size:2.5em;
     font-family: 'Dosis-Regular';
 	text-align:center;
@@ -763,7 +763,7 @@ background-position:-167px -36px;
 	display:block;
 }
 .testi-info a{
-	color:#FF008C;
+	color:#ee4d4d;
 	text-decoration:none;
 	font-size: 0.8em;
 	font-weight:500;
@@ -775,7 +775,7 @@ background-position:-167px -36px;
 margin-top:3em;
 }
 .team h3{
-	color: #FF008C;
+	color: #ee4d4d;
     font-size: 2.5em;
     font-family: 'Dosis-Regular';
 	text-align:center;
@@ -1068,7 +1068,7 @@ h2.typoh2{
     -webkit-appearance: none;
 }
 .contact-right input[type="submit"] {
-    border: 1px solid #FF008C;
+    border: 1px solid #ee4d4d;
     padding: .5em 0;
     width: 22%;
     margin-top: 0.8em;
@@ -1076,7 +1076,7 @@ h2.typoh2{
     color: #FFFFFF;
     letter-spacing: 1px;
     outline: none;
-    background-color: #FF008C;
+    background-color: #ee4d4d;
     transition: 0.5s all ease;
     -webkit-transition: 0.5s all ease;
     -moz-transition: 0.5s all ease;
@@ -1085,12 +1085,12 @@ h2.typoh2{
     -webkit-appearance: none;
 }
 input[type="text"]:hover, .contact-right textarea:hover  {
-    border-color: rgba(255, 0, 140, 0.29);
+    border-color:#ee4d4d ;
 }
 .contact-right input[type="submit"]:hover {
     background-color: #fff;
-    color: #FF008C;
-    border: 1px dotted #FF008C;
+    color: #ee4d4d;
+    border: 1px dotted #ee4d4d;
 }
 .glyphicon3 {
     position: relative;

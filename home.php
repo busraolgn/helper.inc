@@ -1,4 +1,4 @@
-
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 <div class="welcome">
@@ -66,10 +66,12 @@ $aid1 = $campaigns[$i];
 								l-1.675-1.089h10.341c0.537,0,0.953-0.44,0.953-0.979V2.039l1.459,2.027V17.36L16.42,17.36z"/> </g>
 						</svg>
 					</div>
+					
+					
+		 				
 					<div <?php if($count%2==0) echo "class='timeline-content left'";
 							 	   else  echo "class='timeline-content right'"; ?> >
-	 
-							<div class="baslik">
+	 					<div class="baslik">
 			      				<h2> <?php echo $aid1["aid_name"]; ?> </h2>
 				  				<section class="fave"></section>
 		 					</div>
@@ -83,6 +85,16 @@ $aid1 = $campaigns[$i];
 						 		<?php echo $aid1["aid_comment"]; ?>
 						 	</p>
 			 			</div>
+			 									<div class="bottom">
+							 <div class="address">
+							 	<p><span style="font-weight: bold; text-decoration: underline;">Adres:</span>.
+							 		<?php echo $aid1["city"]; ?>
+							 		<?php echo $aid1["district"]; ?>
+							 		<?php echo $aid1["neigborhood"]; ?>
+							 		<?php echo $aid1["address"]; ?>
+							 	</p>
+							 </div>
+			 			</div>
 <?php 
 $item = new Items();
 $item->openDB();
@@ -94,8 +106,7 @@ for($j=0;$j<count($items);$j++){
 						 	 <p> <?php echo $it["item_name"]; ?> </p>
 							 <div class="progress">
 								<div class="progress-bar progress-bar-danger" style=<?php echo "width:" . $it["fill_rate"] . "%"; ?> ></div>
-							 </div>
-							 <p> eksik: <?php echo $it["needed"]; echo "\n"; ?> &nbsp karşılanan: <?php echo $it["provided"]; ?> </p>
+							 </div><p> eksik: <?php echo $it["needed"]; echo "\n"; ?> &nbsp karşılanan: <?php echo $it["provided"]; ?> </p>
 					 	</div>
 				  		<?php } $item->closeDB();  ?>
 						<div class="tags">
@@ -108,24 +119,15 @@ for($j=0;$j<count($items);$j++){
 								<?php } ?>
 						 	 </p>
 						</div>
-						<div class="bottom">
-							 <div class="address">
-							 	<p>  
-							 		<?php echo $aid1["city"]; ?>
-							 		<?php echo $aid1["district"]; ?>
-							 		<?php echo $aid1["neigborhood"]; ?>
-							 		<?php echo $aid1["address"]; ?>
-							 	</p>
-							 </div>
-			 			</div>
+
 			 			<div class="col-md-3 join-link">
-							<a href="index.php?page=campaign" class="btn">Katıl</a>
+							<a href="index.php?page=campaign" class="btn">Detayları Görüntüle >></a>
 						</div>
 					</div>
 				</div>
 				<?php $count++; } ?>
 			</div> 
-			<div class="clearfix"></div>
+			
 		</div>
 	 </div>
 <!-- end of embedding campaigns-->
@@ -160,3 +162,4 @@ for($j=0;$j<count($items);$j++){
 </div>
 <!---->
 <!---->
+</head>

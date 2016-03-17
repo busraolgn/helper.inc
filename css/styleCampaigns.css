@@ -1,4 +1,4 @@
-@import "http://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700";
+
 header:after, #timeline .timeline-item:after, header:before, #timeline .timeline-item:before {
   content: '';
   display: block;
@@ -14,21 +14,24 @@ header:after, #timeline .timeline-item:after, header:before, #timeline .timeline
 
 body, html {
   height: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 body {
-  background: #f9f9f9;
+  
   background-size: cover;
   margin: 0;
   padding: 0;
   font-family: helvetica, arial, tahoma, verdana;
   line-height: 20px;
   font-size: 14px;
-  color: #726f77;
+  
 }
 
-img {
+img{
   max-width: 100%;
+  max-height:30%;
+
 }
 
 a {
@@ -79,8 +82,8 @@ header .social .btn {
 }
 
 #timeline {
-  width: 100%;
-  margin: 30px auto;
+  width: 130%;
+  margin: 30px 100px;
   position: relative;
   padding: 0 10px;
   -webkit-transition: all 0.4s ease;
@@ -106,6 +109,7 @@ header .social .btn {
 #timeline .timeline-item {
   margin-bottom: 50px;
   position: relative;
+
 }
 #timeline .timeline-item .timeline-icon {
   background: #ee4d4d;
@@ -128,7 +132,6 @@ header .social .btn {
 }
 #timeline .timeline-item .timeline-content {
   width: 45%;
-  background: #fff;
   padding: 20px;
   -webkit-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
@@ -142,9 +145,81 @@ header .social .btn {
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  overflow:hidden;
+  background-color: white;
+
 }
+#timeline .timeline-item .timeline-content .aid_images{
+  
+  
+  margin-top:10px;
+  margin-left:0; margin-right:0;
+  margin-bottom:4px;
+  padding-bottom: 2px;
+  height:200px;
+  
+}
+#timeline .timeline-item .timeline-content .address{
+  
+  
+  margin-top:10px;
+  margin-left:5px; margin-right:0;
+  margin-bottom:2px;
+  
+  
+  
+}
+#timeline .timeline-item .timeline-content .aid_images img{
+  width:100%;
+  max-width: 100%;
+  height:100%;
+  max-height:100%;
+  
+
+}
+#timeline .timeline-item .timeline-content .progress{
+  
+  border:2px solid #ee4d4d;
+  max-width:50%;
+  width:50%;
+  
+}
+#timeline .timeline-item .timeline-content .rates{
+  padding-left:5px;
+  margin-bottom:3px;
+  border-width:3px;
+  border-color:#979797;
+  border-style:outset;
+   -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  -webkit-box-shadow: 2px 2px 0 #C1C1C1;
+  -moz-box-shadow: 2px 2px 0 #C1C1C1;
+  -ms-box-shadow: 2px 2px 0 #C1C1C1;
+  box-shadow: 2px 2px 0 #C1C1C1;
+ 
+  
+}
+
+#timeline .timeline-item .timeline-content .aid_details{
+ 
+  margin-left:5px; margin-right:20px;
+  margin-bottom:3px;
+  margin-top:5px;
+}
+#timeline .timeline-item .timeline-content .aid_details,.rates,.tags,.bottom p{
+ 
+  color:#515151;
+  font-size:17px;
+  font-weight:600;
+  font-family: "OpenSans-Light", arial, tahoma, verdana;
+}
+
+
 #timeline .timeline-item .timeline-content h2 {
   padding: 15px;
+  margin:20px;
   background: #ee4d4d;
   color: #fff;
   margin: -20px -20px 0 -20px;
@@ -177,15 +252,17 @@ header .social .btn {
 }
 
 .btn {
-  padding: 5px 15px;
+  padding: 5px 7px;
+  margin:10px;
   text-decoration: none;
   background: transparent;
   border: 2px solid #f27c7c;
   color: #f27c7c;
   display: inline-block;
-  position: relative;
+  position:relative;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
+  font-weight:600;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -208,6 +285,7 @@ header .social .btn {
   -ms-box-shadow: 2px 2px 0 transparent;
   box-shadow: 2px 2px 0 transparent;
 }
+
 
 @media screen and (max-width: 768px) {
   #timeline {

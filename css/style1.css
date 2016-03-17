@@ -13,12 +13,12 @@ body {
 
 a {
   text-decoration: none;
-  color: #FF008C; /**pembe **/
+  color: #ee4d4d; /**pembe **/
   -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 a:hover {
-  color: #FF008C;
+  color: #ee4d4d;
 }
 
 .form, .panel.panel-sign{
@@ -55,11 +55,11 @@ a:hover {
   transition: .5s ease;
 }
 .tab-group li a:hover {
-  background: #FF008C;
+  background: #ee4d4d;
   color: #ffffff;
 }
 .tab-group .active a {
-  background: #FF008C;
+  background: #ee4d4d;
   color: #ffffff;
 }
 
@@ -89,7 +89,7 @@ label {
 }
 label .req {
   margin: 2px;
-  color: #FF008C;
+  color: #ee4d4d;
 }
 
 label.active {
@@ -122,7 +122,7 @@ input, textarea {
 }
 input:focus, textarea:focus {
   outline: 0;
-  border-color: #FF008C;
+  border-color: #ee4d4d;
 }
 
 textarea {
@@ -151,7 +151,7 @@ textarea {
 .alert.alert-info{
   border:1px solid;
 
-  border-color: #FF008C;
+  border-color: #ee4d4d;
   background-color: #333;
 }
 .panel-body{
@@ -174,7 +174,7 @@ p.hatirladinMi{
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
-  background: #FF008C;
+  background: #ee4d4d;
   color: #ffffff;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -182,7 +182,7 @@ p.hatirladinMi{
 }
 
 .button:hover, .button:focus {
-  background: #FF008C;
+  background: #ee4d4d;
 }
 
 .button-block {
