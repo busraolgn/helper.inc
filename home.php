@@ -1,6 +1,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
+<link rel="stylesheet" href="css/popupwindow.css">
 <div class="welcome">
 	 <div class="container">
 		 <div class="welcome-top">
@@ -121,8 +121,10 @@ for($j=0;$j<count($items);$j++){
 						</div>
 
 			 			<div class="col-md-3 join-link">
-							<a href="index.php?page=campaign" class="btn">Detayları Görüntüle >></a>
+			 				<a data-js="open" class="btn">Detayları Görüntüle >></a>
+	
 						</div>
+
 					</div>
 				</div>
 				<?php $count++; } ?>
@@ -132,8 +134,63 @@ for($j=0;$j<count($items);$j++){
 	 </div>
 <!-- end of embedding campaigns-->
 </main> <!-- cd-main-content --> <!-- in filter.php page -->
+			</div> 
+			
+		</div>
+</div>
+ <div class="container">
+		<div class="col-md-9 join-info">
+			<div id="timeline">
+<div class="popup">
+	
+	<div class="timeline-item">
+	<div class="timeline-content">
+	 					<div class="baslik">
+			      				<h2> Kampanya Adı: </h2>
+				  				<section class="fave"></section>
+		 					</div>
+		 		
+		 				<div class="aid_images">
+		 	 				<img src="camp_images/okul.jpg">
+		 	 			</div>	
 
-<!---->
+			 			<div class="aid_details">
+						 	<p>
+						 		Taşlıdere ilköğretim okulu, Ardahan merkeze 21 km uzakta bir köy okulumuz.böyle bir organizasyonun arefesinde okulda olması gereken ve maalesef olmayan bir sürü malzeme, araç, gereç eksiği ortaya çıkmış, bir liste düzenlenmiş. biz eksi sözlük yazar ve okurları olarak okula gidemiyor olsak da listede bulunan malzemelerin bir kısmının teminine katkı sağlarsak, 
+						 		küçük hayalleri olan, küçük insanların mutluluğuna mutluluk katacağız. lütfen listenin uzunluğuna bakıp karamsarlığa kapılmayalım. 
+						 		tek bir malzemenin temini bile çok önemli, tek bir malzemenin gönderilmesi dahi bizim için çok önemli. 
+						 		ve belirtmek gerekir ki bu kampanya süresince nakdi yardım kabul edilmeyecek, ayni yardımlar ise alkış fırtınasına sebep olacaktır. :) 
+						 		iletişim için bana mesaj yazabilir ya da okula gidecek öğrencilerden olan melik karahangil'e 0506 613 31 70 'ten ulaşabilirsiniz, kendisi sizin müdürle iletişime geçmenizi dahi sağlayacak bir donanıma sahip :)
+						 	</p>
+			 			</div>
+			 									<div class="bottom">
+							 <div class="address">
+							 	<p><span style="font-weight: bold; text-decoration: underline;">Adres:</span>.
+							 		Taşlıdere	Taşlıdere	Hasköy Bucağı,36760 Taşlıdere/Ardahan Merkez/Ardahan
+							 	</p>
+							 </div>
+			 			</div>
+
+				 		<div class="rates">
+						 	 <p>Kitap</p>
+							 <div class="progress">
+								<div class="progress-bar progress-bar-danger" ></div>
+							 </div><p> eksik: </p>
+					 	</div>
+						<div class="tags">
+						 	 <h5>İlgili Tag'ler</h5>
+						 	 <p>
+						 		#kitap
+						 		<a class="normal_link" href="#"> </a>
+								
+						 	 </p>
+						</div>
+<button name="close">Geri</button>
+<button name="Katıl">Katıl!</button>
+					</div>
+				</div>
+				</div><!--popup -->
+<!----></div></div></div>
 <div class="bottom-grids">
 	 <div class="container">	
 	  <div class="news-ltr">
@@ -155,11 +212,10 @@ for($j=0;$j<count($items);$j++){
 			<a href="#"><i class="youtube"></i></a>	
 
 		 </div>
-		<div class="clearfix"></div>
-	  </div>
+	  </div><!--social-->
 	 </div>
-	<div class="clearfix"></div>
 </div>
+<script src="js/demo.js"></script>
 <!---->
 <!---->
 </head>
