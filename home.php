@@ -22,10 +22,10 @@
 			  </div>
 			  <div class="col-md-4 chrt_grid" style="visibility: visible; -webkit-animation-delay: 0.4s;">
 				   <div class="chrty"> 
-						<figure class="icon"> <a href="index.php?page=about">
+						<figure class="icon"> <a href="index.php?page=profile">
 							<span class="glyphicon-icon glyphicon-asterisk" aria-hidden="true"></span>
 						</figure> </a>						
-						<h3>Hakkımızda </h3>
+						<h3>Kampanyalarım </h3>
 						<p>HELPER hakkında merak edilenler ve arkasındaki ekip burada!</p>
 						</a>
 				  </div>

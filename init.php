@@ -10,7 +10,45 @@ $_SESSION["current_url"] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $_SESSION["filter"] = array();
 $_SESSION["filter_city"] = "";
 
+if(empty($page)){
+	$page = "home";
+}
+if(empty($_SESSION["filter_city"])){
+	$_SESSION["filter_city"] = "";
+}
+if(empty($_SESSION["tree"])){
+	$_SESSION["tree"] = "kampanyalar";
+}
+if(empty($_SESSION["filter"])){
+	$_SESSION["filter"] = "";
+}
+
+if(isset($_GET['page']))
+{
+	$page=$_GET['page'];
+}
+if(!empty($_SESSION["user"])){
+        
+}
+if(isset($_GET['search']))
+{
+	$search_query=$_GET['search'];
+	include("search.php");
+}
+/*filtering*/
+if(isset($_GET['filter']))
+{
+	$_SESSION["filter"] = explode("+", $_GET['filter']);
+	$_SESSION["filter"] = array_map('trim', $_SESSION["filter"]);
+	$_SESSION["filter"] = explode(" ", $_SESSION["filter"][0]);
+}
+else
+{
+	$_SESSION["filter"] = array();
+}
+
 /* initialize arrays */
+
 /*cities*/
 	$city = new Campaign();
 	$city->openDB();
@@ -62,42 +100,7 @@ $_SESSION["iller"] = array('','Adana', 'Adıyaman', 'Afyon', 'Ağrı', 'Amasya',
 
 /* end of initializing arrays */
 
-if(empty($page)){
-	$page = "home";
-}
-if(empty($_SESSION["filter_city"])){
-	$_SESSION["filter_city"] = "";
-}
-if(empty($_SESSION["tree"])){
-	$_SESSION["tree"] = "kampanyalar";
-}
-if(empty($_SESSION["filter"])){
-	$_SESSION["filter"] = "";
-}
 
-if(isset($_GET['page']))
-{
-	$page=$_GET['page'];
-}
-if(!empty($_SESSION["user"])){
-        
-}
-if(isset($_GET['search']))
-{
-	$search_query=$_GET['search'];
-	include("search.php");
-}
-/*filtering*/
-if(isset($_GET['filter']))
-{
-	$_SESSION["filter"] = explode("+", $_GET['filter']);
-	$_SESSION["filter"] = array_map('trim', $_SESSION["filter"]);
-	$_SESSION["filter"] = explode(" ", $_SESSION["filter"][0]);
-}
-else
-{
-	$_SESSION["filter"] = array();
-}
 /*end filtering*/
 
 /*if(empty($_SESSION['user']))*/

@@ -44,17 +44,17 @@
         $primary_id = $this->db->query_insert("user_table", $data);
      }
 
-    function updateUser_table($id, $uname ,$password ,$e_mail ,$name ,$surname ,$score ,$favorites ,$aid_started_by_user ,$aid_attended_by_user)
+    function updateUser_table($id, $uname ,$password ,$e_mail ,$name ,$surname)
      {
         $data["uname"] = $uname;
         $data["password"] = $password;
         $data["e_mail"] = $e_mail;
         $data["name"] = $name;
         $data["surname"] = $surname;
-        $data["score"] = $score;
+        /*$data["score"] = $score;
         $data["favorites"] = $favorites;
         $data["aid_started_by_user"] = $aid_started_by_user;
-        $data["aid_attended_by_user"] = $aid_attended_by_user;
+        $data["aid_attended_by_user"] = $aid_attended_by_user;*/
 
         $this->db->query_update("user_table", $data, "id = $id");
      }

@@ -75,7 +75,7 @@
 			 <ul>
 			 <li class=<?php if($page=="home") echo "active"; ?> ><a href="index.php?page=home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Ana Sayfa</a></li>
 			 <li class=<?php if($page=="profile") echo "active"; ?> ><a href="index.php?page=profile"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Profilim</a></li>
-			 <li class=<?php if($page=="my_camps") echo "active"; ?> ><a href="index.php?page=my_camps"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Kampanyalarım</a></li>
+			 <li class=<?php if($page=="about") echo "active"; ?> ><a href="index.php?page=about"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Hakkımızda</a></li>
 			 <li class=<?php if($page=="gallery") echo "active"; ?> ><a href="index.php?page=gallery"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span>Galeri</a></li>
 			 <li class=<?php if($page=="contact") echo "active"; ?> ><a href="index.php?page=contact"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>İletişim</a></li>
 			 </ul>
