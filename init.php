@@ -80,7 +80,7 @@ if(isset($_GET['city']))
 if(empty($_SESSION["main_categories"])){
 	$_SESSION["main_categories"] = array("Gıda","Giyecekler","TemelEşyalar");
 	$_SESSION["sub_categories"] = array(
-									"Gıda" => array("Bakliyat","KonserveVeYemek Malzemeleri","Et Ürünleri","İçecekler"),
+									"Gıda" => array("Bakliyat","KonserveVeYemekMalzemeleri","Et Ürünleri","İçecekler"),
 									"Giyecekler" => array("Tişört","Kazak","Pantolon","Kaban-Mont"),
 									"TemelEşyalar" => array("Elektrikli Aletler","Beyaz Eşya","Diğer")
 								  	);

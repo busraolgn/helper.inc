@@ -22,13 +22,12 @@
 			  </div>
 			  <div class="col-md-4 chrt_grid" style="visibility: visible; -webkit-animation-delay: 0.4s;">
 				   <div class="chrty"> 
-						<figure class="icon"> <a href="index.php?page=profile">
+						<figure class="icon"> <a href="index.php?page=camps_attended">
 							<span class="glyphicon-icon glyphicon-asterisk" aria-hidden="true"></span>
-						</figure> </a>						
-						<h3>Kampanyalarım </h3>
+						</a> </figure> 					
+						<h3>Katıldığım Kampanyalar </h3>
 						<p>HELPER hakkında merak edilenler ve arkasındaki ekip burada!</p>
-						</a>
-				  </div>
+				   </div>
 			  </div>
 			  <div class="col-md-4 chrt_grid" style="visibility: visible; -webkit-animation-delay: 0.4s;">
 				   <div class="chrty"> 

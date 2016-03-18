@@ -32,7 +32,7 @@
         $this->db->query($query);
      }
 
-    function insertCampaign($user_id ,$aid_name ,$aid_comment ,$start_date ,$end_date ,$fav_count ,$city ,$district ,$neigborhood ,$address ,$tags ,$aid_img)
+    function insertCampaign($user_id ,$aid_name ,$aid_comment ,$start_date ,$end_date ,$fav_count ,$city ,$district ,$neigborhood ,$address ,$tags, $main_category_tags, $sub_category_tags ,$aid_img)
      {
         $data["user_id"] = $user_id;
         $data["aid_name"] = $aid_name;
@@ -45,6 +45,8 @@
         $data["neigborhood"] = $neigborhood;
         $data["address"] = $address;
         $data["tags"] = $tags;
+        $data["main_category_tags"] = $main_category_tags;
+        $data["sub_category_tags"] = $sub_category_tags;
         $data["aid_img"] = $aid_img;
 
         $primary_id = $this->db->query_insert("campaign", $data);

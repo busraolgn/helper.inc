@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="panel panel-default target">
-                    <div class="panel-heading" contenteditable="false">Yürüttüğüm kampanyalar</div>
+                    <div class="panel-heading" contenteditable="false">Yürüttüğüm Kampanyalar</div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-4">
