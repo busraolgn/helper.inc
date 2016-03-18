@@ -14,56 +14,56 @@
      $sub1_checked = false;
      $main1_checked = false;
      /*gıda*/
-     if($_POST["pirinc"]){ $sub1_checked=true; } if($_POST["bulgur"]){ $sub1_checked=true; } 
-     if($_POST["nohut"]){ $sub1_checked=true; } if($_POST["fasulye"]){ $sub1_checked=true; } 
-     if($_POST["bugday"]){ $sub1_checked=true; }
+     if(isset($_POST["pirinc"])){ $sub1_checked=true; } if(isset($_POST["bulgur"])){ $sub1_checked=true; } 
+     if(isset($_POST["nohut"])){ $sub1_checked=true; } if(isset($_POST["fasulye"])){ $sub1_checked=true; } 
+     if(isset($_POST["bugday"])){ $sub1_checked=true; }
      if ($sub1_checked) { $sub_category_tags .= "Bakliyat,"; }
      $sub1_checked = false;
-     if($_POST["salca"]){ $sub1_checked=true; } if($_POST["siviyag"]){ $sub1_checked=true; }
-     if($_POST["un"]){ $sub1_checked=true; } if($_POST["yumurta"]){ $sub1_checked=true; }
-     if($_POST["makarna"]){ $sub1_checked=true; }
+     if(isset($_POST["salca"])){ $sub1_checked=true; } if(isset($_POST["siviyag"])){ $sub1_checked=true; }
+     if(isset($_POST["un"])){ $sub1_checked=true; } if(isset($_POST["yumurta"])){ $sub1_checked=true; }
+     if(isset($_POST["makarna"])){ $sub1_checked=true; }
      if ($sub1_checked) { $sub_category_tags .= "KonserveVeYemekMalzemeleri,"; }
      $sub1_checked = false;
-     if($_POST["et"]){ $sub1_checked=true; } if($_POST["tavuk"]){ $sub1_checked=true; }
-     if($_POST["balik"]){ $sub1_checked=true; }
-     if ($sub1_checked) { $sub_category_tags .= "Et Ürünleri,"; }
+     if(isset($_POST["et"])){ $sub1_checked=true; } if(isset($_POST["tavuk"])){ $sub1_checked=true; }
+     if(isset($_POST["balik"])){ $sub1_checked=true; }
+     if ($sub1_checked) { $sub_category_tags .= "EtÜrünleri,"; }
      $sub1_checked = false;
-     if($_POST["su"]){ $sub1_checked = true; } if($_POST["sut"]){ $sub1_checked = true; } 
-     if($_POST["cay"]){ $sub1_checked = true; } if($_POST["yogurt"]){ $sub1_checked = true; }
+     if(isset($_POST["su"])){ $sub1_checked = true; } if(isset($_POST["sut"])){ $sub1_checked = true; } 
+     if(isset($_POST["cay"])){ $sub1_checked = true; } if(isset($_POST["yogurt"])){ $sub1_checked = true; }
      if ($sub1_checked) { $sub_category_tags .= "İçecekler,"; }
      $sub1_checked = false;
         
      if (!empty($sub_category_tags)) { $main_category_tags .= "Gıda,"; }
 /*giyecekler*/
-     if($_POST["tisort_small"]){ $sub1_checked = true; } if($_POST["tisort_medium"]){ $sub1_checked = true; }
-     if($_POST["tisort_large"]){ $sub1_checked = true; } if($_POST["tisort_xlarge"]){ $sub1_checked = true; } 
+     if(isset($_POST["tisort_small"])){ $sub1_checked = true; } if(isset($_POST["tisort_medium"])){ $sub1_checked = true; }
+     if(isset($_POST["tisort_large"])){ $sub1_checked = true; } if(isset($_POST["tisort_xlarge"])){ $sub1_checked = true; } 
      if ($sub1_checked) { $sub_category_tags .= "Tişört,"; $main1_checked=true; }      
      $sub1_checked = false;       
-     if($_POST["kazak_small"]){ $sub1_checked = true; } if($_POST["kazak_medium"]){ $sub1_checked = true; }
-     if($_POST["kazak_large"]){ $sub1_checked = true; } if($_POST["kazak_xlarge"]){ $sub1_checked = true; }  
+     if(isset($_POST["kazak_small"])){ $sub1_checked = true; } if(isset($_POST["kazak_medium"])){ $sub1_checked = true; }
+     if(isset($_POST["kazak_large"])){ $sub1_checked = true; } if(isset($_POST["kazak_xlarge"])){ $sub1_checked = true; }  
      if ($sub1_checked) { $sub_category_tags .= "Kazak,"; $main1_checked=true; }      
      $sub1_checked = false;       
-     if($_POST["pantolon_small"]){ $sub1_checked = true; } if($_POST["pantolon_medium"]){ $sub1_checked = true; }
-     if($_POST["pantolon_large"]){ $sub1_checked = true; } if($_POST["pantolon_xlarge"]){ $sub1_checked = true; }  
-     if ($sub1_checked) { $sub_category_tags .= "Pantolon+,"; $main1_checked=true; }      
+     if(isset($_POST["pantolon_small"])){ $sub1_checked = true; } if(isset($_POST["pantolon_medium"])){ $sub1_checked = true; }
+     if(isset($_POST["pantolon_large"])){ $sub1_checked = true; } if(isset($_POST["pantolon_xlarge"])){ $sub1_checked = true; }  
+     if ($sub1_checked) { $sub_category_tags .= "Pantolon,"; $main1_checked=true; }      
      $sub1_checked = false;       
-     if($_POST["kaban_mont_small"]){ $sub1_checked = true; } if($_POST["kaban_mont_medium"]){ $sub1_checked = true; } 
-     if($_POST["kaban_mont_large"]){ $sub1_checked = true; } if($_POST["kaban_mont_xlarge"]){ $sub1_checked = true; }  
+     if(isset($_POST["kaban_mont_small"])){ $sub1_checked = true; } if(isset($_POST["kaban_mont_medium"])){ $sub1_checked = true; } 
+     if(isset($_POST["kaban_mont_large"])){ $sub1_checked = true; } if(isset($_POST["kaban_mont_xlarge"])){ $sub1_checked = true; }  
      if ($sub1_checked) { $sub_category_tags .= "Kaban-Mont,"; $main1_checked=true; }      
      $sub1_checked = false;       
      
      if ($main1_checked) { $main_category_tags .= "Giyecekler,"; }   
      $main1_checked=false;
      /*temel eşyalar*/
-     if($_POST["su_isitici"]){ $sub1_checked = true; } if($_POST["isitici"]){ $sub1_checked = true; }
-     if($_POST["bilgisayar"]){ $sub1_checked = true; } if($_POST["projeksiyon"]){ $sub1_checked = true; }
-     if ($sub1_checked) { $sub_category_tags .= "Elektrikli Aletler,"; $main1_checked=true; }      
+     if(isset($_POST["su_isitici"])){ $sub1_checked = true; } if(isset($_POST["isitici"])){ $sub1_checked = true; }
+     if(isset($_POST["bilgisayar"])){ $sub1_checked = true; } if(isset($_POST["projeksiyon"])){ $sub1_checked = true; }
+     if ($sub1_checked) { $sub_category_tags .= "ElektrikliAletler,"; $main1_checked=true; }      
      $sub1_checked = false;       
-     if($_POST["camasir_makinesi"]){ $sub1_checked = true; } if($_POST["bulasik_makinesi"]){ $sub1_checked = true; }
-     if($_POST["ocak"]){ $sub1_checked = true; } if($_POST["fırın"]){ $sub1_checked = true; }
-     if ($sub1_checked) { $sub_category_tags .= "Beyaz Eşya,"; $main1_checked=true; }      
+     if(isset($_POST["camasir_makinesi"])){ $sub1_checked = true; } if(isset($_POST["bulasik_makinesi"])){ $sub1_checked = true; }
+     if(isset($_POST["ocak"])){ $sub1_checked = true; } if(isset($_POST["fırın"])){ $sub1_checked = true; }
+     if ($sub1_checked) { $sub_category_tags .= "BeyazEşya,"; $main1_checked=true; }      
      $sub1_checked = false;       
-     if($_POST["battaniye"]){ $sub1_checked = true; } if($_POST["bebek_bezi"]){ $sub1_checked = true; }
+     if(isset($_POST["battaniye"])){ $sub1_checked = true; } if(isset($_POST["bebek_bezi"])){ $sub1_checked = true; }
      if ($sub1_checked) { $sub_category_tags .= "Diğer,"; $main1_checked=true; }      
      $sub1_checked = false;       
      if ($main1_checked) { $main_category_tags .= "TemelEşyalar,"; }   
@@ -305,7 +305,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="fasulye" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="fasulye" /><label><input type="checkbox" name="fasulye" id="fasulye" />
                                                             <span></span></label><label class="items" for="fasulye">Fasulye</label> 
                                                             <select id="fasulye_kg" name="fasulye_kg" class="field select medium" tabindex="11"> 
                                                               <option value="5 kg">5 kg</option>
@@ -324,7 +324,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="bugday" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="bugday" /><label><input type="checkbox" name="bugday" id="bugday" />
                                                             <span></span></label><label class="items" for="bugday">Buğday</label> 
                                                             <select id="bugday_kg" name="bugday_kg" class="field select medium" tabindex="11"> 
                                                               <option value="5 kg">5 kg</option>
@@ -349,7 +349,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                     <label class="items" for="konserve">Konserve ve Yemek Malzemeleri</label>
                                                     <ul>
                                                         <li>
-                                                            <input type="checkbox" id="salca" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="salca" /><label><input type="checkbox" name="salca" id="salca" />
                                                             <span></span></label><label class="items" for="salca">Salça</label> 
                                                             <select id="salca_kg" name="salca_kg" class="field select medium" tabindex="11"> 
                                                               <option value="5 kg">5 kg</option>
@@ -368,7 +368,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="siviyag" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="siviyag" /><label><input type="checkbox" name="siviyag" id="siviyag" />
                                                             <span></span></label><label class="items" for="siviyag">Sıvıyağ</label> 
                                                             <select id="siviyag_lt" name="siviyag_lt" class="field select medium" tabindex="11"> 
                                                               <option value="5 lt">5 lt</option>
@@ -387,7 +387,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="un" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="un" /><label><input type="checkbox" name"un" id="un" />
                                                             <span></span></label><label class="items" for="un">Un</label> 
                                                             <select id="un_kg" name="un_kg" class="field select medium" tabindex="11"> 
                                                               <option value="5 kg">5 kg</option>
@@ -406,7 +406,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="yumurta" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="yumurta" /><label><input type="checkbox" name="yumurta" id="yumurta" />
                                                             <span></span></label><label class="items" for="yumurta">Yumurta</label> 
                                                             <select id="yumurta_ad" name="yumurta_ad" class="field select medium" tabindex="11"> 
                                                               <option value="20 ad">20 ad</option>
@@ -421,7 +421,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="makarna" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="makarna" /><label><input type="checkbox" name="makarna" id="makarna" />
                                                             <span></span></label><label class="items" for="makarna">Makarna</label> 
                                                             <select id="makarna_kg" name="makarna_kg" class="field select medium" tabindex="11"> 
                                                               <option value="5 kg">5 kg</option>
@@ -446,7 +446,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                     <label class="items" for="et_urunleri">Et Ürünleri</label>
                                                     <ul>
                                                         <li>
-                                                            <input type="checkbox" id="et" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="et" /><label><input type="checkbox" name="et" id="et" />
                                                             <span></span></label><label class="items" for="et">Et</label> 
                                                             <select id="et_kg" name="et_kg" class="field select medium" tabindex="11"> 
                                                                 <option value="5 kg">5 kg</option>
@@ -465,7 +465,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="tavuk" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="tavuk" /><label><input type="checkbox" name="tavuk" id="tavuk" />
                                                             <span></span></label><label class="items" for="tavuk">Tavuk</label> 
                                                             <select id="tavuk_kg" name="tavuk_kg" class="field select medium" tabindex="11"> 
                                                                 <option value="5 kg">5 kg</option>
@@ -484,7 +484,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="balik" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="balik" /><label><input type="checkbox" name="balik" id="balik" />
                                                             <span></span></label><label class="items" for="balik">Balık</label> 
                                                             <select id="balik_kg" name="balik_kg" class="field select medium" tabindex="11"> 
                                                               <option value="5 kg">5 kg</option>
@@ -509,7 +509,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                     <label class="items" for="icecekler">İçecekler</label>
                                                     <ul>
                                                         <li>
-                                                            <input type="checkbox" id="su" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="su" /><label><input type="checkbox" name="su" id="su" />
                                                             <span></span></label><label class="items" for="su">Su</label> 
                                                             <select id="su_lt" name="su_lt" class="field select medium" tabindex="11"> 
                                                               <option value="5 lt">5 lt</option>
@@ -528,7 +528,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                          <input type="checkbox" id="sut" /><label><input type="checkbox" />
+                                                          <input type="checkbox" id="sut" /><label><input type="checkbox" name="sut" id="sut" />
                                                           <span></span></label><label class="items" for="sut">Süt</label> 
                                                           <select id="sut_lt" name="sut_lt" class="field select medium" tabindex="11"> 
                                                             <option value="5 lt">5 lt</option>
@@ -547,7 +547,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                           </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="cay" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="cay" /><label><input type="checkbox" name="cay" id="cay" />
                                                             <span></span></label><label class="items" for="cay">Çay</label> 
                                                             <select id="cay_lt" name="cay_lt" class="field select medium" tabindex="11"> 
                                                               <option value="5 kg">5 kg</option>
@@ -566,7 +566,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="yogurt" /><label><input type="checkbox" />
+                                                            <input type="checkbox" id="yogurt" /><label><input type="checkbox" name="yogurt" id="yogurt" />
                                                             <span></span></label><label class="items" for="yogurt">Yoğurt</label> 
                                                             <select id="yogurt_kg" name="yogurt_kg" class="field select medium" tabindex="11"> 
                                                               <option value="5 kg">5 kg</option>
@@ -598,7 +598,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                     <ul>
                                                         <li>
                                                             <input type="checkbox" id="tisort_small" checked="checked" />
-                                                            <label><input type="checkbox" /><span></span></label>
+                                                            <label><input type="checkbox" name="tisort_small" id="tisort_small" /><span></span></label>
                                                             <label class="items" for="tisort_small">Small</label> 
                                                             <select id="tisort_small_ad" name="tisort_small_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -614,7 +614,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                         </li>
                                                         <li>
                                                             <input type="checkbox" id="tisort_medium" checked="checked" />
-                                                            <label><input type="checkbox" /><span></span></label>
+                                                            <label><input type="checkbox" name="tisort_medium" id="tisort_medium" /><span></span></label>
                                                             <label class="items" for="tisort_medium">Medium</label> 
                                                             <select id="tisort_medium_ad" name="tisort_medium_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -630,7 +630,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                         </li>
                                                         <li>
                                                             <input type="checkbox" id="tisort_large" checked="checked" />
-                                                            <label><input type="checkbox" /><span></span></label>
+                                                            <label><input type="checkbox" name="tisort_large" id="tisort_large" /><span></span></label>
                                                             <label class="items" for="tisort_large">Large</label> 
                                                             <select id="tisort_large_ad" name="tisort_large_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -646,7 +646,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                         </li>
                                                         <li>
                                                             <input type="checkbox" id="tisort_xlarge" checked="checked" />
-                                                            <label><input type="checkbox" /><span></span></label>
+                                                            <label><input type="checkbox" name="tisort_xlarge" id="tisort_xlarge" /><span></span></label>
                                                             <label class="items" for="tisort_xlarge">Xlarge</label> 
                                                             <select id="tisort_xlarge_ad" name="tisort_xlarge_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -668,7 +668,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                     <ul>
                                                         <li>
                                                             <input type="checkbox" id="kazak_small" checked="checked" />
-                                                            <label><input type="checkbox" /><span></span></label>
+                                                            <label><input type="checkbox" name="kazak_small" id="kazak_small" /><span></span></label>
                                                             <label class="items" for="kazak_small">Small</label> 
                                                             <select id="kazak_small_ad" name="kazak_small_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -683,7 +683,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="kazak_medium" checked="checked" /><label><input type="checkbox" /><span></span></label>
+                                                            <input type="checkbox" id="kazak_medium" checked="checked" />
+                                                            <label><input type="checkbox" name="kazak_medium" id="kazak_medium" /><span></span></label>
                                                             <label class="items" for="kazak_medium">Medium</label> 
                                                             <select id="medium_ad" name="medium_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -698,7 +699,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="kazak_large" checked="checked" /><label><input type="checkbox" /><span></span></label>
+                                                            <input type="checkbox" id="kazak_large" checked="checked" />
+                                                            <label><input type="checkbox" name="kazak_large" id="kazak_large" /><span></span></label>
                                                             <label class="items" for="kazak_large">Large</label> 
                                                             <select id="kazak_large_ad" name="kazak_large_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -713,7 +715,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="kazak_xlarge" checked="checked" /><label><input type="checkbox" /><span></span></label>
+                                                            <input type="checkbox" id="kazak_xlarge" checked="checked" />
+                                                            <label><input type="checkbox" name="kazak_xlarge" id="kazak_xlarge" /><span></span></label>
                                                             <label class="items" for="kazak_xlarge">Xlarge</label> 
                                                             <select id="kazak_xlarge_ad" name="kazak_xlarge_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -734,7 +737,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                     <label class="items" for="pantolon">Pantolon</label>
                                                     <ul>
                                                         <li>
-                                                            <input type="checkbox" id="pantolon_small" checked="checked" /><label><input type="checkbox" /><span></span></label>
+                                                            <input type="checkbox" id="pantolon_small" checked="checked" />
+                                                            <label><input type="checkbox" name="pantolon_small" id="pantolon_small" /><span></span></label>
                                                             <label class="items" for="pantolon_small">Small</label> 
                                                             <select id="pantolon_small_ad" name="pantolon_small_ad" class="field select medium" tabindex="11"> 
                                                                 <option value="5 ad">5 ad</option>
@@ -750,7 +754,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                         </li>
                                                         <li>
                                                             <input type="checkbox" id="pantolon_medium" checked="checked" />
-                                                            <label><input type="checkbox" /><span></span></label>
+                                                            <label><input type="checkbox" name="pantolon_medium" id="pantolon_medium" /><span></span></label>
                                                             <label class="items" for="pantolon_medium">Medium</label> 
                                                             <select id="pantolon_medium_ad" name="pantolon_medium_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -765,7 +769,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="pantolon_large" checked="checked" /><label><input type="checkbox" /><span></span></label>
+                                                            <input type="checkbox" id="pantolon_large" checked="checked" />
+                                                            <label><input type="checkbox" name="pantolon_large" id="pantolon_large" /><span></span></label>
                                                             <label class="items" for="pantolon_large">Large</label> 
                                                             <select id="pantolon_large_ad" name="pantolon_large_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -780,7 +785,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="pantolon_xlarge" checked="checked" /><label><input type="checkbox" /><span></span></label>
+                                                            <input type="checkbox" id="pantolon_xlarge" checked="checked" />
+                                                            <label><input type="checkbox" name="pantolon_xlarge" id="pantolon_xlarge" /><span></span></label>
                                                             <label class="items" for="pantolon_xlarge">Xlarge</label> 
                                                             <select id="pantolon_xlarge_ad" name="pantolon_xlarge_ad" class="field select medium" tabindex="11"> 
                                                                 <option value="5 ad">5 ad</option>
@@ -801,7 +807,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                     <label class="items" for="kaban_mont">Kaban-Mont</label>
                                                     <ul>
                                                         <li>
-                                                          <input type="checkbox" id="kaban_mont_small" checked="unchecked" /><label><input type="checkbox" /><span></span>
+                                                          <input type="checkbox" id="kaban_mont_small" checked="unchecked" />
+                                                          <label><input type="checkbox" name="kaban_mont_small" id="kaban_mont_small" /><span></span>
                                                           </label><label class="items" for="kaban_mont_small">Small</label> 
                                                           <select id="kaban_mont_small_ad" name="kaban_mont_small_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -816,7 +823,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="kaban_mont_medium" checked="unchecked" /><label><input type="checkbox" /><span></span></label>
+                                                            <input type="checkbox" id="kaban_mont_medium" checked="unchecked" />
+                                                            <label><input type="checkbox" name="kaban_mont_medium" id="kaban_mont_medium" /><span></span></label>
                                                             <label class="items" for="kaban_mont_medium">Medium</label> 
                                                             <select id="kaban_mont_medium_ad" name="kaban_mont_medium_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -832,7 +840,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                         </li>
                                                         <li>
                                                             <input type="checkbox" id="kaban_mont_large" checked="unchecked" />
-                                                            <label><input type="checkbox" /><span></span></label><label class="items" for="kaban_mont_large">Large</label> 
+                                                            <label><input type="checkbox" name="kaban_mont_large" id="kaban_mont_large" /><span></span></label><label class="items" for="kaban_mont_large">Large</label> 
                                                             <select id="kaban_mont_large_ad" name="kaban_mont_large_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
                                                               <option value="10 ad">10 ad</option>
@@ -846,7 +854,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                            <input type="checkbox" id="kaban_mont_xlarge" checked="unchecked" /><label><input type="checkbox" /><span></span></label>
+                                                            <input type="checkbox" id="kaban_mont_xlarge" checked="unchecked" />
+                                                            <label><input type="checkbox" name="kaban_mont_xlarge" id="kaban_mont_xlarge" /><span></span></label>
                                                             <label class="items" for="kaban_mont_xlarge">Xlarge</label> 
                                                             <select id="kaban_mont_xlarge_ad" name="kaban_mont_xlarge_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -873,7 +882,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                     <label class="items" for="elektrikli_cihazlar">Elektrikli Cihazlar</label> 
                                                     <ul>
                                                         <li>
-                                                            <input type="checkbox" id="su_isitici" checked="checked" /><label><input type="checkbox" /><span></span></label>
+                                                            <input type="checkbox" id="su_isitici" checked="checked" />
+                                                            <label><input type="checkbox" name="su_isitici" id="su_isitici" /><span></span></label>
                                                             <label class="items" for="su_isitici">Su Isıtıcı</label> 
                                                             <select id="su_isitici_ad" name="su_isitici_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -888,49 +898,52 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                                            <input type="checkbox" id="isitici" checked="checked" /><label><input type="checkbox" /><span></span></label>
-                                                                            <label class="items" for="isitici">Isıtıcı</label> 
-                                                                            <select id="isitici_ad" name="isitici_ad" class="field select medium" tabindex="11"> 
-                                                                                <option value="5 ad">5 ad</option>
-                                                                                <option value="10 ad">10 ad</option>
-                                                                                <option value="15 ad">15 ad</option>
-                                                                                <option value="20 ad">20 ad</option>
-                                                                                <option value="25 ad">25 ad</option>
-                                                                                <option value="30 ad">30 ad</option>
-                                                                                <option value="35 ad">35 ad</option>
-                                                                                <option value="40 ad">40 ad</option>
-                                                                                <option value="45 ad">45 ad</option>
-                                                                            </select>
+                                                                    <input type="checkbox" id="isitici" checked="checked" />
+                                                                    <label><input type="checkbox" name="isitici" id="isitici" /><span></span></label>
+                                                                    <label class="items" for="isitici">Isıtıcı</label> 
+                                                                    <select id="isitici_ad" name="isitici_ad" class="field select medium" tabindex="11"> 
+                                                                        <option value="5 ad">5 ad</option>
+                                                                        <option value="10 ad">10 ad</option>
+                                                                        <option value="15 ad">15 ad</option>
+                                                                        <option value="20 ad">20 ad</option>
+                                                                        <option value="25 ad">25 ad</option>
+                                                                        <option value="30 ad">30 ad</option>
+                                                                        <option value="35 ad">35 ad</option>
+                                                                        <option value="40 ad">40 ad</option>
+                                                                        <option value="45 ad">45 ad</option>
+                                                                    </select>
                                                         </li>
                                                         <li>
-                                                                            <input type="checkbox" id="bilgisayar" checked="checked" /><label><input type="checkbox" /><span></span></label>
-                                                                            <label  class="items" for="bilgisayar">Bilgisayar</label> 
-                                                                            <select id="bilgisayar_ad" name="bilgisayar_ad" class="field select medium" tabindex="11"> 
-                                                                                <option value="5 ad">5 ad</option>
-                                                                                <option value="10 ad">10 ad</option>
-                                                                                <option value="15 ad">15 ad</option>
-                                                                                <option value="20 ad">20 ad</option>
-                                                                                <option value="25 ad">25 ad</option>
-                                                                                <option value="30 ad">30 ad</option>
-                                                                                <option value="35 ad">35 ad</option>
-                                                                                <option value="40 ad">40 ad</option>
-                                                                                <option value="45 ad">45 ad</option>
-                                                                            </select>
+                                                                    <input type="checkbox" id="bilgisayar" checked="checked" />
+                                                                    <label><input type="checkbox" name="bilgisayar" id="bilgisayar" /><span></span></label>
+                                                                    <label  class="items" for="bilgisayar">Bilgisayar</label> 
+                                                                    <select id="bilgisayar_ad" name="bilgisayar_ad" class="field select medium" tabindex="11"> 
+                                                                        <option value="5 ad">5 ad</option>
+                                                                        <option value="10 ad">10 ad</option>
+                                                                        <option value="15 ad">15 ad</option>
+                                                                        <option value="20 ad">20 ad</option>
+                                                                        <option value="25 ad">25 ad</option>
+                                                                        <option value="30 ad">30 ad</option>
+                                                                        <option value="35 ad">35 ad</option>
+                                                                        <option value="40 ad">40 ad</option>
+                                                                        <option value="45 ad">45 ad</option>
+                                                                    </select>
                                                         </li>
                                                         <li>
-                                                                            <input type="checkbox" id="projeksiyon" checked="checked" /><label><input type="checkbox" /><span></span></label>
-                                                                            <label class="items" for="projeksiyon">Projeksiyon</label> 
-                                                                            <select id="projeksiyon_ad" name="projeksiyon_ad" class="field select medium" tabindex="11"> 
-                                                                              <option value="5 ad">5 ad</option>
-                                                                              <option value="10 ad">10 ad</option>
-                                                                              <option value="15 ad">15 ad</option>
-                                                                              <option value="20 ad">20 ad</option>
-                                                                              <option value="25 ad">25 ad</option>
-                                                                              <option value="30 ad">30 ad</option>
-                                                                              <option value="35 ad">35 ad</option>
-                                                                              <option value="40 ad">40 ad</option>
-                                                                              <option value="45 ad">45 ad</option>
-                                                                            </select>
+                                                                  <input type="checkbox" id="projeksiyon" checked="checked" />
+                                                                  <label><input type="checkbox" name="projeksiyon" id="projeksiyon" /><span></span></label>
+                                                                  <label class="items" for="projeksiyon">Projeksiyon</label> 
+                                                                  <select id="projeksiyon_ad" name="projeksiyon_ad" class="field select medium" tabindex="11"> 
+                                                                    <option value="5 ad">5 ad</option>
+                                                                    <option value="10 ad">10 ad</option>
+                                                                    <option value="15 ad">15 ad</option>
+                                                                    <option value="20 ad">20 ad</option>
+                                                                    <option value="25 ad">25 ad</option>
+                                                                    <option value="30 ad">30 ad</option>
+                                                                    <option value="35 ad">35 ad</option>
+                                                                    <option value="40 ad">40 ad</option>
+                                                                    <option value="45 ad">45 ad</option>
+                                                                  </select>
                                                         </li>
                                                     </ul>
                                                 </li> <!--Elektikli cihaz -->
@@ -939,7 +952,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                     <label class="items" for="beyaz_esya">Beyaz Eşya</label> 
                                                     <ul>
                                                         <li>
-                                                            <input type="checkbox" id="camasir_makinesi" checked="checked" /><label><input type="checkbox" /><span></span></label>
+                                                            <input type="checkbox" id="camasir_makinesi" checked="checked" />
+                                                            <label><input type="checkbox" name="camasir_makinesi" id="camasir_makinesi" /><span></span></label>
                                                             <label class="items" for="camasir_makinesi">Çamaşır Makinesi</label> 
                                                             <select id="camasir_makinesi_ad" name="camasir_makinesi_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
@@ -954,49 +968,52 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             </select>
                                                         </li>
                                                         <li>
-                                                                            <input type="checkbox" id="bulasik_makinesi" checked="checked" /><label><input type="checkbox" /><span></span></label>
-                                                                            <label class="items" for="bulasik_makinesi">Bulaşık Makinesi</label> 
-                                                                            <select id="bulasik_makinesi_ad" name="bulasik_makinesi_ad" class="field select medium" tabindex="11"> 
-                                                                               <option value="5 ad">5 ad</option>
-                                                                                <option value="10 ad">10 ad</option>
-                                                                                <option value="15 ad">15 ad</option>
-                                                                                <option value="20 ad">20 ad</option>
-                                                                                <option value="25 ad">25 ad</option>
-                                                                                <option value="30 ad">30 ad</option>
-                                                                                <option value="35 ad">35 ad</option>
-                                                                                <option value="40 ad">40 ad</option>
-                                                                                <option value="45 ad">45 ad</option>
-                                                                                </select>
+                                                                  <input type="checkbox" id="bulasik_makinesi" checked="checked" />
+                                                                  <label><input type="checkbox" name="bulasik_makinesi" id="bulasik_makinesi" /><span></span></label>
+                                                                  <label class="items" for="bulasik_makinesi">Bulaşık Makinesi</label> 
+                                                                  <select id="bulasik_makinesi_ad" name="bulasik_makinesi_ad" class="field select medium" tabindex="11"> 
+                                                                     <option value="5 ad">5 ad</option>
+                                                                      <option value="10 ad">10 ad</option>
+                                                                      <option value="15 ad">15 ad</option>
+                                                                      <option value="20 ad">20 ad</option>
+                                                                      <option value="25 ad">25 ad</option>
+                                                                      <option value="30 ad">30 ad</option>
+                                                                      <option value="35 ad">35 ad</option>
+                                                                      <option value="40 ad">40 ad</option>
+                                                                      <option value="45 ad">45 ad</option>
+                                                                      </select>
                                                         </li>
                                                         <li>
-                                                                            <input type="checkbox" id="ocak" checked="checked" /><label><input type="checkbox" /><span></span></label>
-                                                                            <label class="items" for="ocak">Ocak</label> 
-                                                                            <select id="ocak" name="ocak" class="field select medium" tabindex="11"> 
-                                                                                <option value="5 ad">5 ad</option>
-                                                                                <option value="10 ad">10 ad</option>
-                                                                                <option value="15 ad">15 ad</option>
-                                                                                <option value="20 ad">20 ad</option>
-                                                                                <option value="25 ad">25 ad</option>
-                                                                                <option value="30 ad">30 ad</option>
-                                                                                <option value="35 ad">35 ad</option>
-                                                                                <option value="40 ad">40 ad</option>
-                                                                                <option value="45 ad">45 ad</option>
-                                                                            </select>
+                                                                <input type="checkbox" id="ocak" checked="checked" />
+                                                                <label><input type="checkbox" name="ocak" id="ocak" /><span></span></label>
+                                                                <label class="items" for="ocak">Ocak</label> 
+                                                                <select id="ocak" name="ocak" class="field select medium" tabindex="11"> 
+                                                                    <option value="5 ad">5 ad</option>
+                                                                    <option value="10 ad">10 ad</option>
+                                                                    <option value="15 ad">15 ad</option>
+                                                                    <option value="20 ad">20 ad</option>
+                                                                    <option value="25 ad">25 ad</option>
+                                                                    <option value="30 ad">30 ad</option>
+                                                                    <option value="35 ad">35 ad</option>
+                                                                    <option value="40 ad">40 ad</option>
+                                                                    <option value="45 ad">45 ad</option>
+                                                                </select>
                                                         </li>
                                                         <li>
-                                                                            <input type="checkbox" id="fırın" checked="checked" /><label><input type="checkbox" /><span></span></label>
-                                                                            <label class="items" for="fırın">Fırın</label> 
-                                                                            <select id="fırın" name="fırın" class="field select medium" tabindex="11"> 
-                                                                              <option value="5 ad">5 ad</option>
-                                                                              <option value="10 ad">10 ad</option>
-                                                                              <option value="15 ad">15 ad</option>
-                                                                              <option value="20 ad">20 ad</option>
-                                                                              <option value="25 ad">25 ad</option>
-                                                                              <option value="30 ad">30 ad</option>
-                                                                              <option value="35 ad">35 ad</option>
-                                                                              <option value="40 ad">40 ad</option>
-                                                                              <option value="45 ad">45 ad</option>
-                                                                            </select>
+                                                                <input type="checkbox" id="fırın" checked="checked" />
+                                                                <label><input type="checkbox" name="fırın" id="fırın" /><span></span></label>
+                                                                <label class="items" for="fırın">Fırın</label> 
+                                                                <select id="fırın" name="fırın" class="field select medium" tabindex="11"> 
+                                                                  <option value="5 ad">5 ad</option>
+                                                                  <option value="10 ad">10 ad</option>
+                                                                  <option value="15 ad">15 ad</option>
+                                                                  <option value="20 ad">20 ad</option>
+                                                                  <option value="25 ad">25 ad</option>
+                                                                  <option value="30 ad">30 ad</option>
+                                                                  <option value="35 ad">35 ad</option>
+                                                                  <option value="40 ad">40 ad</option>
+                                                                  <option value="45 ad">45 ad</option>
+                                                                </select>
                                                         </li>
                                                     </ul>
                                                 </li> 
@@ -1005,7 +1022,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                   <label class="items" for="diger">Diğer</label> 
                                                   <ul>
                                                       <li>
-                                                          <input type="checkbox" id="battaniye"  /><label><input type="checkbox" /><span></span></label>
+                                                          <input type="checkbox" id="battaniye"  />
+                                                          <label><input type="checkbox" name="battaniye" id="battaniye" /><span></span></label>
                                                           <label class="items" for="battaniye">Battaniye</label> 
                                                           <select id="battaniye_ad" name="battaniye_ad" class="field select medium" tabindex="11"> 
                                                             <option value="5 ad">5 ad</option>
@@ -1020,7 +1038,8 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                           </select>
                                                       </li>
                                                       <li>
-                                                          <input type="checkbox" id="bebek_bezi" /><label><input type="checkbox" /><span></span></label>
+                                                          <input type="checkbox" id="bebek_bezi" />
+                                                          <label><input type="checkbox" name="bebek_bezi" id="bebek_bezi" /><span></span></label>
                                                           <label class="items" for="bebek_bezi">Bebek Bezi</label> 
                                                           <select id="bebek_bezi_ad" name="bebek_bezi_ad" class="field select medium" tabindex="11"> 
                                                             <option value="5 ad">5 ad</option>
