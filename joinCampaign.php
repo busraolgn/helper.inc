@@ -1,92 +1,105 @@
-<?php
-  if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-     $main_category_tags="";
-     $sub_category_tags="";
-     $aid_name = $_POST["aid_name"];
-     $aid_comment = $_POST["aid_details"];
-     $user_id = $_SESSION["user"]["id"];
-     $start_date = date("d/m/Y");
-     $end_date = $_POST["end_date"];
-     $tags = $_POST["tags"];
-     $address = $_POST["address"];
-     $items = array();
-     $index = 0;
-     $sub1_checked = false;
-     $main1_checked = false;
-     /*gıda*/
-     if(isset($_POST["pirinc"])){ $sub1_checked=true; } if(isset($_POST["bulgur"])){ $sub1_checked=true; } 
-     if(isset($_POST["nohut"])){ $sub1_checked=true; } if(isset($_POST["fasulye"])){ $sub1_checked=true; } 
-     if(isset($_POST["bugday"])){ $sub1_checked=true; }
-     if ($sub1_checked) { $sub_category_tags .= "Bakliyat,"; }
-     $sub1_checked = false;
-     if(isset($_POST["salca"])){ $sub1_checked=true; } if(isset($_POST["siviyag"])){ $sub1_checked=true; }
-     if(isset($_POST["un"])){ $sub1_checked=true; } if(isset($_POST["yumurta"])){ $sub1_checked=true; }
-     if(isset($_POST["makarna"])){ $sub1_checked=true; }
-     if ($sub1_checked) { $sub_category_tags .= "KonserveVeYemekMalzemeleri,"; }
-     $sub1_checked = false;
-     if(isset($_POST["et"])){ $sub1_checked=true; } if(isset($_POST["tavuk"])){ $sub1_checked=true; }
-     if(isset($_POST["balik"])){ $sub1_checked=true; }
-     if ($sub1_checked) { $sub_category_tags .= "EtÜrünleri,"; }
-     $sub1_checked = false;
-     if(isset($_POST["su"])){ $sub1_checked = true; } if(isset($_POST["sut"])){ $sub1_checked = true; } 
-     if(isset($_POST["cay"])){ $sub1_checked = true; } if(isset($_POST["yogurt"])){ $sub1_checked = true; }
-     if ($sub1_checked) { $sub_category_tags .= "İçecekler,"; }
-     $sub1_checked = false;
-        
-     if (!empty($sub_category_tags)) { $main_category_tags .= "Gıda,"; }
-/*giyecekler*/
-     if(isset($_POST["tisort_small"])){ $sub1_checked = true; } if(isset($_POST["tisort_medium"])){ $sub1_checked = true; }
-     if(isset($_POST["tisort_large"])){ $sub1_checked = true; } if(isset($_POST["tisort_xlarge"])){ $sub1_checked = true; } 
-     if ($sub1_checked) { $sub_category_tags .= "Tişört,"; $main1_checked=true; }      
-     $sub1_checked = false;       
-     if(isset($_POST["kazak_small"])){ $sub1_checked = true; } if(isset($_POST["kazak_medium"])){ $sub1_checked = true; }
-     if(isset($_POST["kazak_large"])){ $sub1_checked = true; } if(isset($_POST["kazak_xlarge"])){ $sub1_checked = true; }  
-     if ($sub1_checked) { $sub_category_tags .= "Kazak,"; $main1_checked=true; }      
-     $sub1_checked = false;       
-     if(isset($_POST["pantolon_small"])){ $sub1_checked = true; } if(isset($_POST["pantolon_medium"])){ $sub1_checked = true; }
-     if(isset($_POST["pantolon_large"])){ $sub1_checked = true; } if(isset($_POST["pantolon_xlarge"])){ $sub1_checked = true; }  
-     if ($sub1_checked) { $sub_category_tags .= "Pantolon,"; $main1_checked=true; }      
-     $sub1_checked = false;       
-     if(isset($_POST["kaban_mont_small"])){ $sub1_checked = true; } if(isset($_POST["kaban_mont_medium"])){ $sub1_checked = true; } 
-     if(isset($_POST["kaban_mont_large"])){ $sub1_checked = true; } if(isset($_POST["kaban_mont_xlarge"])){ $sub1_checked = true; }  
-     if ($sub1_checked) { $sub_category_tags .= "Kaban-Mont,"; $main1_checked=true; }      
-     $sub1_checked = false;       
-     
-     if ($main1_checked) { $main_category_tags .= "Giyecekler,"; }   
-     $main1_checked=false;
-     /*temel eşyalar*/
-     if(isset($_POST["su_isitici"])){ $sub1_checked = true; } if(isset($_POST["isitici"])){ $sub1_checked = true; }
-     if(isset($_POST["bilgisayar"])){ $sub1_checked = true; } if(isset($_POST["projeksiyon"])){ $sub1_checked = true; }
-     if ($sub1_checked) { $sub_category_tags .= "ElektrikliAletler,"; $main1_checked=true; }      
-     $sub1_checked = false;       
-     if(isset($_POST["camasir_makinesi"])){ $sub1_checked = true; } if(isset($_POST["bulasik_makinesi"])){ $sub1_checked = true; }
-     if(isset($_POST["ocak"])){ $sub1_checked = true; } if(isset($_POST["fırın"])){ $sub1_checked = true; }
-     if ($sub1_checked) { $sub_category_tags .= "BeyazEşya,"; $main1_checked=true; }      
-     $sub1_checked = false;       
-     if(isset($_POST["battaniye"])){ $sub1_checked = true; } if(isset($_POST["bebek_bezi"])){ $sub1_checked = true; }
-     if ($sub1_checked) { $sub_category_tags .= "Diğer,"; $main1_checked=true; }      
-     $sub1_checked = false;       
-     if ($main1_checked) { $main_category_tags .= "TemelEşyalar,"; }   
-     $main1_checked=false;
-
-     $campaign = new Campaign();
-     $campaign->openDB();
-     $filtered_camps = $campaign->insertCampaign($_SESSION["user"]["id"], 
-      $aid_name, $aid_comment, $start_date, $end_date, 0, "", "", "", $address, 
-      $tags, $main_category_tags, $sub_category_tags, "okul.jpg");
-     $campaign->closeDB();
-  }
+<?php ob_start(); 
+  if (isset($_GET["success"]) && $_GET["success"] == 1){ echo "<h2>başarıyla gerçekleştiridi..</h2>"; /*location*/ } 
+    if (isset($_GET["aid_id"])) {
+      $aid_id = $_GET["aid_id"]; 
+      if(in_array($aid_id, $_SESSION["user"]["aid_started_by_user"]))
+      {
+          echo "<script> alert('Üzgünüz,kampanyayı açan kişi kendi kampanyalarına bağış yapamaz.'); </script>";
+          header("Location: index.php?page=joinCampaign&success=0");
+      }
+      else{
+        //$_SESSION["aid_attended"] = $aid_id;
+        $campaign = new Campaign();
+        $campaign->openDB();
+        $aid = $campaign->getCampaignByID($aid_id);
+        $campaign->closeDB();
+        $item = new Items();
+        $item->openDB();
+        $items = $item->getItemsByAidID($aid_id);
+        $item->closeDB();
+        $item_arr=array();
+        for ($i=0; $i < count($items); $i++) { 
+          $item_arr[$i] = $items[$i]["item_name"];
+          $itemsKeyName[$items[$i]["item_name"]][] = $items[$i];
+        }
+        $main_categories = $aid["main_category_tags"];
+        $sub_categories = $aid["sub_category_tags"];
+      }
+    }
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        array_push($_SESSION["user"]["aid_attended_by_user"], $aid_id); 
+        $aid_attended_by_user = implode (",", $_SESSION["user"]["aid_attended_by_user"]);
+        $aid_started_by_user = implode (",", $_SESSION["user"]["aid_started_by_user"]);
+       $user_id = $_SESSION["user"]["id"];
+       $address = $_POST["location"];
+       $items = array();
+       $index = 0;
+       $sub1_checked = false;
+       $main1_checked = false;
+       $donations="";
+       /*gıda*/
+       if(isset($_POST["pirinc"])){ $donations .= "Pirinç=".$_POST["pirinc_kg"].","; } if(isset($_POST["bulgur"])){ $donations .= "Bulgur=".$_POST["bulgur_kg"].","; } 
+       if(isset($_POST["nohut"])){ $donations .= "Nohut=".$_POST["nohut_kg"].","; } if(isset($_POST["fasulye"])){ $donations .= "Fasulye=".$_POST["fasulye_kg"].","; } 
+       if(isset($_POST["bugday"])){ $donations .= "Buğday=".$_POST["bugday_kg"].","; }
+       if(isset($_POST["salca"])){ $donations .= "Salça=".$_POST["salca_kg"].","; } if(isset($_POST["siviyag"])){ $donations .= "Sıvıyağ=".$_POST["siviyag_lt"].","; }
+       if(isset($_POST["un"])){ $donations .= "Un=".$_POST["un_kg"].","; } if(isset($_POST["yumurta"])){ $donations .= "Yumurta=".$_POST["yumurta_ad"].","; }
+       if(isset($_POST["makarna"])){ $donations .= "Makarna=".$_POST["makarna_kg"].","; }
+       if(isset($_POST["et"])){ $donations .= "Et=".$_POST["et_kg"].","; } if(isset($_POST["tavuk"])){ $donations .= "Tavuk=".$_POST["tavuk_kg"].","; }
+       if(isset($_POST["balik"])){ $donations .= "Balık=".$_POST["balik_kg"].","; }
+       if(isset($_POST["su"])){ $donations .= "Su=".$_POST["su_lt"].","; } if(isset($_POST["sut"])){ $donations .= "Süt=".$_POST["sut_lt"].","; } 
+       if(isset($_POST["cay"])){ $donations .= "Çay=".$_POST["cay_lt"].","; } if(isset($_POST["yogurt"])){ $donations .= "Yoğurt=".$_POST["yogurt_kg"].","; }    
+      /*giyecekler*/
+       if(isset($_POST["tisort_small"])){ $donations .= "TişörtSmall=".$_POST["tisort_small_ad"].","; } if(isset($_POST["tisort_medium"])){ $donations .= "TişörtMedium=".$_POST["tisort_medium_ad"].","; }
+       if(isset($_POST["tisort_large"])){ $donations .= "TişörtLarge=".$_POST["tisort_large_ad"].","; } if(isset($_POST["tisort_xlarge"])){ $donations .= "TişörtXlarge=".$_POST["tisort_xlarge_ad"].","; } 
+       if(isset($_POST["kazak_small"])){ $donations .= "KazakSmall=".$_POST["kazak_small_ad"].","; } if(isset($_POST["kazak_medium"])){ $donations .= "KazakMedium=".$_POST["kazak_medium_ad"].","; }
+       if(isset($_POST["kazak_large"])){ $donations .= "KazakLarge=".$_POST["kazak_large_ad"].","; } if(isset($_POST["kazak_xlarge"])){ $donations .= "KazakXlarge=".$_POST["kazak_xlarge_ad"].","; }  
+       if(isset($_POST["pantolon_small"])){ $donations .= "PantolonSmall=".$_POST["pantolon_small_ad"].","; } if(isset($_POST["pantolon_medium"])){ $donations .= "PantolonMedium=".$_POST["pantolon_medium_ad"].","; }
+       if(isset($_POST["pantolon_large"])){ $donations .= "PantolonLarge=".$_POST["pantolon_large_ad"].","; } if(isset($_POST["pantolon_xlarge"])){ $donations .= "PantolonXlarge=".$_POST["pantolon_xlarge_ad"].","; }  
+       if(isset($_POST["kaban_mont_small"])){ $donations .= "Kaban-MontSmall=".$_POST["kaban_mont_small_ad"].","; } if(isset($_POST["kaban_mont_medium"])){ $donations .= "Kaban-MontMedium=".$_POST["kaban_mont_medium_ad"].","; } 
+       if(isset($_POST["kaban_mont_large"])){ $donations .= "Kaban-MontLarge=".$_POST["kaban_mont_large_ad"].","; } if(isset($_POST["kaban_mont_xlarge"])){ $donations .= "Kaban-MontXlarge=".$_POST["kaban_mont_xlarge_ad"].","; }         
+       /*temel eşyalar*/
+       if(isset($_POST["su_isitici"])){ $donations .= "SuIsıtıcı=".$_POST["su_isitici_ad"].","; } if(isset($_POST["isitici"])){ $donations .= "Isıtıcı=".$_POST["isitici_ad"].","; }
+       if(isset($_POST["bilgisayar"])){ $donations .= "Bilgisayar=".$_POST["bilgisayar_ad"].","; } if(isset($_POST["projeksiyon"])){ $donations .= "Projeksiyon=".$_POST["projeksiyon_ad"].","; }
+       if(isset($_POST["camasir_makinesi"])){ $donations .= "ÇamaşırMakinesi=".$_POST["camasir_makinesi_ad"].","; } if(isset($_POST["bulasik_makinesi"])){ $donations .= "BulaşıkMakinesi=".$_POST["bulasik_makinesi_ad"].","; }
+       if(isset($_POST["ocak"])){ $donations .= "Ocak=".$_POST["ocak_ad"].","; } if(isset($_POST["fırın"])){ $donations .= "Fırın=".$_POST["fırın_ad"].","; }
+       if(isset($_POST["battaniye"])){ $donations .= "Battaniye=".$_POST["battaniye_ad"].","; } if(isset($_POST["bebek_bezi"])){ $donations .= "BebekBezi=".$_POST["bebek_bezi_ad"]."&".$_POST["bebek_bezi_yas"].","; }    
+  /* update items table */  print_r($donations);
+           $donations_arr = explode(",",$donations);
+           print_r($donations_arr);
+           unset($donations_arr[count($donations_arr)-1]);
+           for ($j=0; $j < count($donations_arr); $j++) { 
+            $item1=explode("=",$donations_arr[$j]);
+            $amount=explode(" " , $item1[1])[0];
+            $donations_arr[$item1[0]] = $amount;
+            print_r($donations_arr);
+           }
+       for ($i=0; $i < count($item_arr); $i++) { 
+         //unset($donations_arr[count($donations_arr) - 1]); 
+        print_r($item_arr); 
+         if (array_key_exists($item_arr[$i], $donations_arr)) {
+           if ($itemsKeyName[$item_arr[$i]]["needed"] < $donations_arr[$item_arr[$i]]) {
+              echo "<script> alert('için ihtiyaç fazlası miktar seçtiniz'); </script>";
+            }
+          }
+        }
+         //header("Location: index.php?page=joinCampaign&success=1");
+  /* add entry to donations table.. */ 
+       $donation = new Donations();
+       $donation->openDB();
+       $donation->insertDonations($user_id, 
+        $aid_id, $donations, false, $address);
+       $donation->closeDB();
+  /* update user table-> aid_attended_by_user */ 
+       $user = new User_table();
+       $user->openDB();
+       $user->updateUser_tableCampaigns($_SESSION["user"]["id"], $aid_started_by_user , $aid_attended_by_user);
+       $user->closeDB(); 
+    }
+    ob_end_flush();
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
    <script type="text/javascript">
    $(document).ready(function () {
       $(“ul li”).find(“ul”).hide();
-
       $(“input[type=’checkbox’]”).each(function () {
       $(this).bind(“click”, function () {
       //Determine if the checkbox was checked 
@@ -94,36 +107,27 @@
       //Set all the Child Checkboxes to the same state 
       $(this).parent().find(“input[type=’checkbox’]”).each(function () {
       $(this)[0].checked = isChecked;
-
       });
-
       if (isChecked) {
       $(this).parent().parents(“ul li”).children(“input[type=’checkbox’]”).each(function () {
       $(this)[0].checked = isChecked;
-
       });
       }
       else {
       //If the Checkbox is being unchecked and the parent and its parent have only this checkbox checked then they also need to be unchecked 
       $(this).parent().parents(“ul li”).each(function () {
       var anyChecked = $(this).children(“ul”).find(“input[type=’checkbox’]:checked”).length;
-
       $(this).children(“input[type=’checkbox’]”).each(function () {
       $(this)[0].checked = anyChecked > 0;
-
       });
       });
       }
-
       //Only if sub nodes exist expand them 
       if ($(this).parent().find(“ul”).length > 0) {
       $(this).parent().find(“ul”).show(1500);
       }
-
       //Update the selected Div box
-
       UpdateDiv();
-
       });
 //Set a different class for the nodes that have children 
 $(“ul li label”).each(function () {
@@ -134,7 +138,6 @@ $(this).parent().find(“ul”).toggle(1500);
 });
 }
 });
-
 });
 //Updates the Selected Items 
 function UpdateDiv()
@@ -143,17 +146,13 @@ $(“#main_ul”).empty();
 $(“ul li input[type=’checkbox’]:checked”).each(function () {
 if ($(this).parent().find(“ul”).length == 0) {
 $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).html() + “</li>”).hide().show(1000);
-
 }
 });
-
 }
-
     /*    $('.ul1 input:checked').each(function(){
           $(this).child().show(); // show all parent elements
         }); */
    </script>
-      
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -165,34 +164,28 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
       $(document).ready(function () {
     $location_input = $("#location");
     var options = {
-        
         componentRestrictions: {
             country: 'tr'
         }
     };
     autocomplete = new google.maps.places.Autocomplete($location_input.get(0), options);    
-  
 });
-
     </script>
     </head>
     <body>
 <div>
         <!-- Top content -->
         <div class="top-content">
-        	
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	<form role="form" action="index.php?page=campaign" method="post" class="registration-form">
-
+                        <form role="form" action="" method="post" class="registration-form">
 			                    <fieldset>
 		                        	<div class="form-top">
 		                        		<div class="form-top-left">
 		                        			<h3>Adım 1 / 2</h3>
 		                            		<p>Bağışlayacağınız materyalleri ve miktarları belirtin</p>
-
 		                        		</div>
 		                        		<div class="form-top-right">
 		                        			<i class="fa fa-key"></i>
@@ -201,19 +194,22 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
 		                            <div class="form-bottom">
     			                        <div class="acidjs-css3-treeview">
                                     <ul class="ul1" id="main_ul">
+                                      <?php if(strpos($main_categories, "Gıda") !== false) { ?>
                                         <li>    <!--gıda-->
                                             <input type="checkbox" id="gida"/>
                                             <label class="items" for="gida" >Gıda</label>
                                             <ul>
+                                              <?php if(strpos($sub_categories, "Bakliyat") !== false) { ?>
                                                 <li>
                                                     <input type="checkbox" id="bakliyat" />
                                                     <label class="items" for="bakliyat">Bakliyat</label>
                                                     <ul>
+                                                      <?php if(in_array("Pirinç", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="pirinc" checked="checked" /><label><input type="checkbox" name="pirinc" id="pirinc" />
                                                             <span></span></label><label class="items" for="pirinc">Pirinç</label> 
-                                                            <select id="pirinc_kg" name="pirinc_kg" class="field select medium" tabindex="11"> 
-                                                               <option value="5 kg">5 kg</option>
+                                                            <select id="pirinc_kg" name="pirinc_kg" class="field select medium" onchange="changeTest(this.id)" tabindex="11"> 
+                                                                  <option value="5 kg">5 kg</option>
                                                                   <option value="10 kg">10 kg</option>
                                                                   <option value="15 kg">15 kg</option>
                                                                   <option value="20 kg">20 kg</option>
@@ -228,6 +224,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                   <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Bulgur", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="bulgur" /><label><input type="checkbox" id="bulgur" name="bulgur" />
                                                             <span></span></label><label class="items" for="bulgur">Bulgur</label> 
@@ -247,6 +244,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Nohut", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="nohut" /><label><input type="checkbox" id="nohut" name="nohut" />
                                                             <span></span></label><label class="items" for="nohut">Nohut</label> 
@@ -266,6 +264,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Fasulye", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="fasulye" /><label><input type="checkbox" name="fasulye" id="fasulye" />
                                                             <span></span></label><label class="items" for="fasulye">Fasulye</label> 
@@ -285,6 +284,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Buğday", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="bugday" /><label><input type="checkbox" name="bugday" id="bugday" />
                                                             <span></span></label><label class="items" for="bugday">Buğday</label> 
@@ -304,12 +304,15 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } ?>
                                                     </ul>
-                                                </li> 
+                                                </li>
+                                              <?php } if(strpos($sub_categories, "KonserveVeYemekMalzemeleri") !== false) { ?> 
                                                 <li>
                                                     <input type="checkbox" id="konserve" />
                                                     <label class="items" for="konserve">Konserve ve Yemek Malzemeleri</label>
                                                     <ul>
+                                                      <?php if(in_array("Salça", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="salca" /><label><input type="checkbox" name="salca" id="salca" />
                                                             <span></span></label><label class="items" for="salca">Salça</label> 
@@ -329,6 +332,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Sıvıyağ", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="siviyag" /><label><input type="checkbox" name="siviyag" id="siviyag" />
                                                             <span></span></label><label class="items" for="siviyag">Sıvıyağ</label> 
@@ -348,6 +352,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="100 lt">100 lt</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Un", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="un" /><label><input type="checkbox" name"un" id="un" />
                                                             <span></span></label><label class="items" for="un">Un</label> 
@@ -367,6 +372,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Yumurta", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="yumurta" /><label><input type="checkbox" name="yumurta" id="yumurta" />
                                                             <span></span></label><label class="items" for="yumurta">Yumurta</label> 
@@ -382,6 +388,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="160 ad">160 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Makarna", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="makarna" /><label><input type="checkbox" name="makarna" id="makarna" />
                                                             <span></span></label><label class="items" for="makarna">Makarna</label> 
@@ -401,12 +408,15 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } ?>
                                                     </ul>
                                                 </li>
+                                              <?php } if(strpos($sub_categories, "EtÜrünleri") !== false) { ?>
                                                 <li>
                                                     <input type="checkbox" id="et_urunleri" />
                                                     <label class="items" for="et_urunleri">Et Ürünleri</label>
                                                     <ul>
+                                                      <?php if(in_array("Et", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="et" /><label><input type="checkbox" name="et" id="et" />
                                                             <span></span></label><label class="items" for="et">Et</label> 
@@ -426,6 +436,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                 <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Tavuk", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="tavuk" /><label><input type="checkbox" name="tavuk" id="tavuk" />
                                                             <span></span></label><label class="items" for="tavuk">Tavuk</label> 
@@ -445,6 +456,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                 <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Balık", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="balik" /><label><input type="checkbox" name="balik" id="balik" />
                                                             <span></span></label><label class="items" for="balik">Balık</label> 
@@ -464,12 +476,15 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } ?>
                                                     </ul>
                                                 </li>
+                                              <?php } if(strpos($sub_categories, "İçecekler") !== false) { ?>
                                                 <li>
                                                     <input type="checkbox" id="icecekler" />
                                                     <label class="items" for="icecekler">İçecekler</label>
                                                     <ul>
+                                                      <?php if(in_array("Su", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="su" /><label><input type="checkbox" name="su" id="su" />
                                                             <span></span></label><label class="items" for="su">Su</label> 
@@ -489,6 +504,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="100 lt">100 lt</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Süt", $item_arr)){ ?>
                                                         <li>
                                                           <input type="checkbox" id="sut" /><label><input type="checkbox" name="sut" id="sut" />
                                                           <span></span></label><label class="items" for="sut">Süt</label> 
@@ -508,6 +524,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             <option value="100 lt">100 lt</option>
                                                           </select>
                                                         </li>
+                                                      <?php } if(in_array("Çay", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="cay" /><label><input type="checkbox" name="cay" id="cay" />
                                                             <span></span></label><label class="items" for="cay">Çay</label> 
@@ -527,6 +544,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Yoğurt", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="yogurt" /><label><input type="checkbox" name="yogurt" id="yogurt" />
                                                             <span></span></label><label class="items" for="yogurt">Yoğurt</label> 
@@ -546,18 +564,23 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="100 kg">100 kg</option>
                                                             </select>
                                                         </li>
+                                                      <?php } ?>
                                                     </ul>
                                                 </li>
+                                              <?php } ?>
                                             </ul> 
                                         </li>   <!--end gıda-->
+                                              <?php } if(strpos($main_categories, "Giyecekler") !== false) { ?>
                                         <li>
                                             <input type="checkbox" id="giyecekler"/>
                                             <label class="items" for="giyecekler">Giyecekler</label>
                                             <ul>
+                                              <?php } if(strpos($sub_categories, "Tişört") !== false) { ?>
                                                 <li>
                                                     <input type="checkbox" id="tisort" checked="checked" />
                                                     <label class="items" for="tisort">Tişört</label>
                                                     <ul>
+                                                      <?php if(in_array("TişörtSmall", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="tisort_small" checked="checked" />
                                                             <label><input type="checkbox" name="tisort_small" id="tisort_small" /><span></span></label>
@@ -574,6 +597,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("TişörtMedium", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="tisort_medium" checked="checked" />
                                                             <label><input type="checkbox" name="tisort_medium" id="tisort_medium" /><span></span></label>
@@ -590,6 +614,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("TişörtLarge", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="tisort_large" checked="checked" />
                                                             <label><input type="checkbox" name="tisort_large" id="tisort_large" /><span></span></label>
@@ -606,6 +631,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("TişörtXlarge", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="tisort_xlarge" checked="checked" />
                                                             <label><input type="checkbox" name="tisort_xlarge" id="tisort_xlarge" /><span></span></label>
@@ -622,12 +648,15 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } ?>
                                                     </ul>
                                                 </li> <!--tişört -->
+                                              <?php } if(strpos($sub_categories, "Kazak") !== false) { ?>
                                                 <li>
                                                     <input type="checkbox" id="kazak" />
                                                     <label class="items" for="kazak">Kazak</label>
                                                     <ul>
+                                                      <?php if(in_array("KazakSmall", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="kazak_small" checked="checked" />
                                                             <label><input type="checkbox" name="kazak_small" id="kazak_small" /><span></span></label>
@@ -644,11 +673,12 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("KazakMedium", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="kazak_medium" checked="checked" />
                                                             <label><input type="checkbox" name="kazak_medium" id="kazak_medium" /><span></span></label>
                                                             <label class="items" for="kazak_medium">Medium</label> 
-                                                            <select id="medium_ad" name="medium_ad" class="field select medium" tabindex="11"> 
+                                                            <select id="kazak_medium_ad" name="kazak_medium_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
                                                               <option value="10 ad">10 ad</option>
                                                               <option value="15 ad">15 ad</option>
@@ -660,6 +690,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("KazakLarge", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="kazak_large" checked="checked" />
                                                             <label><input type="checkbox" name="kazak_large" id="kazak_large" /><span></span></label>
@@ -676,6 +707,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("KazakXlarge", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="kazak_xlarge" checked="checked" />
                                                             <label><input type="checkbox" name="kazak_xlarge" id="kazak_xlarge" /><span></span></label>
@@ -692,12 +724,15 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } ?>
                                                     </ul>
                                                 </li> 
+                                              <?php } if(strpos($sub_categories, "Pantolon") !== false) { ?>
                                                 <li>
                                                     <input type="checkbox" id="pantolon"/>
                                                     <label class="items" for="pantolon">Pantolon</label>
                                                     <ul>
+                                                      <?php if(in_array("PantolonSmall", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="pantolon_small" checked="checked" />
                                                             <label><input type="checkbox" name="pantolon_small" id="pantolon_small" /><span></span></label>
@@ -714,6 +749,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                 <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("PantolonMedium", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="pantolon_medium" checked="checked" />
                                                             <label><input type="checkbox" name="pantolon_medium" id="pantolon_medium" /><span></span></label>
@@ -730,6 +766,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("PantolonLarge", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="pantolon_large" checked="checked" />
                                                             <label><input type="checkbox" name="pantolon_large" id="pantolon_large" /><span></span></label>
@@ -746,6 +783,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("PantolonXlarge", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="pantolon_xlarge" checked="checked" />
                                                             <label><input type="checkbox" name="pantolon_xlarge" id="pantolon_xlarge" /><span></span></label>
@@ -762,12 +800,15 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                 <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } ?>
                                                     </ul>
                                                 </li> 
+                                              <?php } if(strpos($sub_categories, "Kaban-Mont") !== false) { ?>
                                                 <li>
                                                     <input type="checkbox" id="kaban_mont" />
                                                     <label class="items" for="kaban_mont">Kaban-Mont</label>
                                                     <ul>
+                                                      <?php if(in_array("Kaban-MontSmall", $item_arr)){ ?>
                                                         <li>
                                                           <input type="checkbox" id="kaban_mont_small" checked="unchecked" />
                                                           <label><input type="checkbox" name="kaban_mont_small" id="kaban_mont_small" /><span></span>
@@ -784,6 +825,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Kaban-MontMedium", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="kaban_mont_medium" checked="unchecked" />
                                                             <label><input type="checkbox" name="kaban_mont_medium" id="kaban_mont_medium" /><span></span></label>
@@ -800,6 +842,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Kaban-MontLarge", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="kaban_mont_large" checked="unchecked" />
                                                             <label><input type="checkbox" name="kaban_mont_large" id="kaban_mont_large" /><span></span></label><label class="items" for="kaban_mont_large">Large</label> 
@@ -815,6 +858,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Kaban-MontXlarge", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="kaban_mont_xlarge" checked="unchecked" />
                                                             <label><input type="checkbox" name="kaban_mont_xlarge" id="kaban_mont_xlarge" /><span></span></label>
@@ -831,18 +875,23 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } ?>
                                                     </ul>
                                                 </li> 
+                                              <?php } ?>
                                             </ul>   <!--giyecekler--> <!--giyecekler-->  <!--giyeceker-->
                                         </li>   <!--end giyecekler-->
+                                      <?php if(strpos($main_categories, "TemelEşyalar") !== false) { ?>
                                         <li>
                                             <input type="checkbox" id="temel_esyalar"/>
                                             <label class="items" for="temel_esyalar">Temel Eşyalar</label>
                                             <ul>
+                                              <?php if(strpos($sub_categories, "ElektrikliAletler") !== false) { ?>
                                                 <li>
                                                     <input type="checkbox" id="elektrikli_cihazlar" />
-                                                    <label class="items" for="elektrikli_cihazlar">Elektrikli Cihazlar</label> 
+                                                    <label class="items" for="elektrikli_cihazlar">Elektrikli Aletler</label> 
                                                     <ul>
+                                                      <?php if(in_array("SuIsıtıcı", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="su_isitici" checked="checked" />
                                                             <label><input type="checkbox" name="su_isitici" id="su_isitici" /><span></span></label>
@@ -859,6 +908,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("Isıtıcı", $item_arr)){ ?>
                                                         <li>
                                                                     <input type="checkbox" id="isitici" checked="checked" />
                                                                     <label><input type="checkbox" name="isitici" id="isitici" /><span></span></label>
@@ -875,6 +925,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                         <option value="45 ad">45 ad</option>
                                                                     </select>
                                                         </li>
+                                                      <?php } if(in_array("Bilgisayar", $item_arr)){ ?>
                                                         <li>
                                                                     <input type="checkbox" id="bilgisayar" checked="checked" />
                                                                     <label><input type="checkbox" name="bilgisayar" id="bilgisayar" /><span></span></label>
@@ -891,6 +942,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                         <option value="45 ad">45 ad</option>
                                                                     </select>
                                                         </li>
+                                                      <?php } if(in_array("Projeksiyon", $item_arr)){ ?>
                                                         <li>
                                                                   <input type="checkbox" id="projeksiyon" checked="checked" />
                                                                   <label><input type="checkbox" name="projeksiyon" id="projeksiyon" /><span></span></label>
@@ -907,12 +959,15 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                     <option value="45 ad">45 ad</option>
                                                                   </select>
                                                         </li>
+                                                      <?php } ?>
                                                     </ul>
                                                 </li> <!--Elektikli cihaz -->
+                                              <?php } if(strpos($sub_categories, "BeyazEşya") !== false) { ?>
                                                 <li>
                                                     <input type="checkbox" id="beyaz_esya"  />
                                                     <label class="items" for="beyaz_esya">Beyaz Eşya</label> 
                                                     <ul>
+                                                      <?php if(in_array("ÇamaşırMakinesi", $item_arr)){ ?>
                                                         <li>
                                                             <input type="checkbox" id="camasir_makinesi" checked="checked" />
                                                             <label><input type="checkbox" name="camasir_makinesi" id="camasir_makinesi" /><span></span></label>
@@ -929,6 +984,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                               <option value="45 ad">45 ad</option>
                                                             </select>
                                                         </li>
+                                                      <?php } if(in_array("BulaşıkMakinesi", $item_arr)){ ?>
                                                         <li>
                                                                   <input type="checkbox" id="bulasik_makinesi" checked="checked" />
                                                                   <label><input type="checkbox" name="bulasik_makinesi" id="bulasik_makinesi" /><span></span></label>
@@ -945,11 +1001,12 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                       <option value="45 ad">45 ad</option>
                                                                       </select>
                                                         </li>
+                                                      <?php } if(in_array("Ocak", $item_arr)){ ?>
                                                         <li>
                                                                 <input type="checkbox" id="ocak" checked="checked" />
                                                                 <label><input type="checkbox" name="ocak" id="ocak" /><span></span></label>
                                                                 <label class="items" for="ocak">Ocak</label> 
-                                                                <select id="ocak" name="ocak" class="field select medium" tabindex="11"> 
+                                                                <select id="ocak_ad" name="ocak_ad" class="field select medium" tabindex="11"> 
                                                                     <option value="5 ad">5 ad</option>
                                                                     <option value="10 ad">10 ad</option>
                                                                     <option value="15 ad">15 ad</option>
@@ -961,11 +1018,12 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                     <option value="45 ad">45 ad</option>
                                                                 </select>
                                                         </li>
+                                                      <?php } if(in_array("Fırın", $item_arr)){ ?>
                                                         <li>
                                                                 <input type="checkbox" id="fırın" checked="checked" />
                                                                 <label><input type="checkbox" name="fırın" id="fırın" /><span></span></label>
                                                                 <label class="items" for="fırın">Fırın</label> 
-                                                                <select id="fırın" name="fırın" class="field select medium" tabindex="11"> 
+                                                                <select id="fırın_ad" name="fırın_ad" class="field select medium" tabindex="11"> 
                                                                   <option value="5 ad">5 ad</option>
                                                                   <option value="10 ad">10 ad</option>
                                                                   <option value="15 ad">15 ad</option>
@@ -977,12 +1035,15 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                   <option value="45 ad">45 ad</option>
                                                                 </select>
                                                         </li>
+                                                      <?php } ?>
                                                     </ul>
                                                 </li> 
+                                              <?php } if(strpos($sub_categories, "Diğer") !== false) { ?>
                                                 <li>
                                                   <input type="checkbox" id="diger"  />
                                                   <label class="items" for="diger">Diğer</label> 
                                                   <ul>
+                                                    <?php if(in_array("Battaniye", $item_arr)){ ?>
                                                       <li>
                                                           <input type="checkbox" id="battaniye"  />
                                                           <label><input type="checkbox" name="battaniye" id="battaniye" /><span></span></label>
@@ -999,6 +1060,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             <option value="45 ad">45 ad</option>
                                                           </select>
                                                       </li>
+                                                    <?php } if(in_array("BebekBezi", $item_arr)){ ?>
                                                       <li>
                                                           <input type="checkbox" id="bebek_bezi" />
                                                           <label><input type="checkbox" name="bebek_bezi" id="bebek_bezi" /><span></span></label>
@@ -1015,19 +1077,22 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             <option value="45 ad">45 ad</option>
                                                           </select>
                                                           <select id="bebek_bezi_yas" name="bebek_bezi_yas" class="field select medium" tabindex="11"> 
-                                                            <option value="0">0-3 kg (0)</option>
-                                                            <option value="1">2-5 kg(1)</option>
-                                                            <option value="2">3-6 kg (2)</option>
-                                                            <option value="3">4-9 kg (3)</option>
-                                                            <option value="4">7-18 kg(4)</option>
-                                                            <option value="5">9-20 kg(4+)</option>
-                                                            <option value="6">11-25 kg (5)</option>
+                                                            <option value="0-3 kg">0-3 kg (0)</option>
+                                                            <option value="2-5 kg">2-5 kg(1)</option>
+                                                            <option value="3-6 kg">3-6 kg (2)</option>
+                                                            <option value="4-9 kg">4-9 kg (3)</option>
+                                                            <option value="7-18 kg">7-18 kg(4)</option>
+                                                            <option value="9-20 kg">9-20 kg(4+)</option>
+                                                            <option value="11-25 kg">11-25 kg (5)</option>
                                                           </select>
                                                       </li>
+                                                    <?php } ?>
                                                   </ul>
                                                 </li> 
+                                              <?php } ?>
                                             </ul> <!--temel esyalar-->
                                         </li>   <!--end temel esyalar-->
+                                      <?php } ?>
                                     </ul>
                                   </div>
     			                        <button type="button" class="btn btn-previous">Geri</button>
@@ -1064,25 +1129,16 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                     </div>
                 </div>
             </div>
-            
         </div>
-
 </div>
         <!-- Javascript -->
-    
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/retina-1.1.0.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
-
-        
-
-        
+        <script src="assets/js/scripts.js"></script>  
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->
-
     </body>
-
 </html>

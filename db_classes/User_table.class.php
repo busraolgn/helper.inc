@@ -59,6 +59,14 @@
         $this->db->query_update("user_table", $data, "id = $id");
      }
 
+    function updateUser_tableCampaigns($id, $aid_started_by_user, $aid_attended_by_user)
+     {
+        $data["aid_started_by_user"] = $aid_started_by_user;
+        $data["aid_attended_by_user"] = $aid_attended_by_user;
+
+        $this->db->query_update("user_table", $data, "id = $id");
+     }
+
     function getUser_table()
      {
         $results = array();

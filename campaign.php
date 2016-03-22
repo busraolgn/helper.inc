@@ -5,7 +5,7 @@
      $aid_name = $_POST["aid_name"];
      $aid_comment = $_POST["aid_details"];
      $user_id = $_SESSION["user"]["id"];
-     $start_date = date("d/m/Y");
+     $start_date = date("Y/m/d");
      $end_date = $_POST["end_date"];
      $tags = $_POST["tags"];
      $address = $_POST["address"];
@@ -13,68 +13,107 @@
      $index = 0;
      $sub1_checked = false;
      $main1_checked = false;
+
+     $campaign = new Campaign();
+     $campaign->openDB();
+
+     $all_campaigns = $campaign->getCampaign();
+     $camp_id = $all_campaigns[count($all_campaigns)-1]["id"] + 1;
+     /* update user table-> aid_attended_by_user */ 
+      
+       array_push($_SESSION["user"]["aid_started_by_user"], $camp_id); 
+       $aid_attended_by_user = implode (",", $_SESSION["user"]["aid_attended_by_user"]);
+       $aid_started_by_user = implode (",", $_SESSION["user"]["aid_started_by_user"]);
+       $user = new User_table();
+       $user->openDB();
+       $user->updateUser_tableCampaigns($_SESSION["user"]["id"], $aid_started_by_user , $aid_attended_by_user);
+       $user->closeDB(); 
+
+      $item = new Items();
+      $item->openDB();
      /*gıda*/
-     if(isset($_POST["pirinc"])){ $sub1_checked=true; } if(isset($_POST["bulgur"])){ $sub1_checked=true; } 
-     if(isset($_POST["nohut"])){ $sub1_checked=true; } if(isset($_POST["fasulye"])){ $sub1_checked=true; } 
-     if(isset($_POST["bugday"])){ $sub1_checked=true; }
+     if(isset($_POST["pirinc"])){ $sub1_checked=true;  $item->insertItems($camp_id,0,"Pirinç",0,$_POST["pirinc_kg"],0); } 
+     if(isset($_POST["bulgur"])){ $sub1_checked=true; $item->insertItems($camp_id,0,"Bulgur",0,$_POST["bulgur_kg"],0); } 
+     if(isset($_POST["nohut"])){ $sub1_checked=true; $item->insertItems($camp_id,0,"Nohut",0,$_POST["nohut_kg"],0); }
+     if(isset($_POST["fasulye"])){ $sub1_checked=true; $item->insertItems($camp_id,0,"Fasulye",0,$_POST["fasulye_kg"],0); } 
+     if(isset($_POST["bugday"])){ $sub1_checked=true; $item->insertItems($camp_id,0,"Buğday",0,$_POST["bugday_kg"],0); }
      if ($sub1_checked) { $sub_category_tags .= "Bakliyat,"; }
      $sub1_checked = false;
-     if(isset($_POST["salca"])){ $sub1_checked=true; } if(isset($_POST["siviyag"])){ $sub1_checked=true; }
-     if(isset($_POST["un"])){ $sub1_checked=true; } if(isset($_POST["yumurta"])){ $sub1_checked=true; }
-     if(isset($_POST["makarna"])){ $sub1_checked=true; }
+     if(isset($_POST["salca"])){ $sub1_checked=true; $item->insertItems($camp_id,0,"Salça",0,$_POST["salca_kg"],0); } 
+     if(isset($_POST["siviyag"])){ $sub1_checked=true; $item->insertItems($camp_id,0,"Sıvıyağ",0,$_POST["siviyag_lt"],0); }
+     if(isset($_POST["un"])){ $sub1_checked=true; $item->insertItems($camp_id,0,"Un",0,$_POST["un_kg"],0); } 
+     if(isset($_POST["yumurta"])){ $sub1_checked=true; $item->insertItems($camp_id,0,"Yumurta",0,$_POST["yumurta_ad"],0); }
+     if(isset($_POST["makarna"])){ $sub1_checked=true; $item->insertItems($camp_id,0,"Makarna",0,$_POST["makarna_kg"],0); }
      if ($sub1_checked) { $sub_category_tags .= "KonserveVeYemekMalzemeleri,"; }
      $sub1_checked = false;
-     if(isset($_POST["et"])){ $sub1_checked=true; } if(isset($_POST["tavuk"])){ $sub1_checked=true; }
-     if(isset($_POST["balik"])){ $sub1_checked=true; }
+     if(isset($_POST["et"])){ $sub1_checked=true; $item->insertItems($camp_id,0,"Et",0,$_POST["et_kg"],0); } 
+     if(isset($_POST["tavuk"])){ $sub1_checked=true; $item->insertItems($camp_id,0,"Tavuk",0,$_POST["tavuk_kg"],0); }
+     if(isset($_POST["balik"])){ $sub1_checked=true; $item->insertItems($camp_id,0,"Balık",0,$_POST["balik_kg"],0); }
      if ($sub1_checked) { $sub_category_tags .= "EtÜrünleri,"; }
      $sub1_checked = false;
-     if(isset($_POST["su"])){ $sub1_checked = true; } if(isset($_POST["sut"])){ $sub1_checked = true; } 
-     if(isset($_POST["cay"])){ $sub1_checked = true; } if(isset($_POST["yogurt"])){ $sub1_checked = true; }
+     if(isset($_POST["su"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Su",0,$_POST["su_lt"],0); } 
+     if(isset($_POST["sut"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Süt",0,$_POST["sut_lt"],0);} 
+     if(isset($_POST["cay"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Çay",0,$_POST["cay_lt"],0);} 
+     if(isset($_POST["yogurt"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Yoğurt",0,$_POST["yogurt_kg"],0);}
      if ($sub1_checked) { $sub_category_tags .= "İçecekler,"; }
      $sub1_checked = false;
-        
      if (!empty($sub_category_tags)) { $main_category_tags .= "Gıda,"; }
-/*giyecekler*/
-     if(isset($_POST["tisort_small"])){ $sub1_checked = true; } if(isset($_POST["tisort_medium"])){ $sub1_checked = true; }
-     if(isset($_POST["tisort_large"])){ $sub1_checked = true; } if(isset($_POST["tisort_xlarge"])){ $sub1_checked = true; } 
+     /*giyecekler*/
+     if(isset($_POST["tisort_small"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"TişörtSmall",0,$_POST["tisort_small_ad"],0); } 
+     if(isset($_POST["tisort_medium"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"TişörtMedium",0,$_POST["tisort_medium_ad"],0);}
+     if(isset($_POST["tisort_large"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"TişörtLarge",0,$_POST["tisort_large_ad"],0); } 
+     if(isset($_POST["tisort_xlarge"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"TişörtXlarge",0,$_POST["tisort_xlarge_ad"],0); } 
      if ($sub1_checked) { $sub_category_tags .= "Tişört,"; $main1_checked=true; }      
      $sub1_checked = false;       
-     if(isset($_POST["kazak_small"])){ $sub1_checked = true; } if(isset($_POST["kazak_medium"])){ $sub1_checked = true; }
-     if(isset($_POST["kazak_large"])){ $sub1_checked = true; } if(isset($_POST["kazak_xlarge"])){ $sub1_checked = true; }  
+     if(isset($_POST["kazak_small"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"KazakSmall",0,$_POST["kazak_small_ad"],0); } 
+     if(isset($_POST["kazak_medium"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"KazakMedium",0,$_POST["kazak_medium_ad"],0); }
+     if(isset($_POST["kazak_large"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"KazakLarge",0,$_POST["kazak_large_ad"],0); } 
+     if(isset($_POST["kazak_xlarge"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"KazakXlarge",0,$_POST["kazak_xlarge_ad"],0); }  
      if ($sub1_checked) { $sub_category_tags .= "Kazak,"; $main1_checked=true; }      
      $sub1_checked = false;       
-     if(isset($_POST["pantolon_small"])){ $sub1_checked = true; } if(isset($_POST["pantolon_medium"])){ $sub1_checked = true; }
-     if(isset($_POST["pantolon_large"])){ $sub1_checked = true; } if(isset($_POST["pantolon_xlarge"])){ $sub1_checked = true; }  
+     if(isset($_POST["pantolon_small"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"PantolonSmall",0,$_POST["pantolon_small_ad"],0); } 
+     if(isset($_POST["pantolon_medium"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"PantolonMedium",0,$_POST["pantolon_medium_ad"],0);}
+     if(isset($_POST["pantolon_large"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"PantolonLarge",0,$_POST["pantolon_large_ad"],0); } 
+     if(isset($_POST["pantolon_xlarge"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"PantolonXlarge",0,$_POST["pantolon_xlarge_ad"],0); }  
      if ($sub1_checked) { $sub_category_tags .= "Pantolon,"; $main1_checked=true; }      
      $sub1_checked = false;       
-     if(isset($_POST["kaban_mont_small"])){ $sub1_checked = true; } if(isset($_POST["kaban_mont_medium"])){ $sub1_checked = true; } 
-     if(isset($_POST["kaban_mont_large"])){ $sub1_checked = true; } if(isset($_POST["kaban_mont_xlarge"])){ $sub1_checked = true; }  
+     if(isset($_POST["kaban_mont_small"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Kaban-MontSmall",0,$_POST["kaban_mont_small_ad"],0); } 
+     if(isset($_POST["kaban_mont_medium"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Kaban-MontMedium",0,$_POST["kaban_mont_medium_ad"],0); } 
+     if(isset($_POST["kaban_mont_large"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Kaban-MontLarge",0,$_POST["kaban_mont_large_ad"],0); } 
+     if(isset($_POST["kaban_mont_xlarge"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Kaban-MontXlarge",0,$_POST["kaban_mont_xlarge_ad"],0); }  
      if ($sub1_checked) { $sub_category_tags .= "Kaban-Mont,"; $main1_checked=true; }      
      $sub1_checked = false;       
      
      if ($main1_checked) { $main_category_tags .= "Giyecekler,"; }   
      $main1_checked=false;
      /*temel eşyalar*/
-     if(isset($_POST["su_isitici"])){ $sub1_checked = true; } if(isset($_POST["isitici"])){ $sub1_checked = true; }
-     if(isset($_POST["bilgisayar"])){ $sub1_checked = true; } if(isset($_POST["projeksiyon"])){ $sub1_checked = true; }
+     if(isset($_POST["su_isitici"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"SuIsıtıcı",0,$_POST["su_isitici_ad"],0); } 
+     if(isset($_POST["isitici"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Isıtıcı",0,$_POST["isitici_ad"],0); }
+     if(isset($_POST["bilgisayar"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Bilgisayar",0,$_POST["bilgisayar_ad"],0); } 
+     if(isset($_POST["projeksiyon"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Projeksiyon",0,$_POST["projeksiyon_ad"],0); }
      if ($sub1_checked) { $sub_category_tags .= "ElektrikliAletler,"; $main1_checked=true; }      
      $sub1_checked = false;       
-     if(isset($_POST["camasir_makinesi"])){ $sub1_checked = true; } if(isset($_POST["bulasik_makinesi"])){ $sub1_checked = true; }
-     if(isset($_POST["ocak"])){ $sub1_checked = true; } if(isset($_POST["fırın"])){ $sub1_checked = true; }
+     if(isset($_POST["camasir_makinesi"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"ÇamaşırMakinesi",0,$_POST["camasir_makinesi_ad"],0); } 
+     if(isset($_POST["bulasik_makinesi"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"BulaşıkMakinesi",0,$_POST["bulasik_makinesi_ad"],0); }
+     if(isset($_POST["ocak"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Ocak",0,$_POST["ocak_ad"],0); } 
+     if(isset($_POST["fırın"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Fırın",0,$_POST["fırın_ad"],0); }
      if ($sub1_checked) { $sub_category_tags .= "BeyazEşya,"; $main1_checked=true; }      
      $sub1_checked = false;       
-     if(isset($_POST["battaniye"])){ $sub1_checked = true; } if(isset($_POST["bebek_bezi"])){ $sub1_checked = true; }
+     if(isset($_POST["battaniye"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"Battaniye",0,$_POST["battaniye_ad"],0); } 
+     if(isset($_POST["bebek_bezi"])){ $sub1_checked = true; $item->insertItems($camp_id,0,"BebekBezi",0,$_POST["bebek_bezi_ad"]."&".$_POST["bebek_bezi_yas"],0); }
      if ($sub1_checked) { $sub_category_tags .= "Diğer,"; $main1_checked=true; }      
      $sub1_checked = false;       
      if ($main1_checked) { $main_category_tags .= "TemelEşyalar,"; }   
      $main1_checked=false;
 
-     $campaign = new Campaign();
-     $campaign->openDB();
-     $filtered_camps = $campaign->insertCampaign($_SESSION["user"]["id"], 
+     $item->closeDB();
+
+     $campaign->insertCampaign($_SESSION["user"]["id"], 
       $aid_name, $aid_comment, $start_date, $end_date, 0, "", "", "", $address, 
       $tags, $main_category_tags, $sub_category_tags, "okul.jpg");
+
      $campaign->closeDB();
+     header("Location: index.php?page=home");
   }
 ?>
 <!DOCTYPE html>
@@ -172,7 +211,6 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
 <div>
         <!-- Top content -->
         <div class="top-content">
-        	
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
@@ -686,7 +724,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             <input type="checkbox" id="kazak_medium" checked="checked" />
                                                             <label><input type="checkbox" name="kazak_medium" id="kazak_medium" /><span></span></label>
                                                             <label class="items" for="kazak_medium">Medium</label> 
-                                                            <select id="medium_ad" name="medium_ad" class="field select medium" tabindex="11"> 
+                                                            <select id="kazak_medium_ad" name="kazak_medium_ad" class="field select medium" tabindex="11"> 
                                                               <option value="5 ad">5 ad</option>
                                                               <option value="10 ad">10 ad</option>
                                                               <option value="15 ad">15 ad</option>
@@ -879,7 +917,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                             <ul>
                                                 <li>
                                                     <input type="checkbox" id="elektrikli_cihazlar" />
-                                                    <label class="items" for="elektrikli_cihazlar">Elektrikli Cihazlar</label> 
+                                                    <label class="items" for="elektrikli_cihazlar">Elektrikli Aletler</label> 
                                                     <ul>
                                                         <li>
                                                             <input type="checkbox" id="su_isitici" checked="checked" />
@@ -987,7 +1025,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                 <input type="checkbox" id="ocak" checked="checked" />
                                                                 <label><input type="checkbox" name="ocak" id="ocak" /><span></span></label>
                                                                 <label class="items" for="ocak">Ocak</label> 
-                                                                <select id="ocak" name="ocak" class="field select medium" tabindex="11"> 
+                                                                <select id="ocak_ad" name="ocak_ad" class="field select medium" tabindex="11"> 
                                                                     <option value="5 ad">5 ad</option>
                                                                     <option value="10 ad">10 ad</option>
                                                                     <option value="15 ad">15 ad</option>
@@ -1003,7 +1041,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                                 <input type="checkbox" id="fırın" checked="checked" />
                                                                 <label><input type="checkbox" name="fırın" id="fırın" /><span></span></label>
                                                                 <label class="items" for="fırın">Fırın</label> 
-                                                                <select id="fırın" name="fırın" class="field select medium" tabindex="11"> 
+                                                                <select id="fırın_ad" name="fırın_ad" class="field select medium" tabindex="11"> 
                                                                   <option value="5 ad">5 ad</option>
                                                                   <option value="10 ad">10 ad</option>
                                                                   <option value="15 ad">15 ad</option>
@@ -1053,13 +1091,13 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                                                             <option value="45 ad">45 ad</option>
                                                           </select>
                                                           <select id="bebek_bezi_yas" name="bebek_bezi_yas" class="field select medium" tabindex="11"> 
-                                                            <option value="0">0-3 kg (0)</option>
-                                                            <option value="1">2-5 kg(1)</option>
-                                                            <option value="2">3-6 kg (2)</option>
-                                                            <option value="3">4-9 kg (3)</option>
-                                                            <option value="4">7-18 kg(4)</option>
-                                                            <option value="5">9-20 kg(4+)</option>
-                                                            <option value="6">11-25 kg (5)</option>
+                                                            <option value="0-3 kg">0-3 kg (0)</option>
+                                                            <option value="2-5 kg">2-5 kg(1)</option>
+                                                            <option value="3-6 kg">3-6 kg (2)</option>
+                                                            <option value="4-9 kg">4-9 kg (3)</option>
+                                                            <option value="7-18 kg">7-18 kg(4)</option>
+                                                            <option value="9-20 kg">9-20 kg(4+)</option>
+                                                            <option value="11-25 kg">11-25 kg (5)</option>
                                                           </select>
                                                       </li>
                                                   </ul>
@@ -1087,12 +1125,11 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
 				                        </div>
 				                        <div class="form-group">
 				                        	<label for="form-google-plus">Kampanya süresi için bir bitiş belirleyin:</label><br></br>
-                                  <input type="text" class="form-twitter form-control" name="end_date" id="end_date" placeholder="gg/aa/yyyy">
+                                  <input type="text" class="form-twitter form-control" name="end_date" id="end_date" placeholder="yyyy-aa-gg">
 				                        </div>
-                                    
                                 <div class="form-group">
                                   <label for="searchTextField">Kampanya için lütfen adres belirtin:</label>
-<br>
+                                  <br>
                                   <input onchange="picker()" id="address" name="address" type="text" size="50">
                                 </div>
                                  <div class="form-group">

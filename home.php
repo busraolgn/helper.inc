@@ -65,15 +65,13 @@ $aid1 = $campaigns[$i];
 								l-1.675-1.089h10.341c0.537,0,0.953-0.44,0.953-0.979V2.039l1.459,2.027V17.36L16.42,17.36z"/> </g>
 						</svg>
 					</div>
-					
-					
-		 				
 					<div <?php if($count%2==0) echo "class='timeline-content left'";
 							 	   else  echo "class='timeline-content right'"; ?> >
+					 
 	 					<div class="baslik">
 			      				<h2> <?php echo $aid1["aid_name"]; ?> </h2>
 				  				<section class="fave"></section>
-		 					</div>
+		 				</div>
 		 		
 		 				<div class="aid_images">
 		 	 				<?php $img1=$aid1["aid_img"]; echo "<img src=camp_images/$img1>" ; ?>
@@ -118,84 +116,22 @@ for($j=0;$j<count($items);$j++){
 								<?php } ?>
 						 	 </p>
 						</div>
-
 			 			<div class="col-md-3 join-link">
-			 				<a data-js="open" class="btn">Detayları Görüntüle >></a>
-	
+			 				<a data-js="open" data-rel="popup" href=<?php echo "popup.php?aid_details_id=".$aid1["id"]; ?> class="btn">Detayları Görüntüle >></a>
 						</div>
-
 					</div>
-				</div>
+			  	  </div>	
 				<?php $count++; } ?>
 			</div> 
-			
 		</div>
 	 </div>
 <!-- end of embedding campaigns-->
-</main> <!-- cd-main-content --> <!-- in filter.php page -->
-			</div> 
-			
-		</div>
-</div>
- <div class="container">
-		<div class="col-md-9 join-info">
-			<div id="timeline">
-<div class="popup">
-	
-	<div class="timeline-item">
-	<div class="timeline-content">
-	 					<div class="baslik">
-			      				<h2> Kampanya Adı: </h2>
-				  				<section class="fave"></section>
-		 					</div>
-		 		
-		 				<div class="aid_images">
-		 	 				<img src="camp_images/okul.jpg">
-		 	 			</div>	
-
-			 			<div class="aid_details">
-						 	<p>
-						 		Taşlıdere ilköğretim okulu, Ardahan merkeze 21 km uzakta bir köy okulumuz.böyle bir organizasyonun arefesinde okulda olması gereken ve maalesef olmayan bir sürü malzeme, araç, gereç eksiği ortaya çıkmış, bir liste düzenlenmiş. biz eksi sözlük yazar ve okurları olarak okula gidemiyor olsak da listede bulunan malzemelerin bir kısmının teminine katkı sağlarsak, 
-						 		küçük hayalleri olan, küçük insanların mutluluğuna mutluluk katacağız. lütfen listenin uzunluğuna bakıp karamsarlığa kapılmayalım. 
-						 		tek bir malzemenin temini bile çok önemli, tek bir malzemenin gönderilmesi dahi bizim için çok önemli. 
-						 		ve belirtmek gerekir ki bu kampanya süresince nakdi yardım kabul edilmeyecek, ayni yardımlar ise alkış fırtınasına sebep olacaktır. :) 
-						 		iletişim için bana mesaj yazabilir ya da okula gidecek öğrencilerden olan melik karahangil'e 0506 613 31 70 'ten ulaşabilirsiniz, kendisi sizin müdürle iletişime geçmenizi dahi sağlayacak bir donanıma sahip :)
-						 	</p>
-			 			</div>
-			 									<div class="bottom">
-							 <div class="address">
-							 	<p><span style="font-weight: bold; text-decoration: underline;">Adres:</span>.
-							 		Taşlıdere	Taşlıdere	Hasköy Bucağı,36760 Taşlıdere/Ardahan Merkez/Ardahan
-							 	</p>
-							 </div>
-			 			</div>
-
-				 		<div class="rates">
-						 	 <p>Kitap</p>
-							 <div class="progress">
-								<div class="progress-bar progress-bar-danger" ></div>
-							 </div><p> eksik: </p>
-					 	</div>
-						<div class="tags">
-						 	 <h5>İlgili Tag'ler</h5>
-						 	 <p>
-						 		#kitap
-						 		<a class="normal_link" href="#"> </a>
-								
-						 	 </p>
-						</div>
-<button name="close">Geri</button>
-<button name="Katıl">Katıl!</button>
-					</div>
-				</div>
-				</div><!--popup -->
-<!----></div></div></div>
 <div class="bottom-grids">
 	 <div class="container">	
 	  <div class="news-ltr">
 		 <h4>Gelişmelerden Haberdar Ol!</h4>
 		 <form>					 
-			  <input type="text" class="text" value="Email Adresiniz" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
+			 <input type="text" class="text" value="Email Adresiniz" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
 			 <input type="submit" value="Abone ol">
 			 <div class="clearfix"></div>
 	  	 </form>
@@ -205,16 +141,16 @@ for($j=0;$j<count($items);$j++){
 			 <h4>Sosyal Medyada HELPER</h4>
 		 </div>
 		 <div class="icons">
-			 <a href="#"><i class="facebook"></i></a>
+			<a href="#"><i class="facebook"></i></a>
 			<a href="#"><i class="twitter"></i></a>
 			<a href="#"><i class="google"></i></a>	
 			<a href="#"><i class="youtube"></i></a>	
-
 		 </div>
 	  </div><!--social-->
 	 </div>
 </div>
-<script src="js/demo.js"></script>
+</main> <!-- cd-main-content --> <!-- in filter.php page -->
+<!--<script src="js/demo.js"></script> -->
 <!---->
 <!---->
 </head>
