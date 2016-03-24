@@ -55,7 +55,7 @@
 <!---->
 <div class="copywrite">
 	 <div class="container">
-			 <p>HELPER Inc.</a></p>
+			 <p>HELPER Inc.Built with love in Tobb Etu</a></p>
 	 </div>
 </div>
 <!---->

@@ -4,12 +4,40 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Rota Detayı</title>
 <style type="text/css">
-.newone {
-	color: #990000;
+
+.top-content h2 {
+  font-size:30px;
 }
-html { height: 100% }
-body { height: 100%; margin: 0; padding: 0; }
-#map-canvas { height: 80%; width:80%;}
+
+
+.map_container{
+    position: relative;
+    width: 80%;
+    padding-bottom: 56.25%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+    
+
+
+}
+.map_container .map_canvas{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-left: 10%;
+    padding: 0;
+    border: 5px solid #ee4d4d; border-radius: 6px;
+}
+.top-content{
+    
+    width:60%;
+    margin-left:90px;margin-bottom:10px;
+}
+.inner-bg {
+  width:100%;
+  
+}
+
 </style>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (Bootstrap's JavaScript plugins) -->
@@ -17,7 +45,7 @@ body { height: 100%; margin: 0; padding: 0; }
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <script src="https://maps.googleapis.com/maps/api/js?&sensor=false"></script>
 </head>
-<body onLoad="initialize()">
+<body onLoad="initialize()" style="background-color: #F8F8F8;">
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -52,29 +80,37 @@ body { height: 100%; margin: 0; padding: 0; }
     }
   }
 ?>
-<div class="container">
-<h2>Kampanya adresi:</h2> <br/>
+
+<div class="top-content">
+<div class="inner-bg">
+  <div class="container">
+        
+<h2>Kampanya adresi:<h2/> <br/>
 <input class="tb1" id="origem" type="textbox" value=<?php echo $aid["address"]; ?>/> &nbsp &nbsp
-<input type="button" value="Route" onclick="calcRoute();" /> <br/> <br>
-<div style='visibility:hidden;'>
+<input type="button" value="Route" onclick="calcRoute();" style="background-color:#ee4d4d; "/> <a href=<?php "index.php?page=popup&aid_id=".$aid_id ?>><button name="geri" style="background-color:#ee4d4d;">Geri</button><a/><br/> <br>
+
+      <div style='visibility:hidden;'>
 <?php 
   for ($i=1; $i <= count($addresses); $i++) { 
     $index=$i-1;
 ?>
 <input id='<?php echo "parada".$i; ?>' type="textbox" value=<?php echo trim($addresses[$index]," "); ?> />
 <?php } ?>
+      </div>
+
+  </div></div>
+
 </div>
-<!--Delivery Points<br />
-<span class="newfont2">(Street, Number, City, State, Country)</span><br></br> -->
-</div>
-  <div id="map-canvas"></div>
+<div class="map_container">
+  <div id="map-canvas" class="map_canvas" ></div></div>
   <script type="text/javascript">
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
 function initialize() {
+  google.maps.controlStyle = 'azteca';
   directionsDisplay = new google.maps.DirectionsRenderer();
-  var ankara = new google.maps.LatLng(39.933363, 32.859742);
+  var ankara = new google.maps.LatLng(39.933363, 33.859742);
   var mapOptions = {
     zoom: 6,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -137,6 +173,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 google.maps.event.addDomListener(window, 'resize', function() {
      var center = map.getCenter();
      google.maps.event.trigger(map, 'resize');
+     map.setZoom(6);
      map.setCenter(center); 
     });
 </script>

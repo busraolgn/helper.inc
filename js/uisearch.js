@@ -1,18 +1,9 @@
-/**
- * uisearch.js v1.0.0
- * http://www.codrops.com
- *
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- * 
- * Copyright 2013, Codrops
- * http://www.codrops.com
- */
+
 ;( function( window ) {
 	
 	'use strict';
 	
-	// EventListener | @jon_neal | //github.com/jonathantneal/EventListener
+	
 	!window.addEventListener && window.Element && (function () {
 	   function addToPrototype(name, method) {
 		  Window.prototype[name] = HTMLDocument.prototype[name] = Element.prototype[name] = method;

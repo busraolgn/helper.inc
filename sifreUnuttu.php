@@ -53,7 +53,7 @@
            <p>Ankara, Turkiye</p>
          </div>
          <div class="call">
-           <h5>+2 800 544 6035</h5>
+           <h5>+0312 435 12 66</h5>
            <p>Bize Ulaşın</p>
          </div>
          <div class="clearfix"></div>

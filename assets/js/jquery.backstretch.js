@@ -1,6 +1,4 @@
-/*! Backstretch - v2.0.4 - 2013-06-19
-* http://srobbin.com/jquery-plugins/backstretch/
-* Copyright (c) 2013 Scott Robbin; Licensed MIT */
+
 
 ;(function ($, window, undefined) {
   'use strict';
@@ -328,13 +326,7 @@
    * Based on code from jQuery Mobile 1.1.0
    * http://jquerymobile.com/
    *
-   * In a nutshell, we need to figure out if fixed positioning is supported.
-   * Unfortunately, this is very difficult to do on iOS, and usually involves
-   * injecting content, scrolling the page, etc.. It's ugly.
-   * jQuery Mobile uses this workaround. It's not ideal, but works.
-   *
-   * Modified to detect IE6
-   * ========================= */
+   */
 
   var supportsFixedPosition = (function () {
     var ua = navigator.userAgent

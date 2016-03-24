@@ -150,8 +150,9 @@ header .social .btn {
 
 }
 #timeline .popup .timeline-item  {
-  width: 100%;
-  max-width:100%;
+  width: 80%;
+  max-width:80%;
+  margin-left: 10%;
   
   -webkit-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
@@ -186,6 +187,7 @@ header .social .btn {
   margin-left:0; margin-right:0;
   margin-bottom:4px;
   padding-bottom: 2px;
+ 
   height:200px;
   
 }
@@ -200,10 +202,11 @@ header .social .btn {
   
 }
 #timeline .timeline-item .timeline-content .aid_images img{
-  width:100%;
-  max-width: 100%;
+  width:80%;
+  max-width: 200px;
   height:100%;
-  max-height:100%;
+  max-height:250px;
+
   
 
 }

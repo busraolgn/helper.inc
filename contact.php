@@ -27,7 +27,7 @@
 								Söğütözü Caddesi No:43, Söğütözü, Ankara, 
 							</li>					
 							<li><span class="glyphicon3 glyphicon-earphone" aria-hidden="true"></span>
-								(+90) 0312 292-4000
+								 0312 292 40 00
 							</li>
 							<li><span class="glyphicon3 glyphicon-envelope" aria-hidden="true"></span>
 								<a href="mailto:example@mail.com">contact@helper.com</a>

@@ -7,7 +7,7 @@
 			 <h3>Yardımlaşmaya Var Mısın?</h3>
 			 <h4>Şu an 500 kişiyiz!</h4>
 			 <p>Kimse tam değil, eksiklerimiz var. Bize katılın, paylaşıma çağırın ve paylaşıma katılın.
-				Sizinle daha güçlü ve daha tamız!.</p>
+				Sizinle daha güçlü ve daha tamız!</p>
 		 </div>
 		  <div class="charitys">
 			  <div class="col-md-4 chrt_grid" style="visibility: visible; -webkit-animation-delay: 0.4s;">

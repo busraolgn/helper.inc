@@ -1,7 +1,7 @@
 <?php
 if(empty($_SESSION["user"])){ ?>
 
-<h3>Üzgünüz, favori kampanyalarınızı görüntülemek için giriş yapmalı veya üye olmalısınız..</h3>
+<h3>Üzgünüz, favori kampanyalarınızı görüntülemek için giriş yapmalı veya üye olmalısınız...</h3>
 
 <?php
 
