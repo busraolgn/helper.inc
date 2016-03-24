@@ -8,7 +8,7 @@
     echo "<div class='alert alert-danger' role='alert'> <strong>Tebrikler, Bağışınız Başarıyla Gerçekleştiridi</strong> Teşekkür Ederiz.. </div>"; }
   else if (isset($_GET["success"]) && $_GET["success"] == 0) { 
     echo "<div class='alert alert-danger' role='alert'> <strong>Üzgünüz,kampanyayı açan kişi kendi kampanyasına bağış yapamaz.</strong> Bağışınız gerçekleştirilemedi.. </div>"; }
-   else {
+   else { 
     if (isset($_GET["aid_id"])) {
       $aid_id = $_GET["aid_id"]; 
       if(in_array($aid_id, $_SESSION["user"]["aid_started_by_user"]))
@@ -23,77 +23,88 @@
         $campaign->closeDB();
         $item = new Items();
         $item->openDB();
-        $items = $item->getItemsByAidID($aid_id);
+        $items = $item->getItemsByAidID($aid_id);  
         $item->closeDB();
         $item_arr=array();
-        for ($i=0; $i < count($items); $i++) { 
+        for ($i=0; $i < count($items); $i++) {   
+          $item_arr[$i] = $items[$i]["item_name"];
+          $itemsKeyName[$items[$i]["item_name"]][] = $items[$i];
+        } 
+        $main_categories = $aid["main_category_tags"];
+        $sub_categories = $aid["sub_category_tags"]; 
+     /* } */
+    }
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){ 
+
+        $item = new Items();
+        $item->openDB();
+        $items = $item->getItemsByAidID($aid_id);  
+        $item->closeDB();
+
+        $item_arr=array();
+        for ($i=0; $i < count($items); $i++) {   
           $item_arr[$i] = $items[$i]["item_name"];
           $itemsKeyName[$items[$i]["item_name"]][] = $items[$i];
         }
-        $main_categories = $aid["main_category_tags"];
-        $sub_categories = $aid["sub_category_tags"];
-     /* } */
-    }
-    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
        $user_id = $_SESSION["user"]["id"];
        $address = $_POST["location"];
-       $items = array();
        $index = 0;
        $sub1_checked = false;
        $main1_checked = false;
-       $donations="";
+       $donations=""; $donate_count=0;
        /*gıda*/
-       if(isset($_POST["pirinc"])){ $donations .= "Pirinç=".$_POST["pirinc_kg"].","; } if(isset($_POST["bulgur"])){ $donations .= "Bulgur=".$_POST["bulgur_kg"].","; } 
-       if(isset($_POST["nohut"])){ $donations .= "Nohut=".$_POST["nohut_kg"].","; } if(isset($_POST["fasulye"])){ $donations .= "Fasulye=".$_POST["fasulye_kg"].","; } 
-       if(isset($_POST["bugday"])){ $donations .= "Buğday=".$_POST["bugday_kg"].","; }
-       if(isset($_POST["salca"])){ $donations .= "Salça=".$_POST["salca_kg"].","; } if(isset($_POST["siviyag"])){ $donations .= "Sıvıyağ=".$_POST["siviyag_lt"].","; }
-       if(isset($_POST["un"])){ $donations .= "Un=".$_POST["un_kg"].","; } if(isset($_POST["yumurta"])){ $donations .= "Yumurta=".$_POST["yumurta_ad"].","; }
-       if(isset($_POST["makarna"])){ $donations .= "Makarna=".$_POST["makarna_kg"].","; }
-       if(isset($_POST["et"])){ $donations .= "Et=".$_POST["et_kg"].","; } if(isset($_POST["tavuk"])){ $donations .= "Tavuk=".$_POST["tavuk_kg"].","; }
-       if(isset($_POST["balik"])){ $donations .= "Balık=".$_POST["balik_kg"].","; }
-       if(isset($_POST["su"])){ $donations .= "Su=".$_POST["su_lt"].","; } if(isset($_POST["sut"])){ $donations .= "Süt=".$_POST["sut_lt"].","; } 
-       if(isset($_POST["cay"])){ $donations .= "Çay=".$_POST["cay_lt"].","; } if(isset($_POST["yogurt"])){ $donations .= "Yoğurt=".$_POST["yogurt_kg"].","; }    
-      /*giyecekler*/
-       if(isset($_POST["tisort_small"])){ $donations .= "TişörtSmall=".$_POST["tisort_small_ad"].","; } if(isset($_POST["tisort_medium"])){ $donations .= "TişörtMedium=".$_POST["tisort_medium_ad"].","; }
-       if(isset($_POST["tisort_large"])){ $donations .= "TişörtLarge=".$_POST["tisort_large_ad"].","; } if(isset($_POST["tisort_xlarge"])){ $donations .= "TişörtXlarge=".$_POST["tisort_xlarge_ad"].","; } 
-       if(isset($_POST["kazak_small"])){ $donations .= "KazakSmall=".$_POST["kazak_small_ad"].","; } if(isset($_POST["kazak_medium"])){ $donations .= "KazakMedium=".$_POST["kazak_medium_ad"].","; }
-       if(isset($_POST["kazak_large"])){ $donations .= "KazakLarge=".$_POST["kazak_large_ad"].","; } if(isset($_POST["kazak_xlarge"])){ $donations .= "KazakXlarge=".$_POST["kazak_xlarge_ad"].","; }  
-       if(isset($_POST["pantolon_small"])){ $donations .= "PantolonSmall=".$_POST["pantolon_small_ad"].","; } if(isset($_POST["pantolon_medium"])){ $donations .= "PantolonMedium=".$_POST["pantolon_medium_ad"].","; }
-       if(isset($_POST["pantolon_large"])){ $donations .= "PantolonLarge=".$_POST["pantolon_large_ad"].","; } if(isset($_POST["pantolon_xlarge"])){ $donations .= "PantolonXlarge=".$_POST["pantolon_xlarge_ad"].","; }  
-       if(isset($_POST["kaban_mont_small"])){ $donations .= "Kaban-MontSmall=".$_POST["kaban_mont_small_ad"].","; } if(isset($_POST["kaban_mont_medium"])){ $donations .= "Kaban-MontMedium=".$_POST["kaban_mont_medium_ad"].","; } 
-       if(isset($_POST["kaban_mont_large"])){ $donations .= "Kaban-MontLarge=".$_POST["kaban_mont_large_ad"].","; } if(isset($_POST["kaban_mont_xlarge"])){ $donations .= "Kaban-MontXlarge=".$_POST["kaban_mont_xlarge_ad"].","; }        
-       /*temel eşyalar*/
-       if(isset($_POST["su_isitici"])){ $donations .= "SuIsıtıcı=".$_POST["su_isitici_ad"].","; } if(isset($_POST["isitici"])){ $donations .= "Isıtıcı=".$_POST["isitici_ad"].","; }
-       if(isset($_POST["bilgisayar"])){ $donations .= "Bilgisayar=".$_POST["bilgisayar_ad"].","; } if(isset($_POST["projeksiyon"])){ $donations .= "Projeksiyon=".$_POST["projeksiyon_ad"].","; }
-       if(isset($_POST["camasir_makinesi"])){ $donations .= "ÇamaşırMakinesi=".$_POST["camasir_makinesi_ad"].","; } if(isset($_POST["bulasik_makinesi"])){ $donations .= "BulaşıkMakinesi=".$_POST["bulasik_makinesi_ad"].","; }
-       if(isset($_POST["ocak"])){ $donations .= "Ocak=".$_POST["ocak_ad"].","; } if(isset($_POST["fırın"])){ $donations .= "Fırın=".$_POST["fırın_ad"].","; }
-       if(isset($_POST["battaniye"])){ $donations .= "Battaniye=".$_POST["battaniye_ad"].","; } if(isset($_POST["bebek_bezi"])){ $donations .= "BebekBezi=".$_POST["bebek_bezi_ad"].","; }    
-       /* update items table */  
-       $donations_arr = explode(",",$donations);
+       if(isset($_POST["pirinc"])){ $donate_count++; $donations .= "Pirinç=".$_POST["pirinc_kg"].","; } if(isset($_POST["bulgur"])){ $donate_count++; $donations .= "Bulgur=".$_POST["bulgur_kg"].","; } 
+       if(isset($_POST["nohut"])){ $donate_count++; $donations .= "Nohut=".$_POST["nohut_kg"].","; } if(isset($_POST["fasulye"])){ $donate_count++; $donations .= "Fasulye=".$_POST["fasulye_kg"].","; } 
+       if(isset($_POST["bugday"])){ $donate_count++; $donations .= "Buğday=".$_POST["bugday_kg"].","; }
+       if(isset($_POST["salca"])){ $donate_count++; $donations .= "Salça=".$_POST["salca_kg"].","; } if(isset($_POST["siviyag"])){ $donate_count++; $donations .= "Sıvıyağ=".$_POST["siviyag_lt"].","; }
+       if(isset($_POST["un"])){ $donate_count++; $donations .= "Un=".$_POST["un_kg"].","; } if(isset($_POST["yumurta"])){ $donate_count++; $donations .= "Yumurta=".$_POST["yumurta_ad"].","; }
+       if(isset($_POST["makarna"])){ $donate_count++; $donations .= "Makarna=".$_POST["makarna_kg"].","; }
+       if(isset($_POST["et"])){ $donate_count++; $donations .= "Et=".$_POST["et_kg"].","; } if(isset($_POST["tavuk"])){ $donate_count++; $donations .= "Tavuk=".$_POST["tavuk_kg"].","; }
+       if(isset($_POST["balik"])){ $donate_count++; $donations .= "Balık=".$_POST["balik_kg"].","; }
+       if(isset($_POST["su"])){ $donate_count++; $donations .= "Su=".$_POST["su_lt"].","; } if(isset($_POST["sut"])){ $donate_count++; $donations .= "Süt=".$_POST["sut_lt"].","; } 
+       if(isset($_POST["cay"])){ $donate_count++; $donations .= "Çay=".$_POST["cay_lt"].","; } if(isset($_POST["yogurt"])){ $donate_count++; $donations .= "Yoğurt=".$_POST["yogurt_kg"].","; }    
+      /*giyecekler*/ 
+       if(isset($_POST["tisort_small"])){ $donate_count++; $donations .= "TişörtSmall=".$_POST["tisort_small_ad"].","; } if(isset($_POST["tisort_medium"])){ $donate_count++; $donations .= "TişörtMedium=".$_POST["tisort_medium_ad"].","; }
+       if(isset($_POST["tisort_large"])){ $donate_count++; $donations .= "TişörtLarge=".$_POST["tisort_large_ad"].","; } if(isset($_POST["tisort_xlarge"])){ $donate_count++; $donations .= "TişörtXlarge=".$_POST["tisort_xlarge_ad"].","; } 
+       if(isset($_POST["kazak_small"])){ $donate_count++; $donations .= "KazakSmall=".$_POST["kazak_small_ad"].","; } if(isset($_POST["kazak_medium"])){ $donate_count++; $donations .= "KazakMedium=".$_POST["kazak_medium_ad"].","; }
+       if(isset($_POST["kazak_large"])){ $donate_count++; $donations .= "KazakLarge=".$_POST["kazak_large_ad"].","; } if(isset($_POST["kazak_xlarge"])){ $donate_count++; $donations .= "KazakXlarge=".$_POST["kazak_xlarge_ad"].","; }  
+       if(isset($_POST["pantolon_small"])){ $donate_count++; $donations .= "PantolonSmall=".$_POST["pantolon_small_ad"].","; } if(isset($_POST["pantolon_medium"])){ $donate_count++; $donations .= "PantolonMedium=".$_POST["pantolon_medium_ad"].","; }
+       if(isset($_POST["pantolon_large"])){ $donate_count++; $donations .= "PantolonLarge=".$_POST["pantolon_large_ad"].","; } if(isset($_POST["pantolon_xlarge"])){ $donate_count++; $donations .= "PantolonXlarge=".$_POST["pantolon_xlarge_ad"].","; }  
+       if(isset($_POST["kaban_mont_small"])){ $donate_count++; $donations .= "Kaban-MontSmall=".$_POST["kaban_mont_small_ad"].","; } if(isset($_POST["kaban_mont_medium"])){ $donate_count++; $donations .= "Kaban-MontMedium=".$_POST["kaban_mont_medium_ad"].","; } 
+       if(isset($_POST["kaban_mont_large"])){ $donate_count++; $donations .= "Kaban-MontLarge=".$_POST["kaban_mont_large_ad"].","; } if(isset($_POST["kaban_mont_xlarge"])){ $donate_count++; $donations .= "Kaban-MontXlarge=".$_POST["kaban_mont_xlarge_ad"].","; }        
+       /*temel eşyalar*/ 
+       if(isset($_POST["su_isitici"])){ $donate_count++; $donations .= "SuIsıtıcı=".$_POST["su_isitici_ad"].","; } if(isset($_POST["isitici"])){ $donate_count++; $donations .= "Isıtıcı=".$_POST["isitici_ad"].","; }
+       if(isset($_POST["bilgisayar"])){ $donate_count++; $donations .= "Bilgisayar=".$_POST["bilgisayar_ad"].","; } if(isset($_POST["projeksiyon"])){ $donate_count++; $donations .= "Projeksiyon=".$_POST["projeksiyon_ad"].","; }
+       if(isset($_POST["camasir_makinesi"])){ $donate_count++; $donations .= "ÇamaşırMakinesi=".$_POST["camasir_makinesi_ad"].","; } if(isset($_POST["bulasik_makinesi"])){ $donate_count++; $donations .= "BulaşıkMakinesi=".$_POST["bulasik_makinesi_ad"].","; }
+       if(isset($_POST["ocak"])){ $donate_count++; $donations .= "Ocak=".$_POST["ocak_ad"].","; } if(isset($_POST["fırın"])){ $donate_count++; $donations .= "Fırın=".$_POST["fırın_ad"].","; }
+       if(isset($_POST["battaniye"])){ $donate_count++; $donations .= "Battaniye=".$_POST["battaniye_ad"].","; } if(isset($_POST["bebek_bezi"])){ $donate_count++; $donations .= "BebekBezi=".$_POST["bebek_bezi_ad"].","; }    
+       /* update items table */           
+       $donations_arr = explode(",",$donations);  
        //unset($donations_arr[count($donations_arr)-1]);
-       for ($j=0; $j < count($donations_arr); $j++) { 
+       for ($j=0; $j < $donate_count; $j++) {   
         $item1=explode("=",$donations_arr[$j]);
         $amount=explode(" " , $item1[1])[0];
-        $donations_arr[$item1[0]] = $amount; /*$donations_arr["battaniye"] = 5*/
-       } 
-       echo "<script> alert('$donations_arr'); </script>"; 
-       echo "<script> alert('print_r($item_arr);'); </script>"; 
-       echo "<script> alert('print_r($itemsKeyName);''); </script>"; 
+        $new_donations_arr[$item1[0]] = $amount; /*$donations_arr["battaniye"] = 5*/
+        }  
        for ($i=0; $i < count($item_arr); $i++) { 
          //unset($donations_arr[count($donations_arr) - 1]); 
-         print_r($item_arr);                   /*$item_arr[0] = "battaniye"*/
-         if (array_key_exists($item_arr[$i], $donations_arr)) {    /*$itemsKeyName["battaniye"] = array()*/ echo "<script> alert('1'); </script>";
-           if ($itemsKeyName[$item_arr[$i]]["needed"] < $donations_arr[$item_arr[$i]]) {   echo "<script> alert('2'); </script>";
-              header("Location: index.php?page=joinCampaign&aid_id=$aid_id&success=-1"); $tooMuch=1; echo "<script> alert('3'); </script>";
-            }
+         if (array_key_exists($item_arr[$i], $new_donations_arr)) {    /*$itemsKeyName["battaniye"] = array()*/ 
+           if ($items[$i]["needed"] < $donations_arr[$item_arr[$i]]) {  
+              header("Location: index.php?page=joinCampaign&aid_id=$aid_id&success=-1"); exit();
+            } 
+            $item=new Items();
+            $item->openDB();
+            $id=$aid_id; $type=0; $item_name=$item_arr[$i]; $needed=$items[$i]["needed"]-$new_donations_arr[$items[$i]["item_name"]]; 
+            $provided=$items[$i]["provided"]+$new_donations_arr[$items[$i]["item_name"]]; $fill_rate=($provided*100)/($needed+$provided);
+             $item->updateItems($items[$i]["id"] ,$id ,$type ,$item_name ,$fill_rate ,$needed ,$provided);
+            $item->closeDB();
           }
         } 
-        if(!$tooMuch){
            /* add entry to donations table.. */ 
            $donation = new Donations();
            $donation->openDB();
-           $donation->insertDonations($user_id, 
-            $aid_id, $donations, false, $address);
+           $donation->insertDonations($user_id, $aid_id, $donations, false, $address);
            $donation->closeDB();
 
           array_push($_SESSION["user"]["aid_attended_by_user"], $aid_id); 
@@ -105,8 +116,17 @@
            $user->updateUser_tableCampaigns($_SESSION["user"]["id"], $aid_started_by_user , $aid_attended_by_user);
            $user->closeDB();
 
-           header("Location: index.php?page=joinCampaign&success=1");
-        } 
+           /* $item = new Items();
+            $item->openDB();
+           for ($i=0; $i < count($items); $i++) { 
+            $id=$aid_id; $type=0; $item_name=$items[$i]["item_name"]; $needed=$items[$i]["needed"]; 
+            $provided=$items[$i]["provided"]; $fill_rate=($provided*100)/($needed+$provided); 
+             $item->updateItems($items[$i]["id"] ,$id ,$type ,$item_name ,$fill_rate ,$needed ,$provided);
+           }
+           $item->closeDB(); */
+
+           header("Location: index.php?page=joinCampaign&success=1"); exit();
+        
     }
     ob_end_flush();
 ?>

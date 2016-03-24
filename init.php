@@ -66,8 +66,8 @@ if(isset($_GET['city']))
 {
 	$_SESSION["tree"].=" > " . $_GET['city'];
 	$_SESSION["filter_city"] = $_GET['city'];
-	/*$filtered_camps = array(); $index=0;
-	for ($i=0; $i < count($campaign_arr); $i++) { 
+	$filtered_camps = array(); $index=0;
+	/*for ($i=0; $i < count($campaign_arr); $i++) { 
 		if (strpos($campaign_arr[$i]["address"], $_SESSION["filter_city"]) !== false) {
 			$filtered_camps[$index][]=$campaign_arr[$i]; $index++;
 		}

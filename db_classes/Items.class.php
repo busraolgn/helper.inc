@@ -78,7 +78,7 @@
         $query = "SELECT * FROM items where aid_id = '".addslashes(intval($id))."'";
 
         $rows = $this->db->query($query);
-        $results=null;
+        $results=[];
         while ($record = $this->db->fetch_array($rows)) {
             $results[] = $record;
         }
