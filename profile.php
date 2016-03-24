@@ -163,7 +163,6 @@
                 e.stopPropagation();
             });
             */
-            
         });
         $.fn.serializeObject = function()
         {
@@ -204,6 +203,11 @@
         });
         </script>
 </head>
+<?php 
+    //if (isset($_GET["tab"])) {
+       // $tab=$_GET["tab"];
+    //}
+?>
 <body>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src="js/login.js"></script>

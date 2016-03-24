@@ -26,18 +26,22 @@
 </script>
 </head>
 <!--show campaign details-->
-<?php if (isset($_GET["aid_details_id"])) {
-	session_start();
-	include("db_classes/User_table.class.php");
-	include("db_classes/Items.class.php");
-	include("db_classes/Campaign.class.php");
-	include("db_classes/Donations.class.php");
-	$aid_details_id = $_GET["aid_details_id"];
-	echo $aid_details_id;
-	$campaign = new Campaign();
-    $campaign->openDB();
-    $aid = $campaign->getCampaignByID($aid_details_id);
-    $campaign->closeDB();
+<?php 
+	if (isset($_GET["back"])) {
+		$back_page=$_GET["back"];
+	}
+	if (isset($_GET["aid_details_id"])) {
+		session_start();
+		include("db_classes/User_table.class.php");
+		include("db_classes/Items.class.php");
+		include("db_classes/Campaign.class.php");
+		include("db_classes/Donations.class.php");
+		$aid_details_id = $_GET["aid_details_id"];
+		echo $aid_details_id;
+		$campaign = new Campaign();
+	    $campaign->openDB();
+	    $aid = $campaign->getCampaignByID($aid_details_id);
+	    $campaign->closeDB();
 ?>
  <div class="container">
 	<div class="col-md-9 join-info">
@@ -93,8 +97,9 @@
 							<?php } ?>
 					 	 </p>
 					</div>
-					<button name="close">Geri</button>
-					<button name="Katıl">Katıl!</button>
+					<a href=<?php echo "index.php?page=".$back_page; ?> ><button name="close">Geri</button></a>
+					<a href=<?php echo "index.php?page=joinCampaign&aid_id=".$aid_details_id; ?>><button name="Katıl">Katıl!</button></a>
+					<a href=<?php echo "route.php?aid_id=".$aid_details_id; ?> ><button name="Route">Kampanya Rotasını Görüntüle</button></a>
 				</div>
 			</div>
 	    </div>				  

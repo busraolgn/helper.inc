@@ -113,26 +113,23 @@
 					</ul> <!-- cd-filter-content -->
 				</div> <!-- cd-filter-block -->
 
+				<?php if(!empty($_SESSION["filter"])) { ?>
 				<div class="cd-filter-block">
-					<h4>Radio buttons</h4>
-
+					<?php for ($j=0; $j < count($_SESSION["filter"]); $j++) { ?>
+					<h4><?php echo $_SESSION["filter"][$j]."kategorisine ait filtreler" ?></h4>
 					<ul class="cd-filter-content cd-filters list">
-						<li>
-							<input class="filter" data-filter="" type="radio" name="radioButton" id="radio1" checked>
-							<label class="radio-label" for="radio1">All</label>
-						</li>
-
-						<li>
-							<input class="filter" data-filter=".radio2" type="radio" name="radioButton" id="radio2">
-							<label class="radio-label" for="radio2">Choice 2</label>
-						</li>
-
-						<li>
-							<input class="filter" data-filter=".radio3" type="radio" name="radioButton" id="radio3">
-							<label class="radio-label" for="radio3">Choice 3</label>
-						</li>
+						<?php for ($i=0; $i < count($_SESSION["sub_categories"][$_SESSION["filter"][$j]]); $i++) { ?>
+							<li>
+							<input class="filter" data-filter="" type="radio" name=<?php echo $_SESSION["sub_categories"][$_SESSION["filter"][$j]][$i]; ?> id=<?php echo $_SESSION["sub_categories"][$_SESSION["filter"][$j]][$i]; ?> 
+							<?php /*if(!empty($_SESSION["sub_filter"]) && in_array(trim($_SESSION["sub_categories"][$_SESSION["filter"][$j]][$i]," "), $_SESSION["sub_filter"])) echo "checked";*/ ?> >
+							<label class="radio-label" for=<?php echo $_SESSION['sub_categories'][$_SESSION['filter'][$j]][$i]; ?> >
+							<?php echo $_SESSION["sub_categories"][$_SESSION["filter"][$j]][$i] ?></label>
+							</li>
+						<?php } ?>
 					</ul> <!-- cd-filter-content -->
+					<?php } ?>
 				</div> <!-- cd-filter-block -->
+				<?php } ?>
 			</form>
 
 			<a href="#0" class="cd-close">Kapat</a>

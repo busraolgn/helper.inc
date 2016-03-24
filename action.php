@@ -60,7 +60,7 @@
     $user_table->openDB();
     $user_table->insertUser_table($uname, $password, $email, $name, $surname, $score, $favorites, $aidstartedbyuser, $aidattendedbyuser);
     $user_table->closeDB();
-    
+    header("location: index.php?page=login&success=1");
     }
 
 

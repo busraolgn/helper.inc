@@ -50,9 +50,12 @@
 			<div id="timeline">
 <?php
 $campaigns = $campaign_arr;
-for($i=0;$i<count($campaigns);$i++){
-$aid1 = $campaigns[$i]; 
-?>				<a name="camps"></a>
+for($i=0;$i<count($campaigns);$i++){ 
+	$aid1 = $campaigns[$i]; 
+	if(!(date("Y",strtotime($aid1["end_date"])) < date("Y",strtotime(date("Y/m/d"))))) {
+		if ((date("m",strtotime($aid1["end_date"])) > date("m",strtotime(date("Y/m/d")))) || ((date("m",strtotime($aid1["end_date"])) == date("m",strtotime(date("Y/m/d")))) && (date("d",strtotime($aid1["end_date"])) >= date("d",strtotime(date("Y/m/d")))))) {
+?>				
+				<a name="camps"></a>
 				<div class="timeline-item" >   
 					<div class="timeline-icon">
 						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -74,38 +77,41 @@ $aid1 = $campaigns[$i];
 		 				</div>
 		 		
 		 				<div class="aid_images">
-		 	 				<?php $img1=$aid1["aid_img"]; echo "<img src=camp_images/$img1>" ; ?>
+		 	 				<?php $img1=$aid1["aid_img"]; echo "<img src=camp_images/$img1>"; ?>
 		 	 			</div>	
 
 			 			<div class="aid_details">
 						 	<p>
-						 		<?php echo $aid1["aid_comment"]; ?>
+						 		<?php echo substr($aid1["aid_comment"], 0, 80)."..."; ?>
 						 	</p>
-			 			</div>
-			 									<div class="bottom">
-							 <div class="address">
-							 	<p><span style="font-weight: bold; text-decoration: underline;">Adres:</span>.
-							 		<?php echo $aid1["city"]; ?>
-							 		<?php echo $aid1["district"]; ?>
-							 		<?php echo $aid1["neigborhood"]; ?>
-							 		<?php echo $aid1["address"]; ?>
-							 	</p>
-							 </div>
 			 			</div>
 <?php 
 $item = new Items();
 $item->openDB();
+$fill_rate_total=0; $needed=0; $provided=0;
 $items = $item->getItemsByAidID($aid1["id"]);
 for($j=0;$j<count($items);$j++){
-	$it = $items[$j];
-?>
+	$fill_rate_total += $items[$j]["fill_rate"];
+	$needed+=$items[$j]["needed"];
+	$provided+=$items[$j]["provided"];
+} $item->closeDB();  ?>
 				 		<div class="rates">
-						 	 <p> <?php echo $it["item_name"]; ?> </p>
+						 	 <p> Kampanyanın Tamamlanma Oranı: </p>
 							 <div class="progress">
-								<div class="progress-bar progress-bar-danger" style=<?php echo "width:" . $it["fill_rate"] . "%"; ?> ></div>
-							 </div><p> eksik: <?php echo $it["needed"]; echo "\n"; ?> &nbsp karşılanan: <?php echo $it["provided"]; ?> </p>
+								<div class="progress-bar progress-bar-danger" style=<?php echo "width:" . $fill_rate_total . "%"; ?> ></div>
+							 </div><p> Eksik: <?php echo $needed; echo "\n"; ?> &nbsp Karşılanan: <?php echo $provided; ?> </p>
 					 	</div>
-				  		<?php } $item->closeDB();  ?>
+					 	<div class="bottom">
+						 <div class="address">
+						 	<p><span style="font-weight: bold; text-decoration: underline;">Adres:</span>.
+						 		<?php echo $aid1["city"]; ?>
+						 		<?php echo $aid1["district"]; ?>
+						 		<?php echo $aid1["neigborhood"]; ?>
+						 		<?php echo $aid1["address"]; ?>
+						 	</p>
+						 </div>
+			 			</div>
+					 	<!--
 						<div class="tags">
 						 	 <h5>İlgili Tag'ler</h5>
 						 	 <p>
@@ -116,12 +122,13 @@ for($j=0;$j<count($items);$j++){
 								<?php } ?>
 						 	 </p>
 						</div>
+						-->
 			 			<div class="col-md-3 join-link">
-			 				<a data-js="open" data-rel="popup" href=<?php echo "popup.php?aid_details_id=".$aid1["id"]; ?> class="btn">Detayları Görüntüle >></a>
+			 				<a data-js="open" data-rel="popup" href=<?php echo "popup.php?aid_details_id=".$aid1["id"]."&back=home"; ?> class="btn">Detayları Görüntüle >></a>
 						</div>
 					</div>
 			  	  </div>	
-				<?php $count++; } ?>
+				<?php $count++; } } } ?>
 			</div> 
 		</div>
 	 </div>
@@ -135,7 +142,7 @@ for($j=0;$j<count($items);$j++){
 			 <input type="submit" value="Abone ol">
 			 <div class="clearfix"></div>
 	  	 </form>
-	  </div>
+	  </div> 
 	  <div class="social">
 		 <div class="social-grid">
 			 <h4>Sosyal Medyada HELPER</h4>

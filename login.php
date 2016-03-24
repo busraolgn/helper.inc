@@ -1,5 +1,5 @@
 <?php
-
+    $yanlis=0;
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -13,9 +13,7 @@
 
     if(empty($userDetay))
     {
-        echo "<script>";
-        echo "alert('YANLIS GIRIS YAPTINIZ');";
-        echo "</script>";
+      header("location: index.php?page=login&success=0");
     }
 
     else 
@@ -31,11 +29,11 @@
         "aid_attended_by_user" => $userDetay["aid_attended_by_user"]
         );
       $_SESSION["user"]["aid_started_by_user"] = explode(",", $userDetay["aid_started_by_user"]);
-      unset($_SESSION["user"]["aid_started_by_user"][count($_SESSION["user"]["aid_started_by_user"])-1]);
+     // unset($_SESSION["user"]["aid_started_by_user"][count($_SESSION["user"]["aid_started_by_user"])-1]);
      // var_dump($_SESSION["user"]["aid_started_by_user"]);
       
       $_SESSION["user"]["aid_attended_by_user"] = explode(",", $userDetay["aid_attended_by_user"]);
-      unset($_SESSION["user"]["aid_attended_by_user"][count($_SESSION["user"]["aid_attended_by_user"])-1]);
+      //unset($_SESSION["user"]["aid_attended_by_user"][count($_SESSION["user"]["aid_attended_by_user"])-1]);
      // var_dump($_SESSION["user"]["aid_attended_by_user"]);
 
       $_SESSION["user"]["favorites"] = explode(",", $userDetay["favorites"]);
@@ -46,6 +44,14 @@
     }
   }
 
+    if (isset($_GET["success"])) {
+      if($_GET["success"] == 1){
+          echo "<div class='alert alert-danger' role='alert'> <strong>Tebrikler Kayıt İşleminiz Gerçekleşti. Aramıza Hoşgeldiniz!</strong> </div>";
+      }
+      elseif ($_GET["success"] == 0) {
+        echo "<div class='alert alert-danger' role='alert'> <strong>Yanlış giriş yaptınız!</strong> Lütfen Tekrar Deneyiniz.. </div>";
+      }
+    }
 ?>
 
 <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
@@ -155,8 +161,3 @@
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
         <script src="js/login.js"></script>
-<!---->
-<!---->
-</body>
-</html>
-

@@ -201,13 +201,19 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
         <link rel="stylesheet" href="assets/css/style.css">
        <script>
           function picker(){
-            var input = document.getElementById('searchTextField');
+            var input = document.getElementById('address');
             var options = {componentRestrictions: {country: 'tr'}};
             new google.maps.places.Autocomplete(input, options);
           }
        </script>
     </head>
     <body>
+  <?php 
+    if (empty($_SESSION["user"])) {
+      echo "<h2>Üzgünüz, kayıt olmadan kampanya açamazsınız..</h2>";
+    }
+    else {
+  ?>
 <div>
         <!-- Top content -->
         <div class="top-content">
@@ -239,7 +245,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
 
 				                          <div class="form-group">
 				                        	<label for="form-about-yourself">Kampanyan için bir fotoğraf ekle:</label>
- 											 <input type='file' onchange="readURL(this);" />
+ 											        <input type='file' onchange="readURL(this);" />
    											 <img id="blah" alt="" />
 				                        	</div>
 				                    <script>
@@ -257,7 +263,7 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
                								 reader.readAsDataURL(input.files[0]);
             								}
         									}
-        						    </script>
+        						          </script>
 				                        <button type="button" class="btn btn-next">Devam</button>
 				                    </div>
 			                    </fieldset>
@@ -1116,19 +1122,19 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
 		                        		<div class="form-top-left">
 		                        			<h3>Step 3 / 3</h3>
 		                            		<p>Kampanyana ait son detaylar:</p>
-		                        		</div>
+		                        	  </div>
 		                            </div>
 		                            <div class="form-bottom">
 				                    	<div class="form-group">
 				                    		<label for="form-facebook">Kampanyan için etiketler seç</label><br></br>
-				                        	<input type="text" placeholder="#gıda,#yardım" class="form-facebook form-control" name="tags" id="tags">
-				                        </div>
+				                        <input type="text" placeholder="#gıda,#yardım" class="form-facebook form-control" name="tags" id="tags">
+				                      </div>
 				                        <div class="form-group">
 				                        	<label for="form-google-plus">Kampanya süresi için bir bitiş belirleyin:</label><br></br>
                                   <input type="text" class="form-twitter form-control" name="end_date" id="end_date" placeholder="yyyy-aa-gg">
 				                        </div>
                                 <div class="form-group">
-                                  <label for="searchTextField">Kampanya için lütfen adres belirtin:</label>
+                                  <label for="address">Kampanya için lütfen adres belirtin:</label>
                                   <br>
                                   <input onchange="picker()" id="address" name="address" type="text" size="50">
                                 </div>
@@ -1157,14 +1163,11 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/retina-1.1.0.min.js"></script>
         <script src="assets/js/scripts.js"></script>
-
-        
-
         
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->
-
+<?php } ?>
     </body>
 
 </html>

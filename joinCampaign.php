@@ -1,13 +1,21 @@
 <?php ob_start(); 
-  if (isset($_GET["success"]) && $_GET["success"] == 1){ echo "<h2>başarıyla gerçekleştiridi..</h2>"; /*location*/ } 
+  $tooMuch=0;
+ if (empty($_SESSION["user"])) {
+  echo "<div class='alert alert-danger' role='alert'> <strong>Üzgünüz, Bu Kampanyaya Bağış Yapamazsınız,</strong> Üye Olmanız veya Giriş Yapmanız Gerekmektedir.. </div>"; } 
+ else
+ {
+  if (isset($_GET["success"]) && $_GET["success"] == 1) { 
+    echo "<div class='alert alert-danger' role='alert'> <strong>Tebrikler, Bağışınız Başarıyla Gerçekleştiridi</strong> Teşekkür Ederiz.. </div>"; }
+  else if (isset($_GET["success"]) && $_GET["success"] == 0) { 
+    echo "<div class='alert alert-danger' role='alert'> <strong>Üzgünüz,kampanyayı açan kişi kendi kampanyasına bağış yapamaz.</strong> Bağışınız gerçekleştirilemedi.. </div>"; }
+   else {
     if (isset($_GET["aid_id"])) {
       $aid_id = $_GET["aid_id"]; 
       if(in_array($aid_id, $_SESSION["user"]["aid_started_by_user"]))
       {
-          echo "<script> alert('Üzgünüz,kampanyayı açan kişi kendi kampanyalarına bağış yapamaz.'); </script>";
-          header("Location: index.php?page=joinCampaign&success=0");
-      }
-      else{
+          header("Location: index.php?page=joinCampaign&success=0"); exit;
+      } 
+     /* else{ */
         //$_SESSION["aid_attended"] = $aid_id;
         $campaign = new Campaign();
         $campaign->openDB();
@@ -24,12 +32,9 @@
         }
         $main_categories = $aid["main_category_tags"];
         $sub_categories = $aid["sub_category_tags"];
-      }
+     /* } */
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        array_push($_SESSION["user"]["aid_attended_by_user"], $aid_id); 
-        $aid_attended_by_user = implode (",", $_SESSION["user"]["aid_attended_by_user"]);
-        $aid_started_by_user = implode (",", $_SESSION["user"]["aid_started_by_user"]);
        $user_id = $_SESSION["user"]["id"];
        $address = $_POST["location"];
        $items = array();
@@ -56,44 +61,52 @@
        if(isset($_POST["pantolon_small"])){ $donations .= "PantolonSmall=".$_POST["pantolon_small_ad"].","; } if(isset($_POST["pantolon_medium"])){ $donations .= "PantolonMedium=".$_POST["pantolon_medium_ad"].","; }
        if(isset($_POST["pantolon_large"])){ $donations .= "PantolonLarge=".$_POST["pantolon_large_ad"].","; } if(isset($_POST["pantolon_xlarge"])){ $donations .= "PantolonXlarge=".$_POST["pantolon_xlarge_ad"].","; }  
        if(isset($_POST["kaban_mont_small"])){ $donations .= "Kaban-MontSmall=".$_POST["kaban_mont_small_ad"].","; } if(isset($_POST["kaban_mont_medium"])){ $donations .= "Kaban-MontMedium=".$_POST["kaban_mont_medium_ad"].","; } 
-       if(isset($_POST["kaban_mont_large"])){ $donations .= "Kaban-MontLarge=".$_POST["kaban_mont_large_ad"].","; } if(isset($_POST["kaban_mont_xlarge"])){ $donations .= "Kaban-MontXlarge=".$_POST["kaban_mont_xlarge_ad"].","; }         
+       if(isset($_POST["kaban_mont_large"])){ $donations .= "Kaban-MontLarge=".$_POST["kaban_mont_large_ad"].","; } if(isset($_POST["kaban_mont_xlarge"])){ $donations .= "Kaban-MontXlarge=".$_POST["kaban_mont_xlarge_ad"].","; }        
        /*temel eşyalar*/
        if(isset($_POST["su_isitici"])){ $donations .= "SuIsıtıcı=".$_POST["su_isitici_ad"].","; } if(isset($_POST["isitici"])){ $donations .= "Isıtıcı=".$_POST["isitici_ad"].","; }
        if(isset($_POST["bilgisayar"])){ $donations .= "Bilgisayar=".$_POST["bilgisayar_ad"].","; } if(isset($_POST["projeksiyon"])){ $donations .= "Projeksiyon=".$_POST["projeksiyon_ad"].","; }
        if(isset($_POST["camasir_makinesi"])){ $donations .= "ÇamaşırMakinesi=".$_POST["camasir_makinesi_ad"].","; } if(isset($_POST["bulasik_makinesi"])){ $donations .= "BulaşıkMakinesi=".$_POST["bulasik_makinesi_ad"].","; }
        if(isset($_POST["ocak"])){ $donations .= "Ocak=".$_POST["ocak_ad"].","; } if(isset($_POST["fırın"])){ $donations .= "Fırın=".$_POST["fırın_ad"].","; }
-       if(isset($_POST["battaniye"])){ $donations .= "Battaniye=".$_POST["battaniye_ad"].","; } if(isset($_POST["bebek_bezi"])){ $donations .= "BebekBezi=".$_POST["bebek_bezi_ad"]."&".$_POST["bebek_bezi_yas"].","; }    
-  /* update items table */  print_r($donations);
-           $donations_arr = explode(",",$donations);
-           print_r($donations_arr);
-           unset($donations_arr[count($donations_arr)-1]);
-           for ($j=0; $j < count($donations_arr); $j++) { 
-            $item1=explode("=",$donations_arr[$j]);
-            $amount=explode(" " , $item1[1])[0];
-            $donations_arr[$item1[0]] = $amount;
-            print_r($donations_arr);
-           }
+       if(isset($_POST["battaniye"])){ $donations .= "Battaniye=".$_POST["battaniye_ad"].","; } if(isset($_POST["bebek_bezi"])){ $donations .= "BebekBezi=".$_POST["bebek_bezi_ad"].","; }    
+       /* update items table */  
+       $donations_arr = explode(",",$donations);
+       //unset($donations_arr[count($donations_arr)-1]);
+       for ($j=0; $j < count($donations_arr); $j++) { 
+        $item1=explode("=",$donations_arr[$j]);
+        $amount=explode(" " , $item1[1])[0];
+        $donations_arr[$item1[0]] = $amount; /*$donations_arr["battaniye"] = 5*/
+       } 
+       echo "<script> alert('$donations_arr'); </script>"; 
+       echo "<script> alert('print_r($item_arr);'); </script>"; 
+       echo "<script> alert('print_r($itemsKeyName);''); </script>"; 
        for ($i=0; $i < count($item_arr); $i++) { 
          //unset($donations_arr[count($donations_arr) - 1]); 
-        print_r($item_arr); 
-         if (array_key_exists($item_arr[$i], $donations_arr)) {
-           if ($itemsKeyName[$item_arr[$i]]["needed"] < $donations_arr[$item_arr[$i]]) {
-              echo "<script> alert('için ihtiyaç fazlası miktar seçtiniz'); </script>";
+         print_r($item_arr);                   /*$item_arr[0] = "battaniye"*/
+         if (array_key_exists($item_arr[$i], $donations_arr)) {    /*$itemsKeyName["battaniye"] = array()*/ echo "<script> alert('1'); </script>";
+           if ($itemsKeyName[$item_arr[$i]]["needed"] < $donations_arr[$item_arr[$i]]) {   echo "<script> alert('2'); </script>";
+              header("Location: index.php?page=joinCampaign&aid_id=$aid_id&success=-1"); $tooMuch=1; echo "<script> alert('3'); </script>";
             }
           }
-        }
-         //header("Location: index.php?page=joinCampaign&success=1");
-  /* add entry to donations table.. */ 
-       $donation = new Donations();
-       $donation->openDB();
-       $donation->insertDonations($user_id, 
-        $aid_id, $donations, false, $address);
-       $donation->closeDB();
-  /* update user table-> aid_attended_by_user */ 
-       $user = new User_table();
-       $user->openDB();
-       $user->updateUser_tableCampaigns($_SESSION["user"]["id"], $aid_started_by_user , $aid_attended_by_user);
-       $user->closeDB(); 
+        } 
+        if(!$tooMuch){
+           /* add entry to donations table.. */ 
+           $donation = new Donations();
+           $donation->openDB();
+           $donation->insertDonations($user_id, 
+            $aid_id, $donations, false, $address);
+           $donation->closeDB();
+
+          array_push($_SESSION["user"]["aid_attended_by_user"], $aid_id); 
+          $aid_attended_by_user = implode (",", $_SESSION["user"]["aid_attended_by_user"]);
+          $aid_started_by_user = implode (",", $_SESSION["user"]["aid_started_by_user"]);
+          /* update user table-> aid_attended_by_user */ 
+           $user = new User_table();
+           $user->openDB();
+           $user->updateUser_tableCampaigns($_SESSION["user"]["id"], $aid_started_by_user , $aid_attended_by_user);
+           $user->closeDB();
+
+           header("Location: index.php?page=joinCampaign&success=1");
+        } 
     }
     ob_end_flush();
 ?>
@@ -162,17 +175,17 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=true"></script>
       <script>
       $(document).ready(function () {
-    $location_input = $("#location");
-    var options = {
-        componentRestrictions: {
-            country: 'tr'
-        }
-    };
-    autocomplete = new google.maps.places.Autocomplete($location_input.get(0), options);    
-});
+        $location_input = $("#location");
+        var options = { componentRestrictions: { country: 'tr' }};
+        autocomplete = new google.maps.places.Autocomplete($location_input.get(0), options);    
+      });
     </script>
     </head>
     <body>
+      <?php 
+        if (isset($_GET["success"]) && $_GET["success"] == -1) { 
+        echo "<div class='alert alert-danger' role='alert'> <strong>Gerekenden fazla bağış yaptınız. Lütfen miktarlarınızı kontrol ediniz.</strong> </div>"; }
+      ?>
 <div>
         <!-- Top content -->
         <div class="top-content">
@@ -1142,3 +1155,4 @@ $(“#main_ul”).append(“<li>” + $(this).parent().children(“label”).htm
         <![endif]-->
     </body>
 </html>
+<?php } } ?>

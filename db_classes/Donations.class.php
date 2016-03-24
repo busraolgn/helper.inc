@@ -55,7 +55,7 @@
         $rows = $this->db->query($query);
 
         while ($record = $this->db->fetch_array($rows)) {
-            $results[] = $record["id"] . "#" .$record["user_id"] . "#" . $record["aid_id"] . "#" . $record["donation"] . "#" . $record["confirmation"] . "#" . $record["source_address"];
+            $results[] = $record;
         }
 
         return $results;
@@ -67,7 +67,7 @@
 
         $record = $this->db->query_first($query);
 
-        return $record["id"] . "#" .$record["user_id"] . "#" . $record["aid_id"] . "#" . $record["donation"] . "#" . $record["confirmation"] . "#" . $record["source_address"];
+        return $record;
      }
 
     function closeDB()

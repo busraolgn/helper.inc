@@ -4,14 +4,13 @@
     <div class="container target">
         <div class="row">
             <div class="col-sm-10">
-              <h1 class=""><?php echo strtoupper($_SESSION["user"]["name"])." ".strtoupper($_SESSION["user"]["surname"]); ?></h1>
+              <h1><?php echo strtoupper($_SESSION["user"]["name"])." ".strtoupper($_SESSION["user"]["surname"]); ?></h1>
               <br><br>
-              <button type="button" class="btn btn-info">Mesaj Gonder!</button>
             </div>
             <div class="col-sm-2">
               <a href="/users" class="pull-right">
-              <img title="profile image" class="img-circle img-responsive" src="http://gcube.milliyet.com.tr/Detail/2014/01/16/-evimin-yeri-belli-olmasin--ata-demirer-cihangir-1409731.jpg"></a>
-            </div>
+<!--               <img title="profile image" class="img-circle img-responsive" src="http://gcube.milliyet.com.tr/Detail/2014/01/16/-evimin-yeri-belli-olmasin--ata-demirer-cihangir-1409731.jpg"></a>
+ -->            </div>
         </div>
         <br>
         <div class="row">
@@ -34,9 +33,9 @@
                     <div class="panel-heading">Diger Baglantilar</div>
                     <div class="span3">
                         <p> 
-                            <a href="http://twitter.com" rel="nofollow" title="BusraOlgun on Twitter" target="ext">Twitter</a><br>
-                            <a href="https://plus.google.com/" rel="publisher">Google+</a><br>
-                            <a href="http://facebook.com/" rel="nofollow" title="Bootply on Facebook" target="ext">Facebook</a><br>
+                            <a rel="nofollow" title="BusraOlgun on Twitter" target="ext">Twitter</a><br>
+                            <a rel="publisher">Google+</a><br>
+                            <a rel="nofollow" title="Bootply on Facebook" target="ext">Facebook</a><br>
                         </p>
                     </div>
                     <div class="panel-body">  
@@ -57,28 +56,15 @@
                     <div class="panel-heading" contenteditable="false">Yürüttüğüm Kampanyalar</div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-4">
-                              <div class="thumbnail">
-                                <img alt="300x200" src="http://mebk12.meb.gov.tr/meb_iys_dosyalar/34/09/742287/resimler/2015_04/20103202_img_2246.jpg">
-                                <div class="caption">
-                                  <h3>
-                                    Başkale
-                                  </h3>
-                                  <p>
-                                    Van'ın Başkale İlkokuluna kitap topluyoruz.Katıl!
-                                  </p>
-                                  <p>
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
                             <?php 
 for($i=0;$i<count($all_campaigns);$i++){
     if ($all_campaigns[$i]["user_id"] == $_SESSION["user"]["id"]) {
 ?>
                             <div class="col-md-4" style="overflow=hidden; text-overflow:ellipsis;">
                               <div class="thumbnail">
+                                <a data-js="open" data-rel="popup" href=<?php echo "popup.php?aid_details_id=".$all_campaigns[$i]["id"]."&back=profile"; ?> >
                                 <img alt="300x200" src="http://mebk12.meb.gov.tr/meb_iys_dosyalar/34/09/742287/resimler/2015_04/20103202_img_2246.jpg">
+                                </a>
                                 <div class="caption">
                                   <h3>
                                     <?php echo $all_campaigns[$i]["aid_name"]; ?>
@@ -89,6 +75,7 @@ for($i=0;$i<count($all_campaigns);$i++){
                                   <p>
                                   </p>
                                 </div>
+                                <a data-js="open" data-rel="popup" href=<?php echo "popup.php?aid_details_id=".$all_campaigns[$i]["id"]."&back=profile"; ?> class="btn">Detayları Görüntüle >></a>
                               </div>
                             </div>
 <?php } } ?>

@@ -9,6 +9,7 @@ $campaign_arr;
 $_SESSION["tree"] = "kampanyalar";
 $_SESSION["current_url"] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $_SESSION["filter"] = array();
+$_SESSION["sub_filter"] = array();
 $_SESSION["filter_city"] = "";
 
 if(empty($page)){
@@ -23,6 +24,9 @@ if(empty($_SESSION["tree"])){
 if(empty($_SESSION["filter"])){
 	$_SESSION["filter"] = "";
 }
+if(empty($_SESSION["sub_filter"])){
+	$_SESSION["sub_filter"] = "";
+}
 if(isset($_GET['page']))
 {
 	$page=$_GET['page'];
@@ -34,6 +38,10 @@ if(isset($_GET['search']))
 {
 	$search_query=$_GET['search'];
 	include("search.php");
+}
+if(isset($_GET['sub_filter']))
+{
+	$_SESSION["sub_filter"]=$_GET['sub_filter'];
 }
 /* initialize arrays */
 
@@ -58,10 +66,16 @@ if(isset($_GET['city']))
 {
 	$_SESSION["tree"].=" > " . $_GET['city'];
 	$_SESSION["filter_city"] = $_GET['city'];
+	/*$filtered_camps = array(); $index=0;
+	for ($i=0; $i < count($campaign_arr); $i++) { 
+		if (strpos($campaign_arr[$i]["address"], $_SESSION["filter_city"]) !== false) {
+			$filtered_camps[$index][]=$campaign_arr[$i]; $index++;
+		}
+	}*/
 	$campaign = new Campaign();
 	$campaign->openDB();
 	$filtered_camps = $campaign->getCampaignByCity($_GET['city']);
-	$campaign->closeDB();
+	$campaign->closeDB(); 
 	$campaign_arr = $filtered_camps;
 }
 /*end filtered camps*/
@@ -84,12 +98,11 @@ if(isset($_GET['filter']))
 	$campaign_arr = $main_category_filtered_camps;
 }
 else
-{
-	$_SESSION["filter"] = array();
-}
-
+{ $_SESSION["filter"] = array(); }
 if(empty($_SESSION["main_categories"])){
 	$_SESSION["main_categories"] = array("Gıda","Giyecekler","TemelEşyalar");
+}
+if(empty($_SESSION["sub_categories"])){
 	$_SESSION["sub_categories"] = array(
 									"Gıda" => array("Bakliyat","KonserveVeYemekMalzemeleri","EtÜrünleri","İçecekler"),
 									"Giyecekler" => array("Tişört","Kazak","Pantolon","Kaban-Mont"),
