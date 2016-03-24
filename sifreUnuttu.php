@@ -128,7 +128,7 @@
                 </div>
               </div>
 
-              <p class="hatirladinMi">Hatirladin mi? &nbsp<a href="login.php">Giriş Yap!</a></p>
+              <p class="hatirladinMi">Hatirladin mi? &nbsp<a href="index.php?page=login">Giriş Yap!</a></p>
             </form>
           </div>
 
