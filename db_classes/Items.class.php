@@ -44,7 +44,7 @@
         $data["type"] = $type;
         $data["item_name"] = $item_name;
         $data["fill_rate"] = $fill_rate;
-        $data["needed"] = explode($needed, " ")[0];
+        $data["needed"] = $needed;
         $data["provided"] = $provided;
 
         $this->db->query_update("items", $data, "id = $id");

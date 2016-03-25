@@ -108,6 +108,7 @@
      {
         $query = "SELECT DISTINCT city FROM campaign";
         $rows = $this->db->query($query);
+        $cities = [];
         while ($record = $this->db->fetch_array($rows)) {
             $cities[] = $record;
         }

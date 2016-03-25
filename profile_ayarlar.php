@@ -10,7 +10,7 @@
             $user->openDB();
             $user->updateUser_table($_SESSION["user"]["id"], $username ,$password ,$e_mail ,$name ,$surname);
             //$bolucuUye = explode("#",$userDetay);
-            $user->closeDB();
+            $user->closeDB();  
         }
 ?>
 

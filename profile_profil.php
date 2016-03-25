@@ -43,7 +43,7 @@
             <!--/col-3-->
             <div class="col-sm-9" contenteditable="false" style="">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Genel Bakış</div>
+                    <div class="panel-heading">Genel Bakış</div> 
                     <div class="panel-body"> Su anda islem yapılan <?php echo count($_SESSION["user"]["aid_started_by_user"]); ?> kampanyası var.
                     </div>
                 </div>

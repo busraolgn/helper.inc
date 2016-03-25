@@ -51,6 +51,8 @@
         $data["e_mail"] = $e_mail;
         $data["name"] = $name;
         $data["surname"] = $surname;
+        //$data["id"] = $id;
+
         /*$data["score"] = $score;
         $data["favorites"] = $favorites;
         $data["aid_started_by_user"] = $aid_started_by_user;

@@ -95,8 +95,8 @@
             } 
             $item=new Items();
             $item->openDB();
-            $id=$aid_id; $type=0; $item_name=$item_arr[$i]; $needed=$items[$i]["needed"]-$new_donations_arr[$items[$i]["item_name"]]; 
-            $provided=$items[$i]["provided"]+$new_donations_arr[$items[$i]["item_name"]]; $fill_rate=($provided*100)/($needed+$provided);
+            $id=$aid_id; $type=0; $item_name=$item_arr[$i]; $needed=($items[$i]["needed"]) - ($new_donations_arr[$items[$i]["item_name"]]); 
+            $provided=($items[$i]["provided"]) + ($new_donations_arr[$items[$i]["item_name"]]); $fill_rate=($provided * 100) / ($needed + $provided);
              $item->updateItems($items[$i]["id"] ,$id ,$type ,$item_name ,$fill_rate ,$needed ,$provided);
             $item->closeDB();
           }
@@ -107,7 +107,7 @@
            $donation->insertDonations($user_id, $aid_id, $donations, false, $address);
            $donation->closeDB();
 
-          array_push($_SESSION["user"]["aid_attended_by_user"], $aid_id); 
+          if(!in_array($aid_id, $_SESSION["user"]["aid_attended_by_user"])){ array_push($_SESSION["user"]["aid_attended_by_user"], $aid_id); }
           $aid_attended_by_user = implode (",", $_SESSION["user"]["aid_attended_by_user"]);
           $aid_started_by_user = implode (",", $_SESSION["user"]["aid_started_by_user"]);
           /* update user table-> aid_attended_by_user */ 

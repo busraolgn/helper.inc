@@ -94,7 +94,7 @@ for($j=0;$j<count($items);$j++){
 	$fill_rate_total += $items[$j]["fill_rate"];
 	$needed+=$items[$j]["needed"];
 	$provided+=$items[$j]["provided"];
-} $fill_rate_total = $fill_rate_total/3; $item->closeDB();  ?>
+} $fill_rate_total = $fill_rate_total/count($items); $item->closeDB();  ?>
 				 		<div class="rates">
 						 	 <p> Kampanyanın Tamamlanma Oranı: </p>
 							 <div class="progress">

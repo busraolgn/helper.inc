@@ -116,7 +116,7 @@
            }
            $item->closeDB();
 
-            header("Location: index.php?page=joinCampaign&success=1"); exit();
+           header("Location: index.php?page=joinCampaign&success=1"); exit();
         } 
     }
     ob_end_flush();
